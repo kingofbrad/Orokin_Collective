@@ -11,6 +11,12 @@
 		FA91479E2B7E7BF000244D88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91479D2B7E7BF000244D88 /* ContentView.swift */; };
 		FA9147A02B7E7BF100244D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA91479F2B7E7BF100244D88 /* Assets.xcassets */; };
 		FA9147A32B7E7BF100244D88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9147A22B7E7BF100244D88 /* Preview Assets.xcassets */; };
+		FA9147B02B893A5F00244D88 /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147AF2B893A5F00244D88 /* NetworkCall.swift */; };
+		FA9147B22B8941B600244D88 /* Weapons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147B12B8941B600244D88 /* Weapons.swift */; };
+		FA9147B62B894F4A00244D88 /* WeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147B52B894F4A00244D88 /* WeaponView.swift */; };
+		FA9147B92B8964B600244D88 /* weaponsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147B82B8964B600244D88 /* weaponsViewModel.swift */; };
+		FA9147BC2B89697900244D88 /* WeaponsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147BB2B89697900244D88 /* WeaponsListView.swift */; };
+		FA9147BE2B8AA36C00244D88 /* Warframes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147BD2B8AA36C00244D88 /* Warframes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,13 @@
 		FA91479D2B7E7BF000244D88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA91479F2B7E7BF100244D88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA9147A22B7E7BF100244D88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA9147AE2B826ACE00244D88 /* Orokin-Collective-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Orokin-Collective-Info.plist"; sourceTree = SOURCE_ROOT; };
+		FA9147AF2B893A5F00244D88 /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
+		FA9147B12B8941B600244D88 /* Weapons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapons.swift; sourceTree = "<group>"; };
+		FA9147B52B894F4A00244D88 /* WeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponView.swift; sourceTree = "<group>"; };
+		FA9147B82B8964B600244D88 /* weaponsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weaponsViewModel.swift; sourceTree = "<group>"; };
+		FA9147BB2B89697900244D88 /* WeaponsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponsListView.swift; sourceTree = "<group>"; };
+		FA9147BD2B8AA36C00244D88 /* Warframes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warframes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +64,15 @@
 		FA91479A2B7E7BF000244D88 /* Orokin Collective */ = {
 			isa = PBXGroup;
 			children = (
+				FA9147B72B89649800244D88 /* viewModels */,
+				FA9147B42B894F2B00244D88 /* Views */,
+				FA9147AE2B826ACE00244D88 /* Orokin-Collective-Info.plist */,
+				FA9147A92B7E9A8300244D88 /* Models */,
 				FA91479B2B7E7BF000244D88 /* Orokin_CollectiveApp.swift */,
 				FA91479D2B7E7BF000244D88 /* ContentView.swift */,
 				FA91479F2B7E7BF100244D88 /* Assets.xcassets */,
 				FA9147A12B7E7BF100244D88 /* Preview Content */,
+				FA9147AF2B893A5F00244D88 /* NetworkCall.swift */,
 			);
 			path = "Orokin Collective";
 			sourceTree = "<group>";
@@ -65,6 +83,32 @@
 				FA9147A22B7E7BF100244D88 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA9147A92B7E9A8300244D88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA9147B12B8941B600244D88 /* Weapons.swift */,
+				FA9147BD2B8AA36C00244D88 /* Warframes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA9147B42B894F2B00244D88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA9147B52B894F4A00244D88 /* WeaponView.swift */,
+				FA9147BB2B89697900244D88 /* WeaponsListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA9147B72B89649800244D88 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA9147B82B8964B600244D88 /* weaponsViewModel.swift */,
+			);
+			path = viewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +181,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9147B62B894F4A00244D88 /* WeaponView.swift in Sources */,
+				FA9147B92B8964B600244D88 /* weaponsViewModel.swift in Sources */,
+				FA9147BE2B8AA36C00244D88 /* Warframes.swift in Sources */,
 				FA91479E2B7E7BF000244D88 /* ContentView.swift in Sources */,
+				FA9147B22B8941B600244D88 /* Weapons.swift in Sources */,
+				FA9147BC2B89697900244D88 /* WeaponsListView.swift in Sources */,
 				FA91479C2B7E7BF000244D88 /* Orokin_CollectiveApp.swift in Sources */,
+				FA9147B02B893A5F00244D88 /* NetworkCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +325,7 @@
 				DEVELOPMENT_TEAM = 488D86WNW2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Orokin-Collective-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +355,7 @@
 				DEVELOPMENT_TEAM = 488D86WNW2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Orokin-Collective-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
