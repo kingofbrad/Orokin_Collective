@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+
+enum polaritiesSymbols: String {
+    case madurai = "https://static.wikia.nocookie.net/warframe/images/b/b2/Madurai_Pol.svg/revision/latest?cb=20220203074907"
+    case vazarin = "https://static.wikia.nocookie.net/warframe/images/6/6f/Vazarin_Pol.svg/revision/latest?cb=20220203095102"
+    case naramon = "https://static.wikia.nocookie.net/warframe/images/6/60/Naramon_Pol.svg/revision/latest?cb=20220203080356"
+    case zenurik = "https://static.wikia.nocookie.net/warframe/images/8/8c/Zenurik_Pol.svg/revision/latest?cb=20220203120518"
+    case unairu = "https://static.wikia.nocookie.net/warframe/images/6/61/Unairu_Pol.svg/revision/latest?cb=20220203080618"
+    case penjaga = "https://static.wikia.nocookie.net/warframe/images/5/5f/Penjaga_Pol.svg/revision/latest?cb=20220203120635"
+    case umbra = "https://static.wikia.nocookie.net/warframe/images/d/d2/Umbra_Pol.svg/revision/latest?cb=20220206064713"
+    case aura = "https://static.wikia.nocookie.net/warframe/images/1/1b/Aura_Pol.svg/revision/latest?cb=20220206065355"
+}
+
+
+
 struct WeaponView: View {
     let name: String
     let image: String
@@ -16,14 +30,28 @@ struct WeaponView: View {
     let accuracy: Double
     let fireRate: Double
     let criticalChance: Double
-    let criticalMultiplier: Int
+    let criticalMultiplier: Double
+    let polarities: [String]
+    let magazineSize: Int
+    let multishot: Int
+    let noise: String
+    
+    
+    let URLImage:String = "https://static.wikia.nocookie.net/warframe/images/e/ec/AcceltraPrime.png/revision/latest?cb=20240117172955"
     
     @GestureState private var zoom = 1.0
+    
+    var totalCritChance: String {
+        let total = Double(criticalChance) / 100
+//        let critValue = total / 100
+        return total.formatted(.percent)
+    }
     
     
     var body: some View {
         VStack() {
-            AsyncImage(url: URL(string: image) ) { image in image.resizable() } placeholder: { Color.orange } .frame(width: 345, height: 220)
+            AsyncImage(url: URL(string: image) ) { image in image.resizable() } placeholder: { Color.gray } .frame(width: 345, height: 220)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .aspectRatio(contentMode: .fit)
                 .scaleEffect(zoom)
                 .gesture(
@@ -40,6 +68,14 @@ struct WeaponView: View {
             
             ScrollView(.vertical, showsIndicators: true) {
                 VStack(alignment:.leading){
+                        Text("Polarities Installed")
+                        .bold()
+                        Text("\(polarities.joined(separator: " "))")
+                    
+                    
+                    Divider()
+                        .frame(height: 2)
+                        .overlay(.orange)
                     Text("\(description)")
                     
                     Divider()
@@ -50,16 +86,22 @@ struct WeaponView: View {
                         .bold()
                     ScrollViewWeapon(statType: Int(accuracy), statName: "Accuracy")
                     ScrollViewWeapon(statType: Int(fireRate), statName: "Fire Rate")
+                    
                     HStack {
                         Text("Critical Chance")
                         Spacer()
-                        Text("\(criticalChance)%")
+                        Text("\(totalCritChance)")
                     }
+                    ScrollViewWeapon(statType: Int(criticalMultiplier), statName: "Critical Multiplier")
+                    ScrollViewWeapon(statType: magazineSize, statName: "Magazine")
+                    ScrollViewWeapon(statType: multishot, statName: "Multishot")
                     HStack {
-                        Text("Critical Multiplier")
+                        Text("Noise")
                         Spacer()
-                        Text("\(criticalMultiplier)x")
+                        Text("\(noise)")
+                            .bold()
                     }
+                    
                     
                     
                 }
@@ -100,7 +142,7 @@ struct ScrollViewWeapon: View {
 
 #Preview {
     NavigationStack {
-        WeaponView(name: "Acceltra Prime", image: "", description: "Engage your enemies with deadly speed. This weapon reloads even faster when its wielder sprints, faster still with Gauss.", category: "", masteryReq: 14, accuracy: 23.53, fireRate: 10.00, criticalChance: 34.00, criticalMultiplier: 3 )
+        WeaponView(name: "Acceltra Prime", image: "https://static.wikia.nocookie.net/warframe/images/e/ec/AcceltraPrime.png/revision/latest?cb=20240117172955", description: "Engage your enemies with deadly speed. This weapon reloads even faster when its wielder sprints, faster still with Gauss.", category: "", masteryReq: 14, accuracy: 23.53, fireRate: 10.00, criticalChance: 34.00, criticalMultiplier: 3, polarities: ["Naramon", "Madurai"], magazineSize: 48, multishot: 1, noise: "Alarming")
     }
     
 }

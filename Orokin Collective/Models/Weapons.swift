@@ -18,8 +18,12 @@ struct WeaponElement: Codable, Identifiable, Hashable {
     let masteryReq: Int?
     let fireRate: Double?
     let criticalChance: Double?
-    let criticalMultiplier: Int?
-    
+    let criticalMultiplier: Double?
+    let polarities: [String]?
+    let isPrime: Bool
+    let magazineSize: Int?
+    let multishot: Int?
+    let noise: String?
      
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -30,22 +34,19 @@ struct WeaponElement: Codable, Identifiable, Hashable {
         case masteryReq = "masteryReq"
         case fireRate = "fireRate"
         case criticalChance = "criticalChance"
+        case polarities = "polarities"
         case criticalMultiplier = "criticalMultiplier"
+        case isPrime = "isPrime"
+        case magazineSize = "magazineSize"
+        case multishot = "multishot"
+        case noise = "noise"
+        
+       
         
     }
 }
 
-struct Damage: Codable {
-    let impact: Int?
-    let slash: Double?
-    let puncture: Double?
 
-    enum CodingKeys: String, CodingKey {
-        case impact = "impact"
-        case slash = "slash"
-        case puncture = "puncture"
-    }
-}
 
 
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
