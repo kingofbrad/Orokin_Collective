@@ -18,7 +18,7 @@ struct WeaponsListView: View {
             VStack {
                 List(networkModel.weapons) { weapons in
                 NavigationLink {
-                    WeaponView(name: weapons.name, image: weapons.wikiaThumbnail ?? "" , description: weapons.description, category: weapons.category, masteryReq: weapons.masteryReq ?? 0, accuracy: weapons.accuracy ?? 0.0, fireRate: weapons.fireRate ?? 0.0, criticalChance: weapons.criticalChance ?? 0.0, criticalMultiplier: weapons.criticalMultiplier ?? 0, polarities: weapons.polarities ?? ["",""], magazineSize: weapons.magazineSize ?? 0, multishot: weapons.multishot ?? 0, noise: weapons.noise ?? "" )
+                    WeaponView(name: weapons.name, image: weapons.wikiaThumbnail ?? "" , description: weapons.description, category: weapons.category, masteryReq: weapons.masteryReq ?? 0, accuracy: weapons.accuracy ?? 0.0, fireRate: weapons.fireRate ?? 0.0, criticalChance: weapons.criticalChance ?? 0.0, criticalMultiplier: weapons.criticalMultiplier ?? 0, polarities: weapons.polarities ?? ["",""], magazineSize: weapons.magazineSize ?? 0, multishot: weapons.multishot ?? 0, noise: weapons.noise ?? "", disposition: weapons.disposition ?? 0, reload: weapons.reloadTime ?? 0.0 )
                 } label: {
                     VStack(alignment:.leading) {
                         Text("\(weapons.name)")

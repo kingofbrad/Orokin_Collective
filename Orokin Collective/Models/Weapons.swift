@@ -24,6 +24,9 @@ struct WeaponElement: Codable, Identifiable, Hashable {
     let magazineSize: Int?
     let multishot: Int?
     let noise: String?
+    let disposition: Int?
+    let reloadTime: Double?
+    
      
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -40,6 +43,8 @@ struct WeaponElement: Codable, Identifiable, Hashable {
         case magazineSize = "magazineSize"
         case multishot = "multishot"
         case noise = "noise"
+        case disposition = "disposition"
+        case reloadTime = "reloadTime"
         
        
         
