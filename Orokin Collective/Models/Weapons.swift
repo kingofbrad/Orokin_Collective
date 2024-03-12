@@ -1,14 +1,8 @@
-//
-//  TestFile.swift
-//  Orokin Collective
-//
-//  Created by Bradlee King on 23/02/2024.
-//
-
 import Foundation
 
 
-struct WeaponElement: Codable, Identifiable, Hashable {
+
+struct WeaponElement: Codable, Identifiable {
     let id = UUID()
     let name: String
     let wikiaThumbnail: String?
@@ -26,8 +20,10 @@ struct WeaponElement: Codable, Identifiable, Hashable {
     let noise: String?
     let disposition: Int?
     let reloadTime: Double?
+    let trigger: String?
+//    private let attacks: [Attack]?
     
-     
+    
     enum CodingKeys: String, CodingKey {
         case name = "name"
         case wikiaThumbnail = "wikiaThumbnail"
@@ -45,11 +41,68 @@ struct WeaponElement: Codable, Identifiable, Hashable {
         case noise = "noise"
         case disposition = "disposition"
         case reloadTime = "reloadTime"
+        case trigger = "trigger"
+//        case attacks = "attacks"
         
-       
+        
         
     }
+    private struct Attack: Codable{
+        let name: String
+        let speed: Int
+        let critChance: Int
+        let critMult: Int
+        let statusChance: Int
+        let shotType: String
+        let shotSpeed: Int?
+        let flight: Int?
+        private let damage: Damage?
+        private let falloff: Falloff?
+        
+        enum CodingKeys: String, CodingKey {
+            case name = "name"
+            case speed = "speed"
+            case critChance = "crit_chance"
+            case critMult = "crit_mult"
+            case statusChance = "status_chance"
+            case shotType = "shot_type"
+            case shotSpeed = "shot_speed"
+            case flight = "flight"
+            case damage = "damage"
+            case falloff = "falloff"
+        }
+        
+        private struct Damage: Codable {
+            let impact: Int?
+            let slash: Double?
+            let puncture: Double?
+            
+            enum CodingKeys: String, CodingKey {
+                case impact = "impact"
+                case slash = "slash"
+                case puncture = "puncture"
+            }
+        }
+        
+        
+        private struct Falloff: Codable{
+            
+            let start: Int
+            let end: Int
+            let reduction: Double
+            
+            enum CodingKeys: String, CodingKey {
+                case start = "start"
+                case end = "end"
+                case reduction = "reduction"
+            }
+        }
+    }
+    
 }
+
+typealias Weapon = [WeaponElement]
+
 
 
 

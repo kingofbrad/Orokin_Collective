@@ -8,16 +8,7 @@
 import SwiftUI
 
 
-enum polaritiesSymbols: String {
-    case madurai = "https://static.wikia.nocookie.net/warframe/images/b/b2/Madurai_Pol.svg/revision/latest?cb=20220203074907"
-    case vazarin = "https://static.wikia.nocookie.net/warframe/images/6/6f/Vazarin_Pol.svg/revision/latest?cb=20220203095102"
-    case naramon = "https://static.wikia.nocookie.net/warframe/images/6/60/Naramon_Pol.svg/revision/latest?cb=20220203080356"
-    case zenurik = "https://static.wikia.nocookie.net/warframe/images/8/8c/Zenurik_Pol.svg/revision/latest?cb=20220203120518"
-    case unairu = "https://static.wikia.nocookie.net/warframe/images/6/61/Unairu_Pol.svg/revision/latest?cb=20220203080618"
-    case penjaga = "https://static.wikia.nocookie.net/warframe/images/5/5f/Penjaga_Pol.svg/revision/latest?cb=20220203120635"
-    case umbra = "https://static.wikia.nocookie.net/warframe/images/d/d2/Umbra_Pol.svg/revision/latest?cb=20220206064713"
-    case aura = "https://static.wikia.nocookie.net/warframe/images/1/1b/Aura_Pol.svg/revision/latest?cb=20220206065355"
-}
+
 
 
 
@@ -37,6 +28,8 @@ struct WeaponView: View {
     let noise: String
     let disposition: Int
     let reload: Double
+    let trigger: String
+    
     
     let URLImage:String = "https://static.wikia.nocookie.net/warframe/images/e/ec/AcceltraPrime.png/revision/latest?cb=20240117172955"
     
@@ -47,6 +40,8 @@ struct WeaponView: View {
 //        let critValue = total / 100
         return total.formatted(.percent)
     }
+    
+    
     
     var formattedReload: String {
         let formatter = NumberFormatter()
@@ -70,7 +65,7 @@ struct WeaponView: View {
     } 
     var formattedCritMulti: String {
         let formatter = NumberFormatter()
-        formatter.minimumIntegerDigits = 2
+        formatter.minimumIntegerDigits = 1
         formatter.maximumFractionDigits = 2
         return formatter.string(from: NSNumber(value: criticalMultiplier )) ?? ""
     }
@@ -114,7 +109,7 @@ struct WeaponView: View {
                         .overlay(.orange)
                     
                     ScrollViewWeapon(statType: masteryReq, statName: "Mastery Req")
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 5)
                         .padding(.top, 5)
                     Text("\(category)")
                         .bold()
@@ -135,8 +130,14 @@ struct WeaponView: View {
                         Text("Critical Chance")
                         Spacer()
                         Text("\(totalCritChance)")
+                            .bold()
                     }
-                    ScrollViewWeapon(statType: Int(criticalMultiplier), statName: "Critical Multiplier")
+                    HStack {
+                        Text("Critical Multipler")
+                        Spacer()
+                        Text("\(formattedCritMulti)x")
+                            .bold()
+                    }
                     ScrollViewWeapon(statType: magazineSize, statName: "Magazine")
                     ScrollViewWeapon(statType: multishot, statName: "Multishot")
                     HStack {
@@ -155,6 +156,13 @@ struct WeaponView: View {
                         Spacer()
                         Text(formattedReload)
                             .bold()
+                    }
+                    HStack {
+                        Text("Trigger")
+                        Spacer()
+                        Text(trigger)
+                            .bold()
+                            .textCase(.uppercase)
                     }
                     
                     
@@ -214,7 +222,23 @@ struct DoubleWeaponView: View {
 
 #Preview {
     NavigationStack {
-        WeaponView(name: "Acceltra Prime", image: "https://static.wikia.nocookie.net/warframe/images/e/ec/AcceltraPrime.png/revision/latest?cb=20240117172955", description: "Engage your enemies with deadly speed. This weapon reloads even faster when its wielder sprints, faster still with Gauss.", category: "Primary", masteryReq: 14, accuracy: 23.53, fireRate: 10.00, criticalChance: 34.00, criticalMultiplier: 3, polarities: ["Naramon", "Madurai"], magazineSize: 48, multishot: 1, noise: "Alarming", disposition: 1, reload: 1.6)
+        WeaponView(name: "Acceltra Prime", 
+                   image: "https://static.wikia.nocookie.net/warframe/images/e/ec/AcceltraPrime.png/revision/latest?cb=20240117172955",
+                   description: "Engage your enemies with deadly speed. This weapon reloads even faster when its wielder sprints, faster still with Gauss.",
+                   category: "Primary",
+                   masteryReq: 14,
+                   accuracy: 23.53,
+                   fireRate: 10.00,
+                   criticalChance: 34.00,
+                   criticalMultiplier: 3,
+                   polarities: ["naramon", "madurai"],
+                   magazineSize: 48,
+                   multishot: 1,
+                   noise: "Alarming",
+                   disposition: 1,
+                   reload: 1.6,
+                   trigger: "auto"
+        )
     }
     
 }
@@ -236,7 +260,7 @@ struct RivenDisposition: View {
 
    struct CircleView: View {
        let fillCount: Int
-       let totalCircles = 5
+       let totalCircles: Int = 5
 
        var body: some View {
            ZStack {
