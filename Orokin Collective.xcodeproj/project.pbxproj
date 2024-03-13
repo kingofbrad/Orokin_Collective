@@ -20,6 +20,12 @@
 		FA3CDAD92BA0B1C9007DECF5 /* Arbitration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAD82BA0B1C9007DECF5 /* Arbitration.swift */; };
 		FA3CDADB2BA0C319007DECF5 /* ArbitrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDADA2BA0C319007DECF5 /* ArbitrationView.swift */; };
 		FA3CDADF2BA0C974007DECF5 /* URLExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDADE2BA0C974007DECF5 /* URLExtenstion.swift */; };
+		FA3CDAE12BA218D9007DECF5 /* ArbitrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAE02BA218D9007DECF5 /* ArbitrationViewModel.swift */; };
+		FA3CDAE32BA2232E007DECF5 /* CetusCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAE22BA2232E007DECF5 /* CetusCycle.swift */; };
+		FA3CDAEE2BA24843007DECF5 /* Fissures.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAED2BA24843007DECF5 /* Fissures.swift */; };
+		FA3CDAF02BA256A4007DECF5 /* CetusCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAEF2BA256A4007DECF5 /* CetusCycleView.swift */; };
+		FA3CDAF22BA25FBD007DECF5 /* OrbVallisCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAF12BA25FBD007DECF5 /* OrbVallisCycleView.swift */; };
+		FA3CDAF42BA26448007DECF5 /* CambionCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAF32BA26448007DECF5 /* CambionCycleView.swift */; };
 		FA91479C2B7E7BF000244D88 /* Orokin_CollectiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91479B2B7E7BF000244D88 /* Orokin_CollectiveApp.swift */; };
 		FA91479E2B7E7BF000244D88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91479D2B7E7BF000244D88 /* ContentView.swift */; };
 		FA9147A02B7E7BF100244D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA91479F2B7E7BF100244D88 /* Assets.xcassets */; };
@@ -45,6 +51,12 @@
 		FA3CDAD82BA0B1C9007DECF5 /* Arbitration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arbitration.swift; sourceTree = "<group>"; };
 		FA3CDADA2BA0C319007DECF5 /* ArbitrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitrationView.swift; sourceTree = "<group>"; };
 		FA3CDADE2BA0C974007DECF5 /* URLExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtenstion.swift; sourceTree = "<group>"; };
+		FA3CDAE02BA218D9007DECF5 /* ArbitrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitrationViewModel.swift; sourceTree = "<group>"; };
+		FA3CDAE22BA2232E007DECF5 /* CetusCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CetusCycle.swift; sourceTree = "<group>"; };
+		FA3CDAED2BA24843007DECF5 /* Fissures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fissures.swift; sourceTree = "<group>"; };
+		FA3CDAEF2BA256A4007DECF5 /* CetusCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CetusCycleView.swift; sourceTree = "<group>"; };
+		FA3CDAF12BA25FBD007DECF5 /* OrbVallisCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbVallisCycleView.swift; sourceTree = "<group>"; };
+		FA3CDAF32BA26448007DECF5 /* CambionCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CambionCycleView.swift; sourceTree = "<group>"; };
 		FA9147982B7E7BF000244D88 /* Orokin Collective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Orokin Collective.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA91479B2B7E7BF000244D88 /* Orokin_CollectiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orokin_CollectiveApp.swift; sourceTree = "<group>"; };
 		FA91479D2B7E7BF000244D88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,22 +109,24 @@
 			path = Warframes;
 			sourceTree = "<group>";
 		};
-		FA3CDAC92B9E3C84007DECF5 /* Alerts */ = {
+		FA3CDAC92B9E3C84007DECF5 /* Active Missions */ = {
 			isa = PBXGroup;
 			children = (
 				FA3CDACA2B9E3C8F007DECF5 /* AlertsView.swift */,
 				FA3CDADA2BA0C319007DECF5 /* ArbitrationView.swift */,
 			);
-			path = Alerts;
+			path = "Active Missions";
 			sourceTree = "<group>";
 		};
 		FA3CDAD12BA0B11A007DECF5 /* WorldState */ = {
 			isa = PBXGroup;
 			children = (
+				FA3CDAEC2BA24823007DECF5 /* Cetus */,
+				FA3CDAEB2BA24819007DECF5 /* Orb Vallis */,
+				FA3CDAEA2BA2480F007DECF5 /* Cambion Drift */,
 				FA3CDAD22BA0B125007DECF5 /* Alerts.swift */,
-				FA3CDAD42BA0B133007DECF5 /* Fortuna.swift */,
-				FA3CDAD62BA0B172007DECF5 /* CambionDrift.swift */,
 				FA3CDAD82BA0B1C9007DECF5 /* Arbitration.swift */,
+				FA3CDAED2BA24843007DECF5 /* Fissures.swift */,
 			);
 			path = WorldState;
 			sourceTree = "<group>";
@@ -128,8 +142,67 @@
 		FA3CDADD2BA0C954007DECF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FA9147AF2B893A5F00244D88 /* NetworkCall.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		FA3CDAE62BA22DAD007DECF5 /* WorldState */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDAE92BA22DE9007DECF5 /* Cambion Drift */,
+				FA3CDAE82BA22DBD007DECF5 /* Orb Vallis */,
+				FA3CDAE72BA22DB5007DECF5 /* Cetus */,
+			);
+			path = WorldState;
+			sourceTree = "<group>";
+		};
+		FA3CDAE72BA22DB5007DECF5 /* Cetus */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDAEF2BA256A4007DECF5 /* CetusCycleView.swift */,
+			);
+			path = Cetus;
+			sourceTree = "<group>";
+		};
+		FA3CDAE82BA22DBD007DECF5 /* Orb Vallis */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDAF12BA25FBD007DECF5 /* OrbVallisCycleView.swift */,
+			);
+			path = "Orb Vallis";
+			sourceTree = "<group>";
+		};
+		FA3CDAE92BA22DE9007DECF5 /* Cambion Drift */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDAF32BA26448007DECF5 /* CambionCycleView.swift */,
+			);
+			path = "Cambion Drift";
+			sourceTree = "<group>";
+		};
+		FA3CDAEA2BA2480F007DECF5 /* Cambion Drift */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDAD62BA0B172007DECF5 /* CambionDrift.swift */,
+			);
+			path = "Cambion Drift";
+			sourceTree = "<group>";
+		};
+		FA3CDAEB2BA24819007DECF5 /* Orb Vallis */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDAD42BA0B133007DECF5 /* Fortuna.swift */,
+			);
+			path = "Orb Vallis";
+			sourceTree = "<group>";
+		};
+		FA3CDAEC2BA24823007DECF5 /* Cetus */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDAE22BA2232E007DECF5 /* CetusCycle.swift */,
+			);
+			path = Cetus;
 			sourceTree = "<group>";
 		};
 		FA91478F2B7E7BF000244D88 = {
@@ -154,7 +227,7 @@
 				FA3CDADD2BA0C954007DECF5 /* Services */,
 				FA3CDADC2BA0C947007DECF5 /* Extenstions */,
 				FA3CDAC02B9BDCF9007DECF5 /* Tests */,
-				FA9147B72B89649800244D88 /* viewModels */,
+				FA9147B72B89649800244D88 /* ViewModels */,
 				FA9147B42B894F2B00244D88 /* Views */,
 				FA9147AE2B826ACE00244D88 /* Orokin-Collective-Info.plist */,
 				FA9147A92B7E9A8300244D88 /* Models */,
@@ -162,7 +235,6 @@
 				FA91479D2B7E7BF000244D88 /* ContentView.swift */,
 				FA91479F2B7E7BF100244D88 /* Assets.xcassets */,
 				FA9147A12B7E7BF100244D88 /* Preview Content */,
-				FA9147AF2B893A5F00244D88 /* NetworkCall.swift */,
 			);
 			path = "Orokin Collective";
 			sourceTree = "<group>";
@@ -189,7 +261,8 @@
 		FA9147B42B894F2B00244D88 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FA3CDAC92B9E3C84007DECF5 /* Alerts */,
+				FA3CDAE62BA22DAD007DECF5 /* WorldState */,
+				FA3CDAC92B9E3C84007DECF5 /* Active Missions */,
 				FA3CDAC42B9E2EF5007DECF5 /* Warframes */,
 				FA3CDAC32B9E2EE6007DECF5 /* Weapons */,
 				FA3CDACC2BA0984D007DECF5 /* DashBoardView.swift */,
@@ -197,12 +270,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		FA9147B72B89649800244D88 /* viewModels */ = {
+		FA9147B72B89649800244D88 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				FA9147B82B8964B600244D88 /* weaponsViewModel.swift */,
+				FA3CDAE02BA218D9007DECF5 /* ArbitrationViewModel.swift */,
 			);
-			path = viewModels;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,23 +356,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3CDAC22B9BDD09007DECF5 /* TestingFile.swift in Sources */,
+				FA3CDAE32BA2232E007DECF5 /* CetusCycle.swift in Sources */,
 				FA3CDAD32BA0B125007DECF5 /* Alerts.swift in Sources */,
 				FA9147B62B894F4A00244D88 /* WeaponView.swift in Sources */,
 				FA3CDAD92BA0B1C9007DECF5 /* Arbitration.swift in Sources */,
 				FA9147B92B8964B600244D88 /* weaponsViewModel.swift in Sources */,
+				FA3CDAF02BA256A4007DECF5 /* CetusCycleView.swift in Sources */,
+				FA3CDAF42BA26448007DECF5 /* CambionCycleView.swift in Sources */,
 				FA3CDACD2BA0984D007DECF5 /* DashBoardView.swift in Sources */,
 				FA9147BE2B8AA36C00244D88 /* Warframes.swift in Sources */,
 				FA91479E2B7E7BF000244D88 /* ContentView.swift in Sources */,
 				FA3CDAD72BA0B172007DECF5 /* CambionDrift.swift in Sources */,
 				FA3CDAD52BA0B133007DECF5 /* Fortuna.swift in Sources */,
 				FA3CDADF2BA0C974007DECF5 /* URLExtenstion.swift in Sources */,
+				FA3CDAEE2BA24843007DECF5 /* Fissures.swift in Sources */,
 				FA3CDADB2BA0C319007DECF5 /* ArbitrationView.swift in Sources */,
+				FA3CDAF22BA25FBD007DECF5 /* OrbVallisCycleView.swift in Sources */,
 				FA9147B22B8941B600244D88 /* Weapons.swift in Sources */,
 				FA3CDACB2B9E3C8F007DECF5 /* AlertsView.swift in Sources */,
 				FA3CDABF2B976887007DECF5 /* FavoritesModel.swift in Sources */,
 				FA9147BC2B89697900244D88 /* WeaponsListView.swift in Sources */,
 				FA91479C2B7E7BF000244D88 /* Orokin_CollectiveApp.swift in Sources */,
 				FA3CDAC82B9E2F10007DECF5 /* WarframeView.swift in Sources */,
+				FA3CDAE12BA218D9007DECF5 /* ArbitrationViewModel.swift in Sources */,
 				FA3CDAC62B9E2F01007DECF5 /* WarframeListView.swift in Sources */,
 				FA9147B02B893A5F00244D88 /* NetworkCall.swift in Sources */,
 			);

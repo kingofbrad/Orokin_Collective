@@ -39,6 +39,11 @@ struct WarframeListView: View {
             .navigationTitle("Warframes")
             .searchable(text: $searchText)
             .onChange(of: searchText, perform: performSearch )
+            .overlay {
+                if networkModel.warframe.isEmpty {
+                    Text("Loading...")
+                }
+            }
         }
         .task {
             do {

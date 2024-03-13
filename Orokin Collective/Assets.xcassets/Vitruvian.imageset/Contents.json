@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "warframe__the_sacrifice___vitruvian_by_dart_a_dcek9py.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

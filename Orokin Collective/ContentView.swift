@@ -11,6 +11,15 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
+            
+            DashBoardView()
+                .tabItem {
+                    Label(
+                        title: { Text("Dashboard") },
+                        icon: { Image(systemName: "list.dash.header.rectangle") }
+                    )
+                }
+            
             WarframeListView()
                 .tabItem {
                     Label(
@@ -23,7 +32,8 @@ struct ContentView: View {
                     Label("Weapons", systemImage: "list.dash")
                 }
             
-            ArbitrationView()
+            
+            CetusCycleView()
                 .tabItem {
                     Label(
                         title: { Text("World State") },

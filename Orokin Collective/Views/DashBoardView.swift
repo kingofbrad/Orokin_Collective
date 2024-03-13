@@ -44,35 +44,28 @@ struct CardView: View, Hashable {
 
 struct DashBoardView: View {
     
-    @State private var openSheet: Bool = false
-    let array =
-    [
-        CardView(name: "Arbitration", expiryDate: "Corpus", description: "Excavation"),
-        CardView(name: "Arbitration", expiryDate: "Corpus", description: "Excavation"),
-        CardView(name: "Arbitration", expiryDate: "Corpus", description: "Excavation"),
-    ]
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
     
-    let weaponArray = 
-    [
-        CardView(name: "Acceltra Prime", expiryDate: "Primary", description: "Main primary of Gauss Prime"),
-        CardView(name: "Arbitration", expiryDate: "Corpus", description: "Excavation"),
-        CardView(name: "Arbitration", expiryDate: "Corpus", description: "Excavation"),
-    ]
+    @State private var openSheet: Bool = false
+    
+    
     
     var body: some View {
         NavigationStack {
             VStack(alignment:.leading) {
                 
-                Text("Alerts")
+                Text("World State")
                     .bold()
                     .font(.system(size: 20))
                     .padding()
                     
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(array, id:\.self) {array in
-                            CardView(name: array.name, expiryDate: array.expiryDate, description: array.description)
-                        }
+                        CetusCycleView()
+                        OrbVallisCycleView()
+                        CambionCycleView()
                     }
                     
                     
@@ -88,9 +81,7 @@ struct DashBoardView: View {
                 .padding()
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(weaponArray, id:\.self) {array in
-                            CardView(name: array.name, expiryDate: array.expiryDate, description: array.description)
-                        }
+                       
                     }
                     
                     
@@ -98,9 +89,20 @@ struct DashBoardView: View {
                 Spacer()
             }
             .sheet(isPresented: $openSheet, content: {
-                WeaponsListView()
+                ZStack{
+                    Color.black.ignoresSafeArea(.all)
+                    WeaponsListView()
+                }
+                
             })
-            .navigationTitle("Dashboard")
+            .navigationTitle("Home")
+            .foregroundStyle(Color.white)
+            .background(
+                Image("Vitruvian")
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea(.all)
+            )
           
         }
     }
