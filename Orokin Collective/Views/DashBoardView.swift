@@ -11,7 +11,7 @@ struct CardView: View, Hashable {
     var name: String
     var expiryDate: String
     var description: String
-
+    
     var body: some View {
         VStack {
             Text(name)
@@ -60,7 +60,7 @@ struct DashBoardView: View {
                     .bold()
                     .font(.system(size: 20))
                     .padding()
-                    
+                
                 ScrollView(.horizontal) {
                     HStack {
                         CetusCycleView()
@@ -71,7 +71,7 @@ struct DashBoardView: View {
                     
                 }
                 HStack {
-                    Text("Weapons")
+                    Text("Missons")
                         .font(.headline)
                     Spacer()
                     Button(action: {openSheet = true}, label: {
@@ -79,34 +79,28 @@ struct DashBoardView: View {
                     })
                 }
                 .padding()
-                ScrollView(.horizontal) {
-                    HStack {
-                       
-                    }
-                    
-                    
-                }
+                MissionScrollView()
+                
+                
                 Spacer()
             }
-            .sheet(isPresented: $openSheet, content: {
-                ZStack{
-                    Color.black.ignoresSafeArea(.all)
-                    WeaponsListView()
-                }
-                
-            })
-            .navigationTitle("Home")
-            .foregroundStyle(Color.white)
             .background(
                 Image("Vitruvian")
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea(.all)
+                
             )
-          
+            
         }
+        
+        .navigationTitle("Home")
+        .foregroundStyle(Color.white)
+        
+        
     }
 }
+
 
 #Preview {
     DashBoardView()

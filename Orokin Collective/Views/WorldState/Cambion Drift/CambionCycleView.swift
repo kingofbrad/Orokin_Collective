@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+struct CambionCyclePreview: View {
+    var body: some View {
+        VStack {
+            CambionCycleView()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black)
+    }
+}
+
+#Preview(body: {
+    CambionCyclePreview()
+})
+
 struct CambionCycleView: View {
     @ObservedObject private var networkModel = NetworkCall()
     
@@ -75,6 +89,4 @@ struct CambionCycleView: View {
     }
 }
 
-#Preview {
-    CambionCycleView()
-}
+

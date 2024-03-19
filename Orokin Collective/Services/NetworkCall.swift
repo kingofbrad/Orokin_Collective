@@ -4,13 +4,13 @@ import Combine
 
 @MainActor
 class NetworkCall: ObservableObject {
-    
     @Published var weapon: Weapon = []
     @Published var warframe: Warframe = []
     @Published var arbitrationData: Arbitration?
     @Published var cetusCycleData: CetusCycle?
     @Published var orbVallisCycleData: VallisCycle?
     @Published var cambionCycleData: CambionCycle?
+   
     
     
     
@@ -22,7 +22,7 @@ class NetworkCall: ObservableObject {
     
     // MARK: - Weapons API Call
     func fetchWeaponsData() async throws {
-        let request =  URL(string: "\(endPoint)/weapons")
+        let request =  URL(string: "\(endPoint)/\(APIPathEndPoint.weapons)")
         let (data, response) = try await URLSession.shared.data(from: request!)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw APIError.invaildResponse
@@ -33,7 +33,7 @@ class NetworkCall: ObservableObject {
     
     // MARK: - Warframe API Call
     func fetchWarframesData() async throws {
-        let request = URL(string: "\(endPoint)/warframes")
+        let request = URL(string: "\(endPoint)/\(APIPathEndPoint.warframes)")
         let (data, response) = try await URLSession.shared.data(from: request!)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw APIError.invaildResponse
@@ -42,10 +42,8 @@ class NetworkCall: ObservableObject {
         warframe = warframeResponse
     }
     
-    // MARK: - Alerts API CAll
-    func fetchAlertsData() async throws {
-        
-    }
+   // MARK: - Alerts API CAll
+    
     
     //MARK: - Arbitration API CAll
     
@@ -131,20 +129,24 @@ enum APIPlayformPathEndPoint {
 
 
 enum APIPathEndPoint {
+    case endPoint
     case weapons
-    case warframe
+    case warframes
     case arbitration
     case cetusCycle
     case vallisCycle
     case cambionCycle
+    case alerts
     
     var path: String {
         switch self {
+        case .endPoint:
+            return "https://api.warframestat.us"
         case .arbitration:
             return "arbitration"
         case .weapons:
             return "weapons"
-        case .warframe:
+        case .warframes:
             return "warframes"
         case.cetusCycle:
             return "cetusCycle"
@@ -152,6 +154,8 @@ enum APIPathEndPoint {
             return "vallisCycle"
         case .cambionCycle:
             return "cambionCycle"
+        case .alerts:
+            return "alerts"
         }
     }
 }

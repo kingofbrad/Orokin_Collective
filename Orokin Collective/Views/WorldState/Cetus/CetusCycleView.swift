@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+
+struct PreviewofItem: View {
+    var body: some View {
+        VStack {
+            CetusCycleView()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black)
+        .ignoresSafeArea()
+        
+    }
+}
+
 struct CetusCycleView: View {
     @ObservedObject private var networkModel = NetworkCall()
     
@@ -47,7 +60,6 @@ struct CetusCycleView: View {
         .frame(width: 230,height: 100)
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 5, style: .continuous))
-        .background(Color.clear)
         .cornerRadius(10)
         .padding(.horizontal)
         .foregroundStyle(.white)
@@ -67,6 +79,8 @@ struct CetusCycleView: View {
     }
 }
 
-#Preview {
-    CetusCycleView()
-}
+
+
+#Preview(body: {
+    PreviewofItem()
+})
