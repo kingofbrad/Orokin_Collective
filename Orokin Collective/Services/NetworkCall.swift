@@ -4,18 +4,13 @@ import Combine
 
 @MainActor
 class NetworkCall: ObservableObject {
+    @Published var alerts: Alerts = []
     @Published var weapon: Weapon = []
     @Published var warframe: Warframe = []
     @Published var arbitrationData: Arbitration?
     @Published var cetusCycleData: CetusCycle?
     @Published var orbVallisCycleData: VallisCycle?
     @Published var cambionCycleData: CambionCycle?
-   
-    
-    
-    
-    
-    
     
     //MARK: - API Endpoint
     @Published  var endPoint = "https://api.warframestat.us"
@@ -43,7 +38,15 @@ class NetworkCall: ObservableObject {
     }
     
    // MARK: - Alerts API CAll
-    
+    func fetchAlertsData() async throws {
+        let request = URL(string: "\(endPoint)/\(APIPlayformPathEndPoint.pc)/\(APIPathEndPoint.alerts)")
+        let(data, response) = try await URLSession.shared.data(from: request!)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw APIError.invaildResponse
+        }
+        let alertsResponse = try JSONDecoder().decode(Alerts.self, from: data)
+        alerts = alertsResponse
+    }
     
     //MARK: - Arbitration API CAll
     
@@ -82,23 +85,17 @@ class NetworkCall: ObservableObject {
         cambionCycleData = cambionCycleResponse
     }
     
-    func fetchArbData() {
-        guard let url = URL(string: "\(endPoint)/\(APIPlayformPathEndPoint.pc)/\(APIPathEndPoint.arbitration)") else { return }
-
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    let decodedData = try decoder.decode(Arbitration.self, from: data)
-                    DispatchQueue.main.async {
-                        self.arbitrationData = decodedData
-                    }
-                } catch {
-                    print("Error decoding JSON: \(error)")
-                }
-            }
-        }.resume()
+    func fetchArbitrationData() async throws {
+        let request = URL(string:"\(endPoint)/\(APIPlayformPathEndPoint.pc)/\(APIPathEndPoint.arbitration)")
+        let (data, response) = try await URLSession.shared.data(from: request!)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw APIError.invaildResponse
+        }
+        let ArbitrationResponse = try JSONDecoder().decode(Arbitration.self, from: data)
+        arbitrationData = ArbitrationResponse
     }
+    
+    
 }
 
 enum APIError: Error {
@@ -129,7 +126,6 @@ enum APIPlayformPathEndPoint {
 
 
 enum APIPathEndPoint {
-    case endPoint
     case weapons
     case warframes
     case arbitration
@@ -140,8 +136,6 @@ enum APIPathEndPoint {
     
     var path: String {
         switch self {
-        case .endPoint:
-            return "https://api.warframestat.us"
         case .arbitration:
             return "arbitration"
         case .weapons:

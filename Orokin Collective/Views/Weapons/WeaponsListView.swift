@@ -10,6 +10,7 @@ import AlertToast
 
 struct WeaponsListView: View {
     @ObservedObject private var networkModel = NetworkCall()
+    //    @ObservedObject private var vm = weaponsViewModel()
     @State private var textSearch = ""
     @State private var filteredWeapons: [WeaponElement] = []
     @State private var showToast: Bool = false
@@ -29,40 +30,38 @@ struct WeaponsListView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                Text("")
+                Spacer()
                 List(weapons, id: \.name) { weapons in
-                    Section {
-                        NavigationLink {
-                            WeaponView(name: weapons.name,
-                                       image: weapons.wikiaThumbnail ?? "" ,
-                                       description: weapons.description,
-                                       category: weapons.category,
-                                       masteryReq: weapons.masteryReq ?? 0,
-                                       accuracy: weapons.accuracy ?? 0.0,
-                                       fireRate: weapons.fireRate ?? 0.0,
-                                       criticalChance: weapons.criticalChance ?? 0.0,
-                                       criticalMultiplier: weapons.criticalMultiplier ?? 0,
-                                       polarities: weapons.polarities ?? ["",""],
-                                       magazineSize: weapons.magazineSize ?? 0,
-                                       multishot: weapons.multishot ?? 0,
-                                       noise: weapons.noise ?? "",
-                                       disposition: weapons.disposition ?? 0,
-                                       reload: weapons.reloadTime ?? 0.0,
-                                       trigger: weapons.trigger ?? ""
-                            )
-                        } label: {
-                            VStack(alignment:.leading) {
-                                Text("\(weapons.name)")
-                                    .font(.headline)
-                                Text("\(weapons.category)")
-                                    .font(.subheadline)
-                            }
-                        }
-                    }
                     
+                    NavigationLink {
+                        WeaponView(name: weapons.name,
+                                   image: weapons.wikiaThumbnail ?? "" ,
+                                   description: weapons.description,
+                                   category: weapons.category,
+                                   masteryReq: weapons.masteryReq ?? 0,
+                                   accuracy: weapons.accuracy ?? 0.0,
+                                   fireRate: weapons.fireRate ?? 0.0,
+                                   criticalChance: weapons.criticalChance ?? 0.0,
+                                   criticalMultiplier: weapons.criticalMultiplier ?? 0,
+                                   polarities: weapons.polarities ?? ["",""],
+                                   magazineSize: weapons.magazineSize ?? 0,
+                                   multishot: weapons.multishot ?? 0,
+                                   noise: weapons.noise ?? "",
+                                   disposition: weapons.disposition ?? 0,
+                                   reload: weapons.reloadTime ?? 0.0,
+                                   trigger: weapons.trigger ?? ""
+                        )
+                    } label: {
+                        WeaponListViewItem(name: weapons.name, description: weapons.description, category: weapons.category)
+                        
+                    }
                     .listRowBackground(Color.clear)
                     
+                    
+                    
+                    
                 }
+                
                 .scrollContentBackground(.hidden)
                 .toolbarBackground(
                     .hidden, for: .navigationBar
@@ -78,14 +77,18 @@ struct WeaponsListView: View {
                         
                     }
                 })
-                .searchable(text: $textSearch)
+                .searchable(text: $textSearch,placement: .navigationBarDrawer(displayMode: .always) ,prompt: "Search for Weapons" )
                 .onChange(of: textSearch, perform: performSearch )
                 .toast(isPresenting: $showToast) {
                     AlertToast(displayMode:.hud, type: .error(.gray), title: "Invaild Response")
                 }
                 .overlay {
                     if networkModel.weapon.isEmpty {
-                        Text("Loading...")
+                        VStack(spacing: 20) {
+                            ProgressView()
+                            Text("Loading...")
+                        }
+                        
                     }
                 }
             }
@@ -139,4 +142,43 @@ struct WeaponsListView: View {
 
 #Preview {
     WeaponsListView()
+}
+
+
+
+struct WeaponListViewItem: View {
+    let name: String
+    let description: String
+    let category: String
+    
+    
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            VStack(alignment: .leading) {
+                
+                Text(name)
+                    .font(.system(size: 16, weight: .bold, design: .default))
+                    .foregroundColor(.white)
+                
+                
+                Text(category)
+                    .font(.system(size: 14, weight: .bold, design: .default))
+                    .foregroundColor(.gray)
+                Divider()
+                    .background(.white)
+                Text(description)
+                    .font(.system(size: 14, weight: .bold, design: .default))
+                    .foregroundColor(.gray)
+                
+                
+            }
+            .padding(.trailing, 20)
+            Spacer()
+        }
+        .padding(10)
+        .frame(maxWidth: .infinity,  alignment: .center)
+        .background(Color(red: 32/255, green: 36/255, blue: 38/255))
+        .modifier(CardModifier())
+    }
 }

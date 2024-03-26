@@ -44,6 +44,13 @@ struct ContentView: View {
                         
                     }
             }
+            .background(
+                Image("Vitruvian")
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                
+            )
            
             .toolbarColorScheme(.dark, for: .tabBar)
         }

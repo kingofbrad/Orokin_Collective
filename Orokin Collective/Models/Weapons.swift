@@ -21,7 +21,7 @@ struct WeaponElement: Codable, Identifiable {
     let disposition: Int?
     let reloadTime: Double?
     let trigger: String?
-//    private let attacks: [Attack]?
+//    let attacks: [Attack]
     
     
     enum CodingKeys: String, CodingKey {
@@ -47,7 +47,7 @@ struct WeaponElement: Codable, Identifiable {
         
         
     }
-    private struct Attack: Codable{
+    struct Attack: Codable{
         let name: String
         let speed: Int
         let critChance: Int
@@ -56,8 +56,8 @@ struct WeaponElement: Codable, Identifiable {
         let shotType: String
         let shotSpeed: Int?
         let flight: Int?
-        private let damage: Damage?
-        private let falloff: Falloff?
+        let damage: Damage?
+        let falloff: Falloff?
         
         enum CodingKeys: String, CodingKey {
             case name = "name"
@@ -72,7 +72,7 @@ struct WeaponElement: Codable, Identifiable {
             case falloff = "falloff"
         }
         
-        private struct Damage: Codable {
+        struct Damage: Codable {
             let impact: Int?
             let slash: Double?
             let puncture: Double?
@@ -85,7 +85,7 @@ struct WeaponElement: Codable, Identifiable {
         }
         
         
-        private struct Falloff: Codable{
+        struct Falloff: Codable{
             
             let start: Int
             let end: Int

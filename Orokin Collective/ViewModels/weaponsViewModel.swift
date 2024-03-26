@@ -5,33 +5,22 @@
 //  Created by Bradlee King on 23/02/2024.
 //
 //
-//import Foundation
-//
-//class weaponsViewModel: ObservableObject {
-//    @Published var searchTerm: String = "acceltra"
-//    @Published var weapons: [Weapons] = [Weapons]()
-//    
-//    
-//    // MARK: - Fetch Weapons Function
-//    func fetchWeapons(for searchTerm:String) {
-//        guard let url = URL(string: "https://api.warframestat.us/weapons/search/\(searchTerm)") else {
-//            print("invaild url...")
-//            return
-//        }
-//        
-//        URLSession.shared.dataTask(with: url) { data, uRLResponse, error in
-//            if let error = error {
-//                print("error: \(error.localizedDescription)")
-//            } else if let data = data {
-//                do {
-//                    let result = try JSONDecoder().decode(WeaponsResult.self, from: data)
-//                    self.weapons = result.weapons
-//                } catch {
-//                    print(error)
-//                }
-//            }
-//        }
-//        .resume()
-//    }
-//    
-//}
+import Foundation
+
+class weaponsViewModel: ObservableObject {
+    var endPoint = "https://api.warframestat.us"
+  
+    @Published var weapon: Weapon = []
+    
+    // MARK: - Fetch Weapons Function
+    func fetchWeaponsData() async throws {
+        let request =  URL(string: "\(endPoint)/\(APIPathEndPoint.weapons)")
+        let (data, response) = try await URLSession.shared.data(from: request!)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw APIError.invaildResponse
+        }
+        let weaponResponse = try JSONDecoder().decode(Weapon.self, from: data)
+        weapon = weaponResponse
+    }
+    
+}

@@ -20,7 +20,6 @@
 		FA3CDAD92BA0B1C9007DECF5 /* Arbitration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAD82BA0B1C9007DECF5 /* Arbitration.swift */; };
 		FA3CDADB2BA0C319007DECF5 /* ArbitrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDADA2BA0C319007DECF5 /* ArbitrationView.swift */; };
 		FA3CDADF2BA0C974007DECF5 /* URLExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDADE2BA0C974007DECF5 /* URLExtenstion.swift */; };
-		FA3CDAE12BA218D9007DECF5 /* ArbitrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAE02BA218D9007DECF5 /* ArbitrationViewModel.swift */; };
 		FA3CDAE32BA2232E007DECF5 /* CetusCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAE22BA2232E007DECF5 /* CetusCycle.swift */; };
 		FA3CDAEE2BA24843007DECF5 /* Fissures.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAED2BA24843007DECF5 /* Fissures.swift */; };
 		FA3CDAF02BA256A4007DECF5 /* CetusCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAEF2BA256A4007DECF5 /* CetusCycleView.swift */; };
@@ -38,6 +37,10 @@
 		FA9147B92B8964B600244D88 /* weaponsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147B82B8964B600244D88 /* weaponsViewModel.swift */; };
 		FA9147BC2B89697900244D88 /* WeaponsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147BB2B89697900244D88 /* WeaponsListView.swift */; };
 		FA9147BE2B8AA36C00244D88 /* Warframes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9147BD2B8AA36C00244D88 /* Warframes.swift */; };
+		FA996F142BB32BF9002918EC /* FissuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F132BB32BF9002918EC /* FissuresView.swift */; };
+		FA996F192BB32C57002918EC /* SyndicatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F182BB32C57002918EC /* SyndicatesView.swift */; };
+		FA996F1B2BB32C68002918EC /* InvasionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F1A2BB32C68002918EC /* InvasionsView.swift */; };
+		FA996F1E2BB32DE2002918EC /* TimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F1D2BB32DE2002918EC /* TimersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +56,6 @@
 		FA3CDAD82BA0B1C9007DECF5 /* Arbitration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arbitration.swift; sourceTree = "<group>"; };
 		FA3CDADA2BA0C319007DECF5 /* ArbitrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitrationView.swift; sourceTree = "<group>"; };
 		FA3CDADE2BA0C974007DECF5 /* URLExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtenstion.swift; sourceTree = "<group>"; };
-		FA3CDAE02BA218D9007DECF5 /* ArbitrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitrationViewModel.swift; sourceTree = "<group>"; };
 		FA3CDAE22BA2232E007DECF5 /* CetusCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CetusCycle.swift; sourceTree = "<group>"; };
 		FA3CDAED2BA24843007DECF5 /* Fissures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fissures.swift; sourceTree = "<group>"; };
 		FA3CDAEF2BA256A4007DECF5 /* CetusCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CetusCycleView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,10 @@
 		FA9147B82B8964B600244D88 /* weaponsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weaponsViewModel.swift; sourceTree = "<group>"; };
 		FA9147BB2B89697900244D88 /* WeaponsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponsListView.swift; sourceTree = "<group>"; };
 		FA9147BD2B8AA36C00244D88 /* Warframes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warframes.swift; sourceTree = "<group>"; };
+		FA996F132BB32BF9002918EC /* FissuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FissuresView.swift; sourceTree = "<group>"; };
+		FA996F182BB32C57002918EC /* SyndicatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyndicatesView.swift; sourceTree = "<group>"; };
+		FA996F1A2BB32C68002918EC /* InvasionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvasionsView.swift; sourceTree = "<group>"; };
+		FA996F1D2BB32DE2002918EC /* TimersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,11 +280,9 @@
 		FA9147B42B894F2B00244D88 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FA3CDAE62BA22DAD007DECF5 /* WorldState */,
-				FA3CDAC92B9E3C84007DECF5 /* Active Missions */,
+				FA996F152BB32C16002918EC /* DashBoard */,
 				FA3CDAC42B9E2EF5007DECF5 /* Warframes */,
 				FA3CDAC32B9E2EE6007DECF5 /* Weapons */,
-				FA3CDACC2BA0984D007DECF5 /* DashBoardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,9 +292,54 @@
 			children = (
 				FA3CDAF72BA9D2C2007DECF5 /* Mission Types */,
 				FA9147B82B8964B600244D88 /* weaponsViewModel.swift */,
-				FA3CDAE02BA218D9007DECF5 /* ArbitrationViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FA996F122BB32BC3002918EC /* Fissures */ = {
+			isa = PBXGroup;
+			children = (
+				FA996F132BB32BF9002918EC /* FissuresView.swift */,
+			);
+			path = Fissures;
+			sourceTree = "<group>";
+		};
+		FA996F152BB32C16002918EC /* DashBoard */ = {
+			isa = PBXGroup;
+			children = (
+				FA996F1C2BB32C81002918EC /* Timers */,
+				FA996F172BB32C43002918EC /* Syndicates */,
+				FA996F162BB32C34002918EC /* Invasions */,
+				FA996F122BB32BC3002918EC /* Fissures */,
+				FA3CDACC2BA0984D007DECF5 /* DashBoardView.swift */,
+			);
+			path = DashBoard;
+			sourceTree = "<group>";
+		};
+		FA996F162BB32C34002918EC /* Invasions */ = {
+			isa = PBXGroup;
+			children = (
+				FA996F1A2BB32C68002918EC /* InvasionsView.swift */,
+			);
+			path = Invasions;
+			sourceTree = "<group>";
+		};
+		FA996F172BB32C43002918EC /* Syndicates */ = {
+			isa = PBXGroup;
+			children = (
+				FA996F182BB32C57002918EC /* SyndicatesView.swift */,
+			);
+			path = Syndicates;
+			sourceTree = "<group>";
+		};
+		FA996F1C2BB32C81002918EC /* Timers */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDAC92B9E3C84007DECF5 /* Active Missions */,
+				FA3CDAE62BA22DAD007DECF5 /* WorldState */,
+				FA996F1D2BB32DE2002918EC /* TimersView.swift */,
+			);
+			path = Timers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,10 +422,14 @@
 				FA3CDAE32BA2232E007DECF5 /* CetusCycle.swift in Sources */,
 				FA3CDAF62BA9BE3F007DECF5 /* MissionScrollView.swift in Sources */,
 				FA3CDAF92BA9D2D4007DECF5 /* AlertsViewModel.swift in Sources */,
+				FA996F142BB32BF9002918EC /* FissuresView.swift in Sources */,
+				FA996F192BB32C57002918EC /* SyndicatesView.swift in Sources */,
 				FA3CDAD32BA0B125007DECF5 /* Alerts.swift in Sources */,
 				FA9147B62B894F4A00244D88 /* WeaponView.swift in Sources */,
 				FA3CDAD92BA0B1C9007DECF5 /* Arbitration.swift in Sources */,
+				FA996F1B2BB32C68002918EC /* InvasionsView.swift in Sources */,
 				FA9147B92B8964B600244D88 /* weaponsViewModel.swift in Sources */,
+				FA996F1E2BB32DE2002918EC /* TimersView.swift in Sources */,
 				FA3CDAF02BA256A4007DECF5 /* CetusCycleView.swift in Sources */,
 				FA3CDAF42BA26448007DECF5 /* CambionCycleView.swift in Sources */,
 				FA3CDACD2BA0984D007DECF5 /* DashBoardView.swift in Sources */,
@@ -394,7 +447,6 @@
 				FA9147BC2B89697900244D88 /* WeaponsListView.swift in Sources */,
 				FA91479C2B7E7BF000244D88 /* Orokin_CollectiveApp.swift in Sources */,
 				FA3CDAC82B9E2F10007DECF5 /* WarframeView.swift in Sources */,
-				FA3CDAE12BA218D9007DECF5 /* ArbitrationViewModel.swift in Sources */,
 				FA3CDAC62B9E2F01007DECF5 /* WarframeListView.swift in Sources */,
 				FA9147B02B893A5F00244D88 /* NetworkCall.swift in Sources */,
 			);
