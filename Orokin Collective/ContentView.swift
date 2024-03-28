@@ -10,55 +10,64 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        TabView {
-            Group {
-                
-                
-                DashBoardView()
-                    .tabItem {
-                        Label(
-                            title: { Text("Dashboard") },
-                            icon: { Image(systemName: "list.dash.header.rectangle") }
-                        )
+        
+        NavigationStack {
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        // Place Settings Page here
+                    } label: {
+                        Image(systemName: "gear")
+                            .padding(.horizontal, 30)
                     }
-                
-                WarframeListView()
-                    .tabItem {
-                        Label(
-                            title: { Text("Warframes") },
-                            icon: { Image(systemName: "42.circle") }
-                        )
-                    }
-                WeaponsListView()
-                    .tabItem {
-                        Label("Weapons", systemImage: "list.dash")
-                    }
-                
-                
-                CetusCycleView()
-                    .tabItem {
-                        Label(
-                            title: { Text("World State") },
-                            icon: { Image(systemName: "42.circle") }
-                        )
+                }
+                TabView {
+                    Group {
+                        DashBoardView()
+                            .tabItem {
+                                Label(
+                                    title: { Text("News") },
+                                    icon: { Image(systemName: "house") }
+                                )
+                            }
                         
+                        NewsView()
+                            .tabItem {
+                                Label(
+                                    title: { Text("News") },
+                                    icon: { Image(systemName: "note.text") }
+                                )
+                            }
+                        
+                        CodexView()
+                            .tabItem {
+                                Label(
+                                    title: {
+                                        Text("Codex")
+                                        
+                                    },
+                                    icon: { Image(systemName: "magnifyingglass") }
+                                )
+                            }
                     }
+                    .toolbarBackground(Color.blueCharcoal, for: .tabBar)
+                    .toolbarBackground(.visible, for: .tabBar)
+                }
+                
+                
             }
             .background(
-                Image("Vitruvian")
-                    .resizable()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                Image("VitruvianLn")
                     
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea(.all)
+                
                 
             )
-           
-            .toolbarColorScheme(.dark, for: .tabBar)
         }
         
     }
-    
-    
-    
     
 }
 

@@ -9,7 +9,12 @@ import SwiftUI
 
 struct SyndicatesView: View {
     var body: some View {
-        Text("Syndicates View")
+        VStack {
+            ScrollView {
+                Text("Syndicates View")
+            }
+        }
+        
     }
 }
 

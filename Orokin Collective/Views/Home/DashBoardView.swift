@@ -12,11 +12,9 @@ struct DashBoardView: View {
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
     }
+    
     @State private var currentTab: Int = 0
-    
     @State private var openSheet: Bool = false
-    
-    
     
     var body: some View {
         NavigationStack {
@@ -30,19 +28,21 @@ struct DashBoardView: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .ignoresSafeArea(.all)
+                .animation(.easeInOut(duration: 0.3), value: currentTab)
+                
                 
                 tabBarView(currentTab: self.$currentTab)
                 
             }
+            
         }
         
         .foregroundStyle(Color.white)
         .background(
-            Image("Vitruvian")
-                .resizable()
+            Image("VitruvianLn")
+//                .resizable()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
-            
         )
         
         
@@ -55,7 +55,7 @@ struct tabBarView: View {
 @Namespace var namespace
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 20) {
+            HStack(spacing: 30) {
                 ForEach(Array(zip(self.tabBarOptions.indices,
                                   self.tabBarOptions)),
                         id: \.0)
