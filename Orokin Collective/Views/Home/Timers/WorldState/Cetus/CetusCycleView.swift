@@ -26,43 +26,37 @@ struct CetusCycleView: View {
     var body: some View {
         VStack {
             if let cetusCycleData = networkModel.cetusCycleData {
-                HStack {
-                    Text("Cetus")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                    Spacer()
-                    if cetusCycleData.isDay && cetusCycleData.state == "day" {
-                        Image(systemName: "sun.max.fill")
-                        Text(cetusCycleData.state)
-                            .textCase(.uppercase)
-                            .bold()
-                    } else {
-                        Image(systemName: "moon.fill")
-                        Text(cetusCycleData.state)
-                            .textCase(.uppercase)
-                            .bold()
+                VStack {
+                    HStack{
+                        
+                        Image(systemName: cetusCycleData.isDay ? "sun.max.fill" : "moon.fill")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .padding(.trailing, 2)
+                        VStack(alignment: .leading, spacing: 2){
+                            Text("Cetus")
+                                .font(.system(size: 18))
+                                .bold()
+                            Text("\(cetusCycleData.shortString)")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.silverChalice)
+                            Text("\(cetusCycleData.state.capitalized)")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.silverChalice)
+                        }
+                        Spacer()
+                        CountdownView(expiryDateString: cetusCycleData.expiry)
                     }
+                    .padding(.horizontal)
                     
                 }
-                .padding(.horizontal, 20)
-                Divider()
-                
-                Text(cetusCycleData.shortString)
-                    .padding()
-                    .font(.title2)
-                    .bold()
-                
-                Spacer()
+                .frame(width: 346, height: 73)
+                .background(Color.blueCharcoal)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
                 Text("Loading...")
             }
         }
-        .frame(width: 230,height: 100)
-        .padding()
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 5, style: .continuous))
-        .cornerRadius(10)
-        .padding(.horizontal)
-        .foregroundStyle(.white)
         .task {
             do {
                 try await networkModel.fetchCetusCycleData()
@@ -76,6 +70,8 @@ struct CetusCycleView: View {
                 print("Unexcepted Error has appeared \(error)")
             }
         }
+        
+        
     }
 }
 

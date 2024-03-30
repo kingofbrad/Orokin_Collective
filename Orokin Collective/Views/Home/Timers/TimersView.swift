@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimersView: View {
+struct WorldStateView: View {
     var body: some View {
         VStack {
             TimerScrollView()
@@ -18,7 +18,7 @@ struct TimersView: View {
 }
 
 #Preview {
-    TimersView()
+    WorldStateView()
 }
 
 
@@ -26,6 +26,7 @@ struct TimerScrollView: View {
     var body: some View {
         ScrollView {
             Baro_Ki_Teer_View()
+            CetusCycleView()
             Spacer()
         }.padding(.top, 60)
     }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AlertsView: View {
-    @ObservedObject var vm = AlertsViewModel()
     @ObservedObject var networkModel = NetworkCall()
     
     

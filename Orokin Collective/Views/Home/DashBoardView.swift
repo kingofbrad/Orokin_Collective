@@ -20,7 +20,7 @@ struct DashBoardView: View {
         NavigationStack {
             ZStack(alignment: .top) {
                 TabView(selection: self.$currentTab) {
-                    TimersView().tag(0)
+                    WorldStateView().tag(0)
                     FissuresView().tag(1)
                     InvasionsView().tag(2)
                     SyndicatesView().tag(3)
