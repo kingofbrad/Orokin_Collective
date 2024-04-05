@@ -23,15 +23,29 @@ struct WorldStateView: View {
 
 
 struct TimerScrollView: View {
+    @ObservedObject var nm = NetworkCall()
+    
     var body: some View {
-        ScrollView {
+        ScrollView() {
             Baro_Ki_Teer_View()
+            EventsView()
+            if nm.arbitration?.expired == true || nm.showError {
+            } else {
+                ArbitrationView()
+            }
+            SteelPathView()
+            EarthCycleView()
             CetusCycleView()
+            OrbVallisCycleView()
+            CambionCycleView()
+            ZarimanView()
+            DuviriView()
+            ArchonHuntView()
             Spacer()
         }.padding(.top, 60)
     }
 }
 
 #Preview {
-   ContentView()
+    ContentView()
 }

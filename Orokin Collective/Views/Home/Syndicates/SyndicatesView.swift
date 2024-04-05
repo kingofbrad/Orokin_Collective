@@ -10,9 +10,7 @@ import SwiftUI
 struct SyndicatesView: View {
     var body: some View {
         VStack {
-            ScrollView {
                 Text("Syndicates View")
-            }
         }
         
     }

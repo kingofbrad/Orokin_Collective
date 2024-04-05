@@ -25,7 +25,6 @@
 		FA3CDAF02BA256A4007DECF5 /* CetusCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAEF2BA256A4007DECF5 /* CetusCycleView.swift */; };
 		FA3CDAF22BA25FBD007DECF5 /* OrbVallisCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAF12BA25FBD007DECF5 /* OrbVallisCycleView.swift */; };
 		FA3CDAF42BA26448007DECF5 /* CambionCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAF32BA26448007DECF5 /* CambionCycleView.swift */; };
-		FA3CDAF62BA9BE3F007DECF5 /* MissionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAF52BA9BE3F007DECF5 /* MissionScrollView.swift */; };
 		FA894EC82BB5CD330050A840 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EC72BB5CD330050A840 /* NewsView.swift */; };
 		FA894ECA2BB5CD3A0050A840 /* CodexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EC92BB5CD3A0050A840 /* CodexView.swift */; };
 		FA894ECC2BB5D5960050A840 /* Baro Ki'Teer View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894ECB2BB5D5960050A840 /* Baro Ki'Teer View.swift */; };
@@ -35,6 +34,16 @@
 		FA894EE52BB60BB60050A840 /* JSONAnyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EE42BB60BB60050A840 /* JSONAnyService.swift */; };
 		FA894EE82BB60E260050A840 /* EarthCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EE72BB60E260050A840 /* EarthCycle.swift */; };
 		FA894EF02BB88ECE0050A840 /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EEF2BB88ECE0050A840 /* CountDownView.swift */; };
+		FA894EF32BB9E9870050A840 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EF22BB9E9870050A840 /* CustomTabBar.swift */; };
+		FA894EF52BB9F5850050A840 /* VoidTraderCountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EF42BB9F5850050A840 /* VoidTraderCountDownTimer.swift */; };
+		FA894EFB2BBA113A0050A840 /* SteelPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EFA2BBA113A0050A840 /* SteelPathView.swift */; };
+		FA894EFD2BBA16220050A840 /* WorldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EFC2BBA16220050A840 /* WorldState.swift */; };
+		FA894EFF2BBB43FE0050A840 /* WorldStateCycles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894EFE2BBB43FE0050A840 /* WorldStateCycles.swift */; };
+		FA894F042BBB63DB0050A840 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894F032BBB63DB0050A840 /* EventsView.swift */; };
+		FA894F072BBC6DBD0050A840 /* ZarimanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894F062BBC6DBD0050A840 /* ZarimanView.swift */; };
+		FA894F0A2BBC787D0050A840 /* DuviriView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894F092BBC787D0050A840 /* DuviriView.swift */; };
+		FA894F0C2BBC79C70050A840 /* EarthCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894F0B2BBC79C70050A840 /* EarthCycleView.swift */; };
+		FA894F0F2BBC7ADD0050A840 /* ArchonHuntView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA894F0E2BBC7ADD0050A840 /* ArchonHuntView.swift */; };
 		FA91479C2B7E7BF000244D88 /* Orokin_CollectiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91479B2B7E7BF000244D88 /* Orokin_CollectiveApp.swift */; };
 		FA91479E2B7E7BF000244D88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA91479D2B7E7BF000244D88 /* ContentView.swift */; };
 		FA9147A02B7E7BF100244D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA91479F2B7E7BF100244D88 /* Assets.xcassets */; };
@@ -48,6 +57,7 @@
 		FA996F192BB32C57002918EC /* SyndicatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F182BB32C57002918EC /* SyndicatesView.swift */; };
 		FA996F1B2BB32C68002918EC /* InvasionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F1A2BB32C68002918EC /* InvasionsView.swift */; };
 		FA996F1E2BB32DE2002918EC /* TimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F1D2BB32DE2002918EC /* TimersView.swift */; };
+		FA99AA3F2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +78,6 @@
 		FA3CDAEF2BA256A4007DECF5 /* CetusCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CetusCycleView.swift; sourceTree = "<group>"; };
 		FA3CDAF12BA25FBD007DECF5 /* OrbVallisCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbVallisCycleView.swift; sourceTree = "<group>"; };
 		FA3CDAF32BA26448007DECF5 /* CambionCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CambionCycleView.swift; sourceTree = "<group>"; };
-		FA3CDAF52BA9BE3F007DECF5 /* MissionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionScrollView.swift; sourceTree = "<group>"; };
 		FA894EC72BB5CD330050A840 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		FA894EC92BB5CD3A0050A840 /* CodexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexView.swift; sourceTree = "<group>"; };
 		FA894ECB2BB5D5960050A840 /* Baro Ki'Teer View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Baro Ki'Teer View.swift"; sourceTree = "<group>"; };
@@ -78,6 +87,16 @@
 		FA894EE42BB60BB60050A840 /* JSONAnyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAnyService.swift; sourceTree = "<group>"; };
 		FA894EE72BB60E260050A840 /* EarthCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthCycle.swift; sourceTree = "<group>"; };
 		FA894EEF2BB88ECE0050A840 /* CountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
+		FA894EF22BB9E9870050A840 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		FA894EF42BB9F5850050A840 /* VoidTraderCountDownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidTraderCountDownTimer.swift; sourceTree = "<group>"; };
+		FA894EFA2BBA113A0050A840 /* SteelPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteelPathView.swift; sourceTree = "<group>"; };
+		FA894EFC2BBA16220050A840 /* WorldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldState.swift; sourceTree = "<group>"; };
+		FA894EFE2BBB43FE0050A840 /* WorldStateCycles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldStateCycles.swift; sourceTree = "<group>"; };
+		FA894F032BBB63DB0050A840 /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		FA894F062BBC6DBD0050A840 /* ZarimanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZarimanView.swift; sourceTree = "<group>"; };
+		FA894F092BBC787D0050A840 /* DuviriView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuviriView.swift; sourceTree = "<group>"; };
+		FA894F0B2BBC79C70050A840 /* EarthCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthCycleView.swift; sourceTree = "<group>"; };
+		FA894F0E2BBC7ADD0050A840 /* ArchonHuntView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchonHuntView.swift; sourceTree = "<group>"; };
 		FA9147982B7E7BF000244D88 /* Orokin Collective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Orokin Collective.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA91479B2B7E7BF000244D88 /* Orokin_CollectiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orokin_CollectiveApp.swift; sourceTree = "<group>"; };
 		FA91479D2B7E7BF000244D88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +112,7 @@
 		FA996F182BB32C57002918EC /* SyndicatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyndicatesView.swift; sourceTree = "<group>"; };
 		FA996F1A2BB32C68002918EC /* InvasionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvasionsView.swift; sourceTree = "<group>"; };
 		FA996F1D2BB32DE2002918EC /* TimersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersView.swift; sourceTree = "<group>"; };
+		FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeRemainingTimer(Days)View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,16 +153,6 @@
 			path = Warframes;
 			sourceTree = "<group>";
 		};
-		FA3CDAC92B9E3C84007DECF5 /* Active Missions */ = {
-			isa = PBXGroup;
-			children = (
-				FA3CDACA2B9E3C8F007DECF5 /* AlertsView.swift */,
-				FA3CDADA2BA0C319007DECF5 /* ArbitrationView.swift */,
-				FA3CDAF52BA9BE3F007DECF5 /* MissionScrollView.swift */,
-			);
-			path = "Active Missions";
-			sourceTree = "<group>";
-		};
 		FA3CDADC2BA0C947007DECF5 /* Extenstions */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +166,6 @@
 			children = (
 				FA9147AF2B893A5F00244D88 /* NetworkCall.swift */,
 				FA894EE42BB60BB60050A840 /* JSONAnyService.swift */,
-				FA894EEF2BB88ECE0050A840 /* CountDownView.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -164,6 +173,16 @@
 		FA3CDAE62BA22DAD007DECF5 /* WorldState */ = {
 			isa = PBXGroup;
 			children = (
+				FA894F0D2BBC7ACE0050A840 /* ArchonHunt */,
+				FA894F082BBC78710050A840 /* Duviri */,
+				FA894F052BBC6DA80050A840 /* Zariman */,
+				FA894F022BBB63C80050A840 /* Alerts */,
+				FA894F012BBB63BE0050A840 /* Events */,
+				FA894F002BBB5B3A0050A840 /* Arbitration */,
+				FA894EF92BBA11230050A840 /* Earth Cycle */,
+				FA894EF82BBA10FA0050A840 /* Void Trader */,
+				FA894EF72BBA10EF0050A840 /* Sortie */,
+				FA894EF62BBA10E90050A840 /* Steel Path */,
 				FA3CDAE92BA22DE9007DECF5 /* Cambion Drift */,
 				FA3CDAE82BA22DBD007DECF5 /* Orb Vallis */,
 				FA3CDAE72BA22DB5007DECF5 /* Cetus */,
@@ -266,6 +285,8 @@
 				FA894ED82BB609510050A840 /* Cambion Drift Cycle */,
 				FA894ED72BB609360050A840 /* Orb Vallis Cycle */,
 				FA894ED62BB6091E0050A840 /* CetusCycle */,
+				FA894EFC2BBA16220050A840 /* WorldState.swift */,
+				FA894EFE2BBB43FE0050A840 /* WorldStateCycles.swift */,
 			);
 			path = WorldState;
 			sourceTree = "<group>";
@@ -364,6 +385,96 @@
 			path = "Earth Cycle";
 			sourceTree = "<group>";
 		};
+		FA894EF12BB9E96F0050A840 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FA894EEF2BB88ECE0050A840 /* CountDownView.swift */,
+				FA894EF22BB9E9870050A840 /* CustomTabBar.swift */,
+				FA894EF42BB9F5850050A840 /* VoidTraderCountDownTimer.swift */,
+				FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FA894EF62BBA10E90050A840 /* Steel Path */ = {
+			isa = PBXGroup;
+			children = (
+				FA894EFA2BBA113A0050A840 /* SteelPathView.swift */,
+			);
+			path = "Steel Path";
+			sourceTree = "<group>";
+		};
+		FA894EF72BBA10EF0050A840 /* Sortie */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sortie;
+			sourceTree = "<group>";
+		};
+		FA894EF82BBA10FA0050A840 /* Void Trader */ = {
+			isa = PBXGroup;
+			children = (
+				FA894ECB2BB5D5960050A840 /* Baro Ki'Teer View.swift */,
+			);
+			path = "Void Trader";
+			sourceTree = "<group>";
+		};
+		FA894EF92BBA11230050A840 /* Earth Cycle */ = {
+			isa = PBXGroup;
+			children = (
+				FA894F0B2BBC79C70050A840 /* EarthCycleView.swift */,
+			);
+			path = "Earth Cycle";
+			sourceTree = "<group>";
+		};
+		FA894F002BBB5B3A0050A840 /* Arbitration */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDADA2BA0C319007DECF5 /* ArbitrationView.swift */,
+			);
+			path = Arbitration;
+			sourceTree = "<group>";
+		};
+		FA894F012BBB63BE0050A840 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				FA894F032BBB63DB0050A840 /* EventsView.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		FA894F022BBB63C80050A840 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CDACA2B9E3C8F007DECF5 /* AlertsView.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		FA894F052BBC6DA80050A840 /* Zariman */ = {
+			isa = PBXGroup;
+			children = (
+				FA894F062BBC6DBD0050A840 /* ZarimanView.swift */,
+			);
+			path = Zariman;
+			sourceTree = "<group>";
+		};
+		FA894F082BBC78710050A840 /* Duviri */ = {
+			isa = PBXGroup;
+			children = (
+				FA894F092BBC787D0050A840 /* DuviriView.swift */,
+			);
+			path = Duviri;
+			sourceTree = "<group>";
+		};
+		FA894F0D2BBC7ACE0050A840 /* ArchonHunt */ = {
+			isa = PBXGroup;
+			children = (
+				FA894F0E2BBC7ADD0050A840 /* ArchonHuntView.swift */,
+			);
+			path = ArchonHunt;
+			sourceTree = "<group>";
+		};
 		FA91478F2B7E7BF000244D88 = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +494,7 @@
 		FA91479A2B7E7BF000244D88 /* Orokin Collective */ = {
 			isa = PBXGroup;
 			children = (
+				FA894EF12BB9E96F0050A840 /* Components */,
 				FA3CDADD2BA0C954007DECF5 /* Services */,
 				FA3CDADC2BA0C947007DECF5 /* Extenstions */,
 				FA3CDAC02B9BDCF9007DECF5 /* Tests */,
@@ -475,10 +587,8 @@
 		FA996F1C2BB32C81002918EC /* Timers */ = {
 			isa = PBXGroup;
 			children = (
-				FA3CDAC92B9E3C84007DECF5 /* Active Missions */,
 				FA3CDAE62BA22DAD007DECF5 /* WorldState */,
 				FA996F1D2BB32DE2002918EC /* TimersView.swift */,
-				FA894ECB2BB5D5960050A840 /* Baro Ki'Teer View.swift */,
 			);
 			path = Timers;
 			sourceTree = "<group>";
@@ -561,22 +671,28 @@
 			files = (
 				FA3CDAC22B9BDD09007DECF5 /* TestingFile.swift in Sources */,
 				FA894EC82BB5CD330050A840 /* NewsView.swift in Sources */,
+				FA894EFB2BBA113A0050A840 /* SteelPathView.swift in Sources */,
 				FA3CDAE32BA2232E007DECF5 /* CetusCycle.swift in Sources */,
-				FA3CDAF62BA9BE3F007DECF5 /* MissionScrollView.swift in Sources */,
 				FA996F142BB32BF9002918EC /* FissuresView.swift in Sources */,
 				FA996F192BB32C57002918EC /* SyndicatesView.swift in Sources */,
+				FA894F0C2BBC79C70050A840 /* EarthCycleView.swift in Sources */,
 				FA3CDAD32BA0B125007DECF5 /* Alerts.swift in Sources */,
 				FA9147B62B894F4A00244D88 /* WeaponView.swift in Sources */,
+				FA894F072BBC6DBD0050A840 /* ZarimanView.swift in Sources */,
 				FA3CDAD92BA0B1C9007DECF5 /* Arbitration.swift in Sources */,
 				FA996F1B2BB32C68002918EC /* InvasionsView.swift in Sources */,
+				FA894F0A2BBC787D0050A840 /* DuviriView.swift in Sources */,
 				FA996F1E2BB32DE2002918EC /* TimersView.swift in Sources */,
 				FA3CDAF02BA256A4007DECF5 /* CetusCycleView.swift in Sources */,
 				FA3CDAF42BA26448007DECF5 /* CambionCycleView.swift in Sources */,
 				FA3CDACD2BA0984D007DECF5 /* DashBoardView.swift in Sources */,
 				FA894EE52BB60BB60050A840 /* JSONAnyService.swift in Sources */,
 				FA9147BE2B8AA36C00244D88 /* Warframes.swift in Sources */,
+				FA894EF32BB9E9870050A840 /* CustomTabBar.swift in Sources */,
 				FA894EE02BB60A5D0050A840 /* Sortie.swift in Sources */,
+				FA894EFF2BBB43FE0050A840 /* WorldStateCycles.swift in Sources */,
 				FA91479E2B7E7BF000244D88 /* ContentView.swift in Sources */,
+				FA894F042BBB63DB0050A840 /* EventsView.swift in Sources */,
 				FA3CDAD72BA0B172007DECF5 /* CambionDrift.swift in Sources */,
 				FA3CDAD52BA0B133007DECF5 /* Fortuna.swift in Sources */,
 				FA894ECC2BB5D5960050A840 /* Baro Ki'Teer View.swift in Sources */,
@@ -589,14 +705,18 @@
 				FA9147B22B8941B600244D88 /* Weapons.swift in Sources */,
 				FA3CDACB2B9E3C8F007DECF5 /* AlertsView.swift in Sources */,
 				FA3CDABF2B976887007DECF5 /* FavoritesModel.swift in Sources */,
+				FA99AA3F2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift in Sources */,
+				FA894EF52BB9F5850050A840 /* VoidTraderCountDownTimer.swift in Sources */,
 				FA894EDD2BB609F60050A840 /* Void Trader.swift in Sources */,
 				FA9147BC2B89697900244D88 /* WeaponsListView.swift in Sources */,
 				FA894ECA2BB5CD3A0050A840 /* CodexView.swift in Sources */,
 				FA894EE82BB60E260050A840 /* EarthCycle.swift in Sources */,
 				FA91479C2B7E7BF000244D88 /* Orokin_CollectiveApp.swift in Sources */,
+				FA894EFD2BBA16220050A840 /* WorldState.swift in Sources */,
 				FA3CDAC82B9E2F10007DECF5 /* WarframeView.swift in Sources */,
 				FA3CDAC62B9E2F01007DECF5 /* WarframeListView.swift in Sources */,
 				FA9147B02B893A5F00244D88 /* NetworkCall.swift in Sources */,
+				FA894F0F2BBC7ADD0050A840 /* ArchonHuntView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

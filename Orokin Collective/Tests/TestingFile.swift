@@ -7,18 +7,51 @@
 
 import SwiftUI
 
+
+
+
+
+
+
+
+
+
 struct TestingFile: View {
-    let factionArray = ["Naramon", "Madurai", "AnotherFaction"] // Add more factions as needed
-    
-    var body: some View {
-        WarframeFactionView(factions: factionArray)
-            .navigationBarTitle("Warframe Factions")
-    }
+    let expiryDate: Date
+        
+        init() {
+            let dateString = "2024-04-07T13:00:00.000Z"
+            let dateFormatter = ISO8601DateFormatter()
+            if let date = dateFormatter.date(from: dateString) {
+                expiryDate = date
+            } else {
+                // Fallback to current date if conversion fails
+                expiryDate = Date()
+            }
+        }
+        
+        var body: some View {
+            VStack {
+                
+            }
+        }
 }
 
 #Preview {
     TestingFile()
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -41,6 +74,7 @@ enum WarframeFaction: String {
 }
 
 struct WarframeFactionView: View {
+    let factionArray = ["Naramon", "Madurai", "AnotherFaction"] // Add more factions as needed
     let factions: [String]
     
     var body: some View {

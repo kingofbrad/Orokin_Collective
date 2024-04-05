@@ -23,8 +23,8 @@ struct CountdownView: View {
           RoundedRectangle(cornerRadius: 5)
                 .frame(width: 109, height: 25)
                 .foregroundStyle(Color.tundora)
-            Text(" Expiry: \(timeString(time: timeRemaining))")
-                .font(.system(size: 10).weight(.semibold))
+            Text("\(timeString(time: timeRemaining))")
+                .font(.system(size: 15).weight(.semibold))
         }
         .onReceive(timer) { _ in
             let now = Date()
@@ -47,6 +47,6 @@ struct CountdownView: View {
 
 struct CountdownView_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownView(expiryDateString: "2024-03-30T19:40:00.000Z")
+        CountdownView(expiryDateString: "2024-04-05T21:29:00.000Z")
     }
 }

@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedTab: Tab = .house
+    
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
     
     var body: some View {
         
@@ -22,50 +27,31 @@ struct ContentView: View {
                             .padding(.horizontal, 30)
                     }
                 }
-                TabView {
-                    Group {
+                TabView(selection: $selectedTab) {
+
+                    if selectedTab == .house {
                         DashBoardView()
-                            .tabItem {
-                                Label(
-                                    title: { Text("News") },
-                                    icon: { Image(systemName: "house") }
-                                )
-                            }
-                        
+                    } else if selectedTab == .book {
                         NewsView()
-                            .tabItem {
-                                Label(
-                                    title: { Text("News") },
-                                    icon: { Image(systemName: "note.text") }
-                                )
-                            }
-                        
+                    } else if selectedTab == .text {
                         CodexView()
-                            .tabItem {
-                                Label(
-                                    title: {
-                                        Text("Codex")
-                                        
-                                    },
-                                    icon: { Image(systemName: "magnifyingglass") }
-                                )
-                            }
                     }
-                    .toolbarBackground(Color.blueCharcoal, for: .tabBar)
-                    .toolbarBackground(.visible, for: .tabBar)
                 }
+                
+                CustomTabBar(selectedTab: $selectedTab)
                 
                 
             }
             .background(
                 Image("VitruvianLn")
-                    
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea(.all)
                 
                 
             )
+            
         }
+       
         
     }
     

@@ -50,7 +50,7 @@ struct DashBoardView: View {
 }
 
 struct tabBarView: View {
-    var tabBarOptions: [String] = ["Timers","Fissures","Invasions","Syndicates"]
+    var tabBarOptions: [String] = ["WorldState","Fissures","Invasions","Syndicates"]
     @Binding var currentTab: Int
 @Namespace var namespace
     var body: some View {
@@ -83,12 +83,15 @@ struct TabBarItem: View {
             VStack {
                 Spacer()
                 Text(tabBarItemName)
+                    .font(.footnote).fontWeight(.semibold)
+                    .foregroundStyle(currentTab == tab ? Color.white : Color.gray)
                 if currentTab == tab {
                     Color.white
                         .frame(height: 2)
                         .matchedGeometryEffect(id: "underline" , in: namespace, properties: .frame)
                 } else {
                     Color.clear.frame(height: 2)
+                    
                 }
             }
             .animation(.spring(), value: self.currentTab)
@@ -100,6 +103,6 @@ struct TabBarItem: View {
 
 #Preview(body: {
     NavigationStack {
-        DashBoardView()
+        ContentView()
     }
 })

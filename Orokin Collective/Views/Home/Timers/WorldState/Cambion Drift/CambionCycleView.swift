@@ -27,55 +27,71 @@ struct CambionCycleView: View {
     
     var body: some View {
         VStack {
-            if let cambionCycleData = networkModel.cambionCycleData {
-                HStack {
-                    Text("Cambion Drift")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                    Spacer()
-                    if cambionCycleData.state == "fass" {
-                        Image(systemName: "flame.fill")
-                        Text(cambionCycleData.state)
-                            .textCase(.uppercase)
-                            .bold()
-                    } else {
-                        Image(systemName: "snowflake")
-                        Text(cambionCycleData.state)
-                            .textCase(.uppercase)
-                            .bold()
+            if let cambionCycleData = networkModel.worldState?.cambionCycle {
+                VStack {
+                    HStack{
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            Image(cambionCycleData.active == "fass" ? "Fass" : "Vome")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .padding(.trailing, 2)
+                        }
+                        
+                            
+                        VStack(alignment: .leading, spacing: 2){
+                            Text("Cambion Drift")
+                                .font(.system(size: 18))
+                                .bold()
+                            Text("\(cambionCycleData.timeLeft)")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.silverChalice)
+                            Text("\(cambionCycleData.state.capitalized)")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.silverChalice)
+                        }
+                        Spacer()
+                        CountdownView(expiryDateString: cambionCycleData.expiry)
                     }
+                    .padding(.horizontal)
                     
                 }
-                .padding(.horizontal, 20)
-                Divider()
-                
-                if cambionCycleData.state == "fass" {
-                    Text("\(cambionCycleData.timeLeft) till Vome")
-                        .padding()
-                        .font(.title2)
-                        .bold()
-                } else {
-                    Text("\(cambionCycleData.timeLeft) till Fass")
-                        .padding()
-                        .font(.title2)
-                        .bold()
-                }
-            
-                
-                Spacer()
+                .frame(width: 346, height: 73)
+                .background(Color.blueCharcoal)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
-                Text("Loading...")
+                VStack {
+                    HStack{
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            ProgressView()
+                                .frame(width: 50, height: 50)
+                        }
+                        
+                        
+                        VStack(alignment: .leading, spacing: 2){
+                            Text("Loading...")
+                                .font(.system(size: 18))
+                                .bold()
+                            Text("??m to ??")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.silverChalice)
+                            Text("??")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.silverChalice)
+                        }
+                        Spacer()
+                        
+                    }
+                    .padding(.horizontal)
+                    
+                }
+                .frame(width: 346, height: 73)
+                .background(Color.blueCharcoal)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
             }
         }
-        .frame(width: 230,height: 100)
-        .padding()
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 5, style: .continuous))
-        .cornerRadius(10)
-        .padding(.horizontal)
-        .foregroundStyle(.white)
         .task {
             do {
-                try await networkModel.fetchCambionCycleData()
+                try await networkModel.fetchWorldState()
             } catch APIError.invalidURL {
                 print("invalid URL")
             } catch APIError.invaildResponse {
