@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "14A4CC2C-FC8E-47C5-B957-45365D99CA1F"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "93EABEA4-314A-4EA7-9AC4-91FDCE3157AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = ""
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49F3FA8E-374C-4D9E-8B56-F736245F0965"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Orokin Collective/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "49F3FA8E-374C-4D9E-8B56-F736245F0965 - 8b2b0308f55423b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Orokin_Collective.ContentView.body.getter : some"
+                  moduleName = "Orokin Collective"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bradleeking/Documents/App_Development/Orokin%20Collective/Orokin%20Collective/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "49F3FA8E-374C-4D9E-8B56-F736245F0965 - bbf65069abd901d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in Orokin_Collective.ContentView.body.getter : some"
+                  moduleName = "Orokin Collective"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bradleeking/Documents/App_Development/Orokin%20Collective/Orokin%20Collective/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  uuid = "49F3FA8E-374C-4D9E-8B56-F736245F0965 - 8b2b0308f55423b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Orokin_Collective.ContentView.body.getter : some"
+                  moduleName = "Orokin Collective"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bradleeking/Documents/App_Development/Orokin%20Collective/Orokin%20Collective/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "49F3FA8E-374C-4D9E-8B56-F736245F0965 - bbf65069abd901d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in Orokin_Collective.ContentView.body.getter : some"
+                  moduleName = "Orokin Collective"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bradleeking/Documents/App_Development/Orokin%20Collective/Orokin%20Collective/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "272">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedTab: Tab = .house
+    @ObservedObject var networkModel = NetworkCall()
+    @State private var isFetchingData: Bool = true
     
     init() {
         UITabBar.appearance().isHidden = true
@@ -16,43 +18,68 @@ struct ContentView: View {
     
     var body: some View {
         
-        NavigationStack {
-            VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        // Place Settings Page here
-                    } label: {
-                        Image(systemName: "gear")
-                            .padding(.horizontal, 30)
+        Group{
+            if isFetchingData {
+                SplashScreen()
+                    .onAppear {
+                        fetchData()
                     }
-                }
-                TabView(selection: $selectedTab) {
+            } else {
+                NavigationStack {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button {
+                                // Place Settings Page here
+                            } label: {
+                                Image(systemName: "gear")
+                                    .padding(.horizontal, 30)
+                            }
+                        }
+                        TabView(selection: $selectedTab) {
 
-                    if selectedTab == .house {
-                        DashBoardView()
-                    } else if selectedTab == .book {
-                        NewsView()
-                    } else if selectedTab == .text {
-                        CodexView()
+                            if selectedTab == .house {
+                                DashBoardView(networkModel: networkModel)
+                            } else if selectedTab == .book {
+                                NewsView()
+                            } else if selectedTab == .text {
+                                CodexView()
+                            }
+                        }
+                        
+                        CustomTabBar(selectedTab: $selectedTab)
+                        
+                        
                     }
+                    .background(
+                        Image("VitruvianLn")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .ignoresSafeArea(.all)
+                        
+                        
+                    )
+                    
+                    
                 }
-                
-                CustomTabBar(selectedTab: $selectedTab)
-                
-                
             }
-            .background(
-                Image("VitruvianLn")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .ignoresSafeArea(.all)
-                
-                
-            )
-            
         }
-       
-        
+
+    }
+    private func fetchData() {
+        Task {
+            do {
+                try await networkModel.fetchWorldState()
+                isFetchingData = false
+            } catch APIError.invalidURL {
+                print("invalid URL")
+            } catch APIError.invaildResponse {
+                print("invaild Response")
+            } catch APIError.invalidData {
+                print("invaild Data")
+            } catch {
+                print("Unexcepted Error has appeared \(error)")
+            }
+        }
     }
     
 }

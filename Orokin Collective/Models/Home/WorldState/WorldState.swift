@@ -14,7 +14,6 @@ struct WorldState: Codable, Identifiable {
     let alerts: [JSONAny]
     let sortie: ArchonHunt
     let syndicateMissions: [SyndicateMission]
-    let fissures: [Fissure]
     let globalUpgrades: [GlobalUpgrade]
     let flashSales: [FlashSale]
     let invasions: [Invasion]
@@ -23,7 +22,6 @@ struct WorldState: Codable, Identifiable {
     let voidTrader: Trader
     let dailyDeals: [DailyDeal]
     let simaris: Simaris
-   
     let persistentEnemies: [JSONAny]
     let earthCycle: CambionCycleClass
     let cetusCycle: CetusCycleClass
@@ -39,7 +37,8 @@ struct WorldState: Codable, Identifiable {
     let vaultTrader: Trader
     let archonHunt: ArchonHunt
     let duviriCycle: DuviriCycle
-    let arbitration: Arbitration
+    let fissures: [Fissure]
+//    let arbitration: Arbitration
 
     enum CodingKeys: String, CodingKey {
         case timestamp = "timestamp"
@@ -48,7 +47,6 @@ struct WorldState: Codable, Identifiable {
         case alerts = "alerts"
         case sortie = "sortie"
         case syndicateMissions = "syndicateMissions"
-        case fissures = "fissures"
         case globalUpgrades = "globalUpgrades"
         case flashSales = "flashSales"
         case invasions = "invasions"
@@ -57,7 +55,7 @@ struct WorldState: Codable, Identifiable {
         case voidTrader = "voidTrader"
         case dailyDeals = "dailyDeals"
         case simaris = "simaris"
-        
+        case fissures = "fissures"
         case persistentEnemies = "persistentEnemies"
         case earthCycle = "earthCycle"
         case cetusCycle = "cetusCycle"
@@ -73,40 +71,40 @@ struct WorldState: Codable, Identifiable {
         case vaultTrader = "vaultTrader"
         case archonHunt = "archonHunt"
         case duviriCycle = "duviriCycle"
-        case arbitration = "arbitration"
+//        case arbitration = "arbitration"
     }
 }
 
 //MARK: - Arbitration
-struct Arbitration: Codable {
-    let activation: String
-    let expiry: String
-    let enemy: String
-    let type: String
-    let archwing: Bool
-    let sharkwing: Bool
-    let node: String
-    let nodeKey: String
-    let typeKey: String
-    let id: String
-    let expired: Bool
-    
-
-    enum CodingKeys: String, CodingKey {
-        case activation = "activation"
-        case expiry = "expiry"
-        case enemy = "enemy"
-        case type = "type"
-        case archwing = "archwing"
-        case sharkwing = "sharkwing"
-        case node = "node"
-        case nodeKey = "nodeKey"
-        case typeKey = "typeKey"
-        case id = "id"
-        case expired = "expired"
-        
-    }
-}
+//struct Arbitration: Codable {
+//    let activation: String
+//    let expiry: String
+//    let enemy: String
+//    let type: String
+//    let archwing: Bool
+//    let sharkwing: Bool
+//    let node: String
+//    let nodeKey: String
+//    let typeKey: String
+//    let id: String
+//    let expired: Bool
+//    
+//
+//    enum CodingKeys: String, CodingKey {
+//        case activation = "activation"
+//        case expiry = "expiry"
+//        case enemy = "enemy"
+//        case type = "type"
+//        case archwing = "archwing"
+//        case sharkwing = "sharkwing"
+//        case node = "node"
+//        case nodeKey = "nodeKey"
+//        case typeKey = "typeKey"
+//        case id = "id"
+//        case expired = "expired"
+//        
+//    }
+//}
 // MARK: - ArchonHunt
 struct ArchonHunt: Codable {
     let id: String
@@ -359,29 +357,93 @@ struct Choice: Codable, Identifiable {
 }
 
 // MARK: - Event
-struct Events: Codable, Identifiable {
+//struct Events: Codable, Identifiable {
+//    let id: String
+//    let activation: String
+//    let startString: String
+//    let expiry: String
+//    let active: Bool
+//    let maximumScore: Int?
+//    let currentScore: Int?
+//    let smallInterval: JSONNull?
+//    let largeInterval: JSONNull?
+//    let description: String
+//    let node: String
+//    let concurrentNodes: [JSONAny]
+//    let rewards: [Reward]
+//    let expired: Bool
+//    let interimSteps: [JSONAny]
+//    let progressSteps: [JSONAny]
+//    let isPersonal: Bool
+//    let regionDrops: [JSONAny]
+//    let archwingDrops: [JSONAny]
+//    let asString: String
+//    let metadata: Params
+//    let completionBonuses: [JSONAny]
+//    let altExpiry: String
+//    let altActivation: String
+//    let nextAlt: NextAlt
+//    let victimNode: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id = "id"
+//        case activation = "activation"
+//        case startString = "startString"
+//        case expiry = "expiry"
+//        case active = "active"
+//        case maximumScore = "maximumScore"
+//        case currentScore = "currentScore"
+//        case smallInterval = "smallInterval"
+//        case largeInterval = "largeInterval"
+//        case description = "description"
+//        case node = "node"
+//        case concurrentNodes = "concurrentNodes"
+//        case rewards = "rewards"
+//        case expired = "expired"
+//        case interimSteps = "interimSteps"
+//        case progressSteps = "progressSteps"
+//        case isPersonal = "isPersonal"
+//        case regionDrops = "regionDrops"
+//        case archwingDrops = "archwingDrops"
+//        case asString = "asString"
+//        case metadata = "metadata"
+//        case completionBonuses = "completionBonuses"
+//        case altExpiry = "altExpiry"
+//        case altActivation = "altActivation"
+//        case nextAlt = "nextAlt"
+//        case victimNode = "victimNode"
+//    }
+//}
+struct Events: Codable {
     let id: String
     let activation: String
-    let startString: String
     let expiry: String
+    let startString: String
     let active: Bool
-    let maximumScore: Int
-    let currentScore: Int
+    let maximumScore: Int?
+    let currentScore: Int?
     let smallInterval: JSONNull?
     let largeInterval: JSONNull?
     let description: String
-    let node: String
-    let concurrentNodes: [JSONAny]
+    let tooltip: String?
+    let node: String?
+    let concurrentNodes: [String]
+    let victimNode: String?
+    let scoreLocTag: String?
     let rewards: [Reward]
-    let expired: Bool
-    let interimSteps: [JSONAny]
-    let progressSteps: [JSONAny]
-    let isPersonal: Bool
-    let regionDrops: [JSONAny]
-    let archwingDrops: [JSONAny]
+    let health: Double?
+    let affiliatedWith: String?
+    let jobs: [Job]?
+    let interimSteps: [InterimStep]
+    let progressSteps: [ProgressStep]
+    let isPersonal: Bool?
+    let isCommunity: Bool?
+    let regionDrops: [String]
+    let archwingDrops: [String]
     let asString: String
     let metadata: Params
-    let completionBonuses: [JSONAny]
+    let completionBonuses: [Int]
+    let scoreVar: String?
     let altExpiry: String
     let altActivation: String
     let nextAlt: NextAlt
@@ -389,31 +451,63 @@ struct Events: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case activation = "activation"
-        case startString = "startString"
         case expiry = "expiry"
+        case startString = "startString"
         case active = "active"
         case maximumScore = "maximumScore"
         case currentScore = "currentScore"
         case smallInterval = "smallInterval"
         case largeInterval = "largeInterval"
         case description = "description"
+        case tooltip = "tooltip"
         case node = "node"
         case concurrentNodes = "concurrentNodes"
+        case victimNode = "victimNode"
+        case scoreLocTag = "scoreLocTag"
         case rewards = "rewards"
-        case expired = "expired"
+        case health = "health"
+        case affiliatedWith = "affiliatedWith"
+        case jobs = "jobs"
         case interimSteps = "interimSteps"
         case progressSteps = "progressSteps"
         case isPersonal = "isPersonal"
+        case isCommunity = "isCommunity"
         case regionDrops = "regionDrops"
         case archwingDrops = "archwingDrops"
         case asString = "asString"
         case metadata = "metadata"
         case completionBonuses = "completionBonuses"
+        case scoreVar = "scoreVar"
         case altExpiry = "altExpiry"
         case altActivation = "altActivation"
         case nextAlt = "nextAlt"
     }
 }
+
+struct InterimStep: Codable {
+    let goal: Int
+    let reward: Reward
+    let message: Params
+   
+
+    enum CodingKeys: String, CodingKey {
+        case goal = "goal"
+        case reward = "reward"
+        case message = "message"
+        
+    }
+}
+
+struct ProgressStep: Codable {
+    let type: String
+    let progressAmt: Int
+
+    enum CodingKeys: String, CodingKey {
+        case type = "type"
+        case progressAmt = "progressAmt"
+    }
+}
+
 
 typealias Event = [Events]
 
@@ -467,54 +561,7 @@ struct CountedItem: Codable {
 }
 
 // MARK: - Fissure
-struct Fissure: Codable {
-    let id: String
-    let activation: String
-    let startString: String
-    let expiry: String
-    let active: Bool
-    let node: String
-    let missionType: String
-    let missionKey: String
-    let enemy: Enemy
-    let enemyKey: Enemy
-    let nodeKey: String
-    let tier: String
-    let tierNum: Int
-    let expired: Bool
-    let eta: String
-    let isStorm: Bool
-    let isHard: Bool
 
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case activation = "activation"
-        case startString = "startString"
-        case expiry = "expiry"
-        case active = "active"
-        case node = "node"
-        case missionType = "missionType"
-        case missionKey = "missionKey"
-        case enemy = "enemy"
-        case enemyKey = "enemyKey"
-        case nodeKey = "nodeKey"
-        case tier = "tier"
-        case tierNum = "tierNum"
-        case expired = "expired"
-        case eta = "eta"
-        case isStorm = "isStorm"
-        case isHard = "isHard"
-    }
-}
-
-enum Enemy: String, Codable {
-    case corpus = "Corpus"
-    case crossfire = "Crossfire"
-    case grineer = "Grineer"
-    case infested = "Infested"
-    case orokin = "Orokin"
-    case theMurmur = "The Murmur"
-}
 
 // MARK: - FlashSale
 struct FlashSale: Codable {
@@ -567,6 +614,56 @@ struct GlobalUpgrade: Codable {
         case desc = "desc"
     }
 }
+
+struct Fissure: Codable {
+    let id: String
+    let activation: String
+    let startString: String
+    let expiry: String
+    let active: Bool
+    let node: String
+    let missionType: String
+    let missionKey: String
+    let enemy: String
+    let enemyKey: String
+    let nodeKey: String
+    let tier: String
+    let tierNum: Int
+    let expired: Bool
+    let eta: String
+    let isStorm: Bool
+    let isHard: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case activation = "activation"
+        case startString = "startString"
+        case expiry = "expiry"
+        case active = "active"
+        case node = "node"
+        case missionType = "missionType"
+        case missionKey = "missionKey"
+        case enemy = "enemy"
+        case enemyKey = "enemyKey"
+        case nodeKey = "nodeKey"
+        case tier = "tier"
+        case tierNum = "tierNum"
+        case expired = "expired"
+        case eta = "eta"
+        case isStorm = "isStorm"
+        case isHard = "isHard"
+    }
+}
+
+enum Enemy: String, Codable {
+    case corpus = "Corpus"
+    case crossfire = "Crossfire"
+    case grineer = "Grineer"
+    case infested = "Infested"
+    case orokin = "Orokin"
+    case theMurmur = "The Murmur"
+}
+
 
 // MARK: - Invasion
 struct Invasion: Codable {

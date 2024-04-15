@@ -9,9 +9,8 @@ import SwiftUI
 
 struct DashBoardView: View {
     
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-    }
+    @ObservedObject var networkModel = NetworkCall()
+    
     
     @State private var currentTab: Int = 0
     @State private var openSheet: Bool = false
@@ -20,8 +19,8 @@ struct DashBoardView: View {
         NavigationStack {
             ZStack(alignment: .top) {
                 TabView(selection: self.$currentTab) {
-                    WorldStateView().tag(0)
-                    FissuresView().tag(1)
+                    WorldStateView(networkModel: networkModel).tag(0)
+                    FissureView(networkModel: networkModel).tag(1)
                     InvasionsView().tag(2)
                     SyndicatesView().tag(3)
                     
@@ -35,12 +34,14 @@ struct DashBoardView: View {
                 
             }
             
+            
         }
+      
         
         .foregroundStyle(Color.white)
         .background(
             Image("VitruvianLn")
-//                .resizable()
+            //                .resizable()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
         )
@@ -52,7 +53,7 @@ struct DashBoardView: View {
 struct tabBarView: View {
     var tabBarOptions: [String] = ["WorldState","Fissures","Invasions","Syndicates"]
     @Binding var currentTab: Int
-@Namespace var namespace
+    @Namespace var namespace
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 30) {

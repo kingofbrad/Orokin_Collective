@@ -15,7 +15,6 @@ struct ArchonHuntView: View {
             if let archonData = networkModel.worldState?.archonHunt {
                 VStack(alignment: .leading) {
                     HStack{
-                        
                         Image("Narmer")
                             .resizable()
                             .frame(width: 50, height: 39.72)
@@ -39,26 +38,14 @@ struct ArchonHuntView: View {
                     }
                     .padding(.horizontal)
                 }
-                .frame(width: 346, height: 159)
+                .frame(height: 159)
                 .background(Color.blueCharcoal)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
                 Text("Loading...")
             }
         }
-        .task {
-            do {
-                try await networkModel.fetchWorldState()
-            } catch APIError.invalidURL {
-                print("invalid URL")
-            } catch APIError.invaildResponse {
-                print("invaild Response")
-            } catch APIError.invalidData {
-                print("invaild Data")
-            } catch {
-                print("Unexcepted Error has appeared \(error)")
-            }
-        }
+      
     }
 }
 

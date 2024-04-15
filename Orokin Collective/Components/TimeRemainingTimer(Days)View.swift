@@ -11,10 +11,12 @@ struct ExpiryDateView: View {
     let expiryDate: Date
     
     init(apiDateString: String) {
-        let isoDateFormatter = ISO8601DateFormatter()
-        isoDateFormatter.formatOptions = [.withInternetDateTime]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         
-        if let date = isoDateFormatter.date(from: apiDateString) {
+        
+        if let date = dateFormatter.date(from: apiDateString) {
             expiryDate = date
         } else {
             // Fallback to current date if conversion fails
@@ -24,8 +26,7 @@ struct ExpiryDateView: View {
     
     var body: some View {
         VStack {
-            Text("Expiry Date: \(expiryDate, formatter: dateFormatter)")
-            Text("Day of Expiry: \(calculateDayOfExpiry())")
+            Text("Departs on \(calculateDayOfExpiry()) \(expiryDate, formatter: dateFormatter)")
         }
     }
     
@@ -54,33 +55,43 @@ struct TimeRemainingTimer_Days_View: View {
     let activation: String
     let expiry: String
     @State private var timer: Timer?
-    @State private var countDownText: String = ""
+    @State private var countdownText: String = ""
+    @State private var countdownTimer: String = ""
     
-   
+    
     
     
     var body: some View {
         
-        HStack {
-            ExpiryDateView(apiDateString: expiry)
-            ZStack{
-            RoundedRectangle(cornerRadius: 5)
-                    .frame(height: 25)
-                  .foregroundStyle(Color.tundora)
-              Text(countDownText)
-                  .font(.system(size: 15).weight(.semibold))
-          }
-            .frame(width: 170)
-            .onAppear {
-                self.startTimer()
-            }
-            .onDisappear {
-                self.stopTimer()
-            }
         
+        
+        VStack(alignment: .leading)
+        {
+            HStack{
+                Text("Arrives in:")
+                    .foregroundStyle(Color.white)
+                Text(countdownTimer)
+                    
+            }
+            HStack{
+                Text("Arrives on:")
+                    .foregroundStyle(Color.white)
+                Text(countdownText)
+                    
+            }
+            
         }
-                
-
+        
+        .onAppear {
+            self.startTimer()
+        }
+        .onDisappear {
+            self.stopTimer()
+        }
+        
+        
+        
+        
     }
     
     func startTimer() {
@@ -102,14 +113,18 @@ struct TimeRemainingTimer_Days_View: View {
         let currentDate = Date()
         
         if currentDate < activationDate {
-            return countDownText = "\(timeRemaining(from: currentDate, to: activationDate))"
-            
+            let activationDay = DateUtils.stringFromDate(activationDate, format: "d'\(self.getDaySuffix(from: activationDate))' MMMM yyyy")
+            countdownText = "\(activationDay)"
+            countdownTimer = "\(timeRemaining(from: currentDate, to: activationDate))"
         } else if currentDate >= activationDate && currentDate < expiryDate {
-            return countDownText = "\(timeRemaining(from: currentDate, to: expiryDate))"
+            let expiryDay = DateUtils.stringFromDate(expiryDate, format: "d'\(self.getDaySuffix(from: expiryDate))' MMMM yyyy")
+            countdownText = "\(expiryDay)"
+            countdownTimer = "\(timeRemaining(from: currentDate, to: expiryDate))"
         } else {
-            stopTimer()
-            return countDownText = "Expired"
-            
+            // Reset countdown to activation time
+            let activationDay = DateUtils.stringFromDate(activationDate, format: "d'\(self.getDaySuffix(from: activationDate))' MMMM yyyy")
+            countdownText = "\(activationDay)"
+            countdownTimer = "\(timeRemaining(from: currentDate, to: activationDate))"
         }
     }
     
@@ -126,9 +141,24 @@ struct TimeRemainingTimer_Days_View: View {
             return "\(days)d \(hours)h \(minutes)m \(seconds)s"
         } else {
             return String(format:"%02d:%02d:%02d:%02d", days,hours,minutes,seconds)
-
+            
         }
         
+    }
+    func getDaySuffix(from date: Date) -> String {
+        let calendar = Calendar.current
+        let dayOfMonth = calendar.component(.day, from: date)
+        
+        switch dayOfMonth {
+        case 1, 21, 31:
+            return "st"
+        case 2, 22:
+            return "nd"
+        case 3, 23:
+            return "rd"
+        default:
+            return "th"
+        }
     }
 }
 
@@ -142,8 +172,14 @@ struct DateUtils {
             fatalError("Invalid date string")
         }
     }
+    
+    static func stringFromDate(_ date: Date, format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: date)
+    }
 }
 
 #Preview {
-    TimeRemainingTimer_Days_View(activation: "2024-04-05T13:00:00.000Z", expiry: "2024-04-07T13:00:00.000Z")
+    TimeRemainingTimer_Days_View(activation: "2024-04-05T00:00:00.000Z", expiry: "2024-04-07T13:00:00.000Z")
 }

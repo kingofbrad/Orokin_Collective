@@ -20,9 +20,6 @@ struct CountdownView: View {
 
     var body: some View {
         ZStack{
-          RoundedRectangle(cornerRadius: 5)
-                .frame(width: 109, height: 25)
-                .foregroundStyle(Color.tundora)
             Text("\(timeString(time: timeRemaining))")
                 .font(.system(size: 15).weight(.semibold))
         }

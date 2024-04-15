@@ -6,7 +6,7 @@ import Combine
 class NetworkCall: ObservableObject {
     @Published var worldState: WorldState?
     @Published var events: Event = []
-    @Published var arbitration: Arbitration?
+//    @Published var arbitration: Arbitration?
     @Published var showError = false
     
     
@@ -56,39 +56,28 @@ class NetworkCall: ObservableObject {
         let eventsResponse = try JSONDecoder().decode(Event.self, from: data)
         events = eventsResponse
     }
-    //    func fetchArbitrationData() async throws {
-    //        let request = URL(string: "\(endPoint)/\(APIPlayformPathEndPoint.pc)/\(APIPathEndPoint.arbitration)")
-    //        let (data, response) = try await URLSession.shared.data(from: request!)
-    //        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-    //            showError = true
-    //            throw APIError.invaildResponse
-    //
-    //        }
-    //        let arbitrationResponse = try JSONDecoder().decode(Arbitration.self, from: data)
-    //        arbitration = arbitrationResponse
-    //    }
     
-    func fetchArbitrationData() async throws {
-        do {
-            let request = URL(string: "\(endPoint)/\(APIPlayformPathEndPoint.pc)/\(APIPathEndPoint.arbitration)")
-            let (data, response) = try await URLSession.shared.data(from: request!)
-            
-            guard let httpResponse = response as? HTTPURLResponse else {
-                showError = true
-                throw APIError.invaildResponse
-            }
-            
-            if httpResponse.statusCode == 404 {
-                showError = true
-                return
-            }
-            
-            let arbitrationResponse = try JSONDecoder().decode(Arbitration.self, from: data)
-            arbitration = arbitrationResponse
-        } catch {
-            showError = true
-        }
-    }
+//    func fetchArbitrationData() async throws {
+//        do {
+//            let request = URL(string: "\(endPoint)/\(APIPlayformPathEndPoint.pc)/\(APIPathEndPoint.arbitration)")
+//            let (data, response) = try await URLSession.shared.data(from: request!)
+//            
+//            guard let httpResponse = response as? HTTPURLResponse else {
+//                showError = true
+//                throw APIError.invaildResponse
+//            }
+//            
+//            if httpResponse.statusCode == 404 {
+//                showError = true
+//                return
+//            }
+//            
+//            let arbitrationResponse = try JSONDecoder().decode(Arbitration.self, from: data)
+//            arbitration = arbitrationResponse
+//        } catch {
+//            showError = true
+//        }
+//    }
     
     
     
@@ -135,6 +124,7 @@ enum APIPathEndPoint {
     case alerts
     case steelPath
     case events
+    case fissures
     
     var path: String {
         switch self {
@@ -156,6 +146,8 @@ enum APIPathEndPoint {
             return "steelPath"
         case .events:
             return "events"
+        case .fissures:
+            return "fissures"
         }
     }
 }

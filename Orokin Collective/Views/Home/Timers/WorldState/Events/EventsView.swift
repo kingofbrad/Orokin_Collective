@@ -15,88 +15,9 @@ struct EventsView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                ForEach(networkModel.events, id:\.id){ events in
+                ForEach(networkModel.worldState?.events ?? [], id:\.id){ events in
                     NavigationLink {
-                        VStack(alignment: .leading) {
-                            Rectangle()
-                                .frame(height: 50)
-                                .foregroundStyle(
-                                    LinearGradient(colors: [.blueCharcoal, .black], startPoint: .bottom, endPoint: .top)
-                                ) // Title and Image
-                            ZStack {
-                                Image("Ordis")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 393, height: 183, alignment: .center)
-                                    .clipped()
-                                VStack{
-                                    Spacer()
-                                    HStack {
-                                        Text(events.description)
-                                            .font(.system(size: 15))
-                                            .bold()
-                                        Spacer()
-                                    }
-                                    .padding()
-                                }
-                                
-                            }
-                            .frame(width: 393, height: 183)
-                            // Information
-                            VStack(alignment: .leading, spacing: 40){
-                                VStack {
-                                    Text("Description")
-                                }
-                                
-                                
-                                
-                                VStack(alignment: .leading, spacing: 20) {
-                                    Text("Event Information")
-                                    
-                                    HStack {
-                                        Text("Node:")
-                                            .foregroundStyle(Color.gray)
-                                            .fontWeight(.semibold)
-                                        Spacer()
-                                        Text(events.node)
-                                            .padding(4)
-                                            .background(Color.tundora)
-                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                        
-                                    }
-                                    HStack {
-                                        Text("Progress:")
-                                            .foregroundStyle(Color.gray)
-                                            .fontWeight(.semibold)
-                                        Spacer()
-                                        Text("\(events.maximumScore).00%")
-                                            .padding(4)
-                                            .background(Color.tundora)
-                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                        
-                                    }
-                                    HStack {
-                                        Text("Time Left (ETA):")
-                                            .foregroundStyle(Color.gray)
-                                            .fontWeight(.semibold)
-                                        Spacer()
-                                        VoidTraderCountDownTimer(expiryDateString: events.expiry)
-                                        
-                                    }
-                                    
-                                }
-                                VStack(alignment: .leading, spacing: 20) {
-                                    Text("Rewards")
-                                    
-                                    
-                                }
-                            }
-                            .padding(20)
-                            Spacer()
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.blueCharcoal)
-                        .ignoresSafeArea()
+                        EventsRewardsView(node: events.node ?? events.victimNode ?? "", expiry: events.expiry, description: events.description, maximumScore: events.maximumScore ?? 0)
                     } label: {
                         VStack {
                             VStack(alignment: .leading, spacing: 2){
@@ -104,7 +25,7 @@ struct EventsView: View {
                                     Text(events.description)
                                         .font(.system(size: 14))
                                         .bold()
-                                    Text("View Details")
+                                    Text("View Event")
                                         .font(.footnote)
                                         .foregroundStyle(Color.gray)
                                     
@@ -112,30 +33,19 @@ struct EventsView: View {
                             }
                             .padding()
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 20)
                     }
                     
                     
                     
-                    
-                    .scrollDisabled(true)
-                    .frame(width: 346, height: 50)
+
+                    .frame(height: 50)
+                    .padding(.horizontal, 20)
                     .background(Color.blueCharcoal)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 
-            }
-            .task {
-                do {
-                    try await networkModel.fetchEventsData()
-                } catch APIError.invalidURL {
-                    print("invalid URL")
-                } catch APIError.invaildResponse {
-                    print("invaild Response")
-                } catch APIError.invalidData {
-                    print("invaild Data")
-                } catch {
-                    print("Unexcepted Error has appeared \(error)")
-                }
             }
         }
         
@@ -147,27 +57,27 @@ struct EventsView: View {
         .foregroundStyle(Color.white)
 }
 
-#Preview(body: {
-    NavigationStack {
-        EventsRewardsView()
-            .foregroundStyle(Color.white)
-    }
-})
+#Preview{
+    EventsRewardsView(node: "Earth", expiry: "2024-05-04T17:11:10.509Z", description: "Gift of the lotus", maximumScore: 1)
+}
+
+
 
 struct EventsRewardsView: View {
     @ObservedObject private var nm = NetworkCall()
     
     
-    let title: String = "Gift of the Lotus - Stolen!"
-    let node: String = "Proxy Rebellion"
-    let progress: Int = 1
-    let TimeLeft: String = "2024-04-12T15:00:00.000Z"
+    let node: String
+    let expiry: String
+    let description: String
+    let maximumScore: Int
+    let rewards: [Reward] = [
+        Reward(items: [], countedItems: [], credits: 0, asString: "", itemString: "", thumbnail: "", color: 0)
+    ]
     
     let id: UUID = UUID()
     
     var body: some View {
-        
-        
         
         VStack(alignment: .leading) {
             Rectangle()
@@ -175,33 +85,31 @@ struct EventsRewardsView: View {
                 .foregroundStyle(
                     LinearGradient(colors: [.blueCharcoal, .black], startPoint: .bottom, endPoint: .top)
                 ) // Title and Image
-            ZStack {
-                Image("Ordis")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 393, height: 183, alignment: .center)
-                    .clipped()
-                VStack{
-                    Spacer()
-                    HStack {
-                        Text(title)
-                            .font(.system(size: 15))
-                            .bold()
+            
+            VStack {
+                ZStack {
+                    Image("Ordis")
+                        .resizable()
+                        .scaledToFill()
+                        .frame( height: 200, alignment: .center)
+                        .clipped()
+                    VStack{
                         Spacer()
+                        HStack {
+                            Text(description)
+                                .font(.system(size: 15))
+                                .bold()
+                            Spacer()
+                        }
+                        .padding()
                     }
-                    .padding()
+                    
                 }
-                
+                .frame( height: 183)
             }
-            .frame(width: 393, height: 183)
+            .frame(maxWidth: .infinity)
             // Information
             VStack(alignment: .leading, spacing: 40){
-                VStack {
-                    Text("Description")
-                }
-                
-                
-                
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Event Information")
                     
@@ -210,21 +118,26 @@ struct EventsRewardsView: View {
                             .foregroundStyle(Color.gray)
                             .fontWeight(.semibold)
                         Spacer()
+
                         Text(node)
                             .padding(4)
                             .background(Color.tundora)
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                         
+
                     }
                     HStack {
                         Text("Progress:")
                             .foregroundStyle(Color.gray)
                             .fontWeight(.semibold)
                         Spacer()
-                        Text("\(progress).00%")
-                            .padding(4)
-                            .background(Color.tundora)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                        
+                            Text("\(maximumScore).00%")
+                                .padding(4)
+                                .background(Color.tundora)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                        
+                        
                         
                     }
                     HStack {
@@ -232,13 +145,23 @@ struct EventsRewardsView: View {
                             .foregroundStyle(Color.gray)
                             .fontWeight(.semibold)
                         Spacer()
-                        VoidTraderCountDownTimer(expiryDateString: TimeLeft)
+                        VoidTraderCountDownTimer(expiryDateString: expiry)
                         
                     }
                     
                 }
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Rewards")
+                    
+                    ForEach(rewards, id:\.itemString) { reward in
+                        if !reward.itemString.isEmpty {
+                            Text(reward.itemString)
+                                .padding(4)
+                                .background(Color.tundora)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                        }
+                        
+                    }
                     
                     
                 }
@@ -247,8 +170,10 @@ struct EventsRewardsView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .foregroundStyle(Color.white)
         .background(Color.blueCharcoal)
         .ignoresSafeArea()
+        
         
     }
 }
