@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CircuitChoicesView: View {
     @State private var openChoices: Bool = false
-    var networkModel: NetworkCall
+    @ObservedObject var networkModel = NetworkCall()
     
     var body: some View {
         VStack {
@@ -34,15 +34,10 @@ struct CircuitChoicesView: View {
                 }
                 .sheet(isPresented: $openChoices, content: {
                     VStack(alignment: .leading) {
-                        Image("Circuit")
-                            .resizable()
-                            .scaledToFill()
-                            .frame( height: 200, alignment: .center)
-                            .clipped()
-                        
                         Text("Circuit Choices")
                             .font(.system(size: 20))
-                            .bold()
+                            .fontWeight(.semibold)
+                            .padding(.top, 30)
                           
                             .padding(.horizontal,20)
                             .padding(.top, 5)
@@ -55,18 +50,24 @@ struct CircuitChoicesView: View {
                                         Text("Mode: -")
                                             .foregroundStyle(Color.gray)
                                             .fontWeight(.semibold)
+                                        
                                         Text(firstChoice.category.capitalized)
                                             .fontWeight(.semibold)
                                             .font(.system(size: 16))
-                                        
                                     }
-                                    HStack {
+                                    VStack {
                                         ForEach(firstChoice.choices, id:\.self) { choice in
-                                            Text("\(choice)")
-                                                .padding(4)
-                                                .background(Color.tundora)
-                                                .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                .font(.system(size: 15))
+                                            HStack {
+                                                Text("Warframe")
+                                                    .fontWeight(.semibold)
+                                                    .foregroundStyle(Color.silverChalice)
+                                                Spacer()
+                                                Text("\(choice)")
+                                                    .padding(4)
+                                                    .background(Color.tundora)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                    .font(.system(size: 15))
+                                            }
                                         }
                                     }
                                     
@@ -80,13 +81,19 @@ struct CircuitChoicesView: View {
                                             .fontWeight(.semibold)
                                             .font(.system(size: 16))
                                     }
-                                    HStack {
+                                    VStack {
                                         ForEach(secondChoice.choices, id:\.self) { choice in
-                                            Text("\(choice)")
-                                                .padding(4)
-                                                .background(Color.tundora)
-                                                .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                .font(.system(size: 15))
+                                            HStack {
+                                                Text("Weapon")
+                                                    .fontWeight(.semibold)
+                                                    .foregroundStyle(Color.silverChalice)
+                                                Spacer()
+                                                Text("\(choice)")
+                                                    .padding(4)
+                                                    .background(Color.tundora)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                    .font(.system(size: 15))
+                                            }
                                         }
                                     }
                                     
@@ -100,11 +107,13 @@ struct CircuitChoicesView: View {
                     .foregroundStyle(Color.white)
                     .background(Color.blueCharcoal)
                     .ignoresSafeArea()
-                    .presentationDetents([.medium, .large])
+                    .presentationDetents([.large])
+                    
                 })
             }
             
         }
+        
         
     }
 }

@@ -8,20 +8,25 @@
 import SwiftUI
 
 struct ArchonHuntView: View {
-    @ObservedObject var networkModel = NetworkCall()
+    var networkModel: NetworkCall
     
     var body: some View {
         VStack {
             if let archonData = networkModel.worldState?.archonHunt {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 3) {
                     HStack{
                         Image("Narmer")
                             .resizable()
-                            .frame(width: 50, height: 39.72)
-                            .padding(.trailing, 2)
-                        
-                        Text("\(archonData.boss)")
-                            .bold()
+                            .frame(width: 50, height: 50)
+                            .padding(10)
+                        VStack(alignment: .leading) {
+                            Text("\(archonData.boss)")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                            Text(archonData.faction)
+                                .font(.subheadline)
+                                .foregroundStyle(.silverChalice)
+                        }
                         Spacer()
                         VoidTraderCountDownTimer(expiryDateString: archonData.expiry)
                             .padding(.trailing, 10)
@@ -30,26 +35,26 @@ struct ArchonHuntView: View {
                     ForEach(archonData.missions, id:\.nodeKey) { missions in
                         HStack {
                             Text("\(missions.type)")
-                            Text("-")
+                                .fontWeight(.semibold)
                             Text("\(missions.node)")
+                                .font(.footnote)
                                 .foregroundStyle(Color.silverChalice)
                         }
                         
                     }
                     .padding(.horizontal)
                 }
-                .frame(height: 159)
+                .padding(.vertical, 10)
                 .background(Color.blueCharcoal)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-            } else {
-                Text("Loading...")
             }
         }
+       
       
     }
 }
 
 #Preview {
-    ArchonHuntView()
+    ArchonHuntView(networkModel: NetworkCall())
         .foregroundStyle(Color.white)
 }

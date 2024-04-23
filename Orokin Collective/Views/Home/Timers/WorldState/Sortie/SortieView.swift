@@ -13,44 +13,70 @@ enum SortieFaction: String, CaseIterable {
     case Murmur = "Murmur"
     case Currupted = "Currupted"
     case Infested = "Infested"
+    case Sentient = "Sentient"
+}
+
+struct FactionImageView: View {
+    let faction: SortieFaction
+    var body: some View {
+        Image(faction.rawValue)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 50, height: 50)
+    }
 }
 
 struct SortieView: View {
-    @ObservedObject private var nm = NetworkCall()
-//    @State var image: SortieFaction = .Grineer
+    var nm :NetworkCall
+    //    @State var image: SortieFaction = .Grineer
     var body: some View {
         VStack {
             if let sortieData = nm.worldState?.sortie {
-                ForEach(SortieFaction.allCases, id:\.rawValue) { sortieImage in
-                    Image(sortieData.factionKey == sortieImage.rawValue ? sortieImage.rawValue : "")
-                }
                 VStack(alignment: .leading) {
-                    
+                    HStack{
+                        FactionImageView(faction: SortieFaction(rawValue: sortieData.faction) ?? .Grineer)
+                            .frame(width: 50, height: 50)
+                        VStack(alignment: .leading) {
+                            Text(sortieData.boss)
+                                .font(.title)
+                                .fontWeight(.semibold)
+                            Text(sortieData.faction)
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.silverChalice)
+                        }
+                        Spacer()
+                        CountdownView(expiryDateString: sortieData.expiry)
+                    }
+                    .padding(.bottom, 10)
+                    VStack(alignment: .leading ,spacing: 5) {
+                        ForEach(sortieData.variants, id:\.node) { variant in
+                            Text(variant.missionType)
+                                .bold()
+                            Text(variant.modifier)
+                                .font(.subheadline)
+                            Text(variant.node)
+                                .font(.footnote)
+                                .foregroundStyle(Color.silverChalice)
+                        }
+                    }
                 }
-                .frame(height: 159)
+                .padding(.horizontal, 10)
                 .background(Color.blueCharcoal)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                
             }
         }
+        .padding(.vertical, 20)
+        .frame(maxWidth: .infinity)
+        .foregroundStyle(.white)
         .background(Color.blueCharcoal)
-        .task {
-            do {
-                try await nm.fetchWorldState()
-            } catch APIError.invalidURL {
-                print("invalid URL")
-            } catch APIError.invaildResponse {
-                print("invaild Response")
-            } catch APIError.invalidData {
-                print("invaild Data")
-            } catch {
-                print("Unexcepted Error has appeared \(error)")
-            }
-        }
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        
         
         
     }
 }
 
 #Preview {
-    SortieView()
+    SortieView(nm: NetworkCall())
 }

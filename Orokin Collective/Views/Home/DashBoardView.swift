@@ -21,8 +21,8 @@ struct DashBoardView: View {
                 TabView(selection: self.$currentTab) {
                     WorldStateView(networkModel: networkModel).tag(0)
                     FissureView(networkModel: networkModel).tag(1)
-                    InvasionsView().tag(2)
-                    SyndicatesView().tag(3)
+                    InvasionsView(networkModel: networkModel).tag(2)
+                    SyndicatesView(networkModel: networkModel).tag(3)
                     
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
@@ -66,7 +66,9 @@ struct tabBarView: View {
             }
             .padding(.horizontal)
         }
+        .padding(.top, 10)
         .frame(height: 30)
+        .scrollDisabled(true)
     }
 }
 
@@ -84,8 +86,10 @@ struct TabBarItem: View {
             VStack {
                 Spacer()
                 Text(tabBarItemName)
+                    .font(.system(size: 14))
                     .font(.footnote).fontWeight(.semibold)
                     .foregroundStyle(currentTab == tab ? Color.white : Color.gray)
+                    
                 if currentTab == tab {
                     Color.white
                         .frame(height: 2)
@@ -95,6 +99,7 @@ struct TabBarItem: View {
                     
                 }
             }
+            .padding(.vertical, 10)
             .animation(.spring(), value: self.currentTab)
         }
     }

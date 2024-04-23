@@ -23,7 +23,8 @@ struct CyclesCard: View {
                 .padding(.trailing, 2)
             
             Text(location)
-                .padding(.leading, 50)
+                .font(.system(size: 15))
+                .fontWeight(.semibold)
             Divider()
                 .frame(width: 2,height: 20)
                 .foregroundStyle(Color.white)
@@ -56,26 +57,7 @@ struct CyclesView: View {
                 CyclesCard(imageBool: cetusData.isDay, falseImage: "sun.max.fill", trueImage: "moon.fill", state: cetusData.state, expiry: cetusData.expiry, location: "Cetus")
             }
             if let vallisData = networkModel.worldState?.vallisCycle {
-                HStack {
-                    Image(systemName: vallisData.isWarm ?? true ? "sun.max.fill" : "snowflake")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .padding(.trailing, 2)
-                    
-                    Text("Orb Vallis")
-                        .padding(.leading, 50)
-                    Divider()
-                        .frame(width: 2,height: 20)
-                        .foregroundStyle(Color.white)
-                        .background(Color.white)
-                        
-                    Text(vallisData.state.capitalized)
-                        .font(.footnote)
-                        .foregroundStyle(Color.silverChalice)
-                    Spacer()
-                    CountdownView(expiryDateString: vallisData.expiry)
-                }
-                .padding(.horizontal, 30)
+                CyclesCard(imageBool: vallisData.isWarm, falseImage: "sun.max.fill", trueImage: "snowflake", state: vallisData.state, expiry: vallisData.expiry, location: "Orb Vallis")
             }
             if let driftData = networkModel.worldState?.cambionCycle {
                 HStack {
@@ -85,7 +67,9 @@ struct CyclesView: View {
                         .padding(.trailing, 2)
                    
                     Text("Cambion Drift")
-                        .padding(.leading, 50)
+                        .font(.system(size: 15))
+                        .fontWeight(.semibold)
+
                     Divider()
                         .frame(width: 2,height: 20)
                         .foregroundStyle(Color.white)
@@ -101,15 +85,17 @@ struct CyclesView: View {
             }  
             if let zarimanData = networkModel.worldState?.zarimanCycle {
                 HStack {
-                    Image(zarimanData.state == "grineer" ? "grineer" : "corpus")
+                    Image(zarimanData.state == "Grineer" ? "Grineer" : "Corpus")
                         .resizable()
-                        .frame(width: 25, height: 25)
+                        .frame(width: 20, height: 20)
                         .padding(.trailing, 2)
                         .foregroundStyle(.white)
                         
                     
                     Text("Zariman")
-                        .padding(.leading, 50)
+                        
+                        .font(.system(size: 15))
+                        .fontWeight(.semibold)
                     Divider()
                         .frame(width: 2,height: 20)
                         .foregroundStyle(Color.white)
@@ -128,6 +114,7 @@ struct CyclesView: View {
                     VStack(alignment: .leading) {
                         HStack {
                             Text("Duviri")
+                                .font(.system(size: 15))
                             Divider()
                                 .frame(width: 2,height: 20)
                                 .foregroundStyle(Color.white)
@@ -151,19 +138,7 @@ struct CyclesView: View {
         .foregroundStyle(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         
-        .task {
-            do {
-                try await networkModel.fetchWorldState()
-            } catch APIError.invalidURL {
-                print("invalid URL")
-            } catch APIError.invaildResponse {
-                print("invaild Response")
-            } catch APIError.invalidData {
-                print("invaild Data")
-            } catch {
-                print("Unexcepted Error has appeared \(error)")
-            }
-        }
+        
     }
 }
 

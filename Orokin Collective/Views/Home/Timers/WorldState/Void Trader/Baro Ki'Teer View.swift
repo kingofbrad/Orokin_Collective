@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct VoidTraderView: View {
-    @ObservedObject private var nm = NetworkCall()
+    var nm: NetworkCall
 
     @State private var showInventory: Bool = false
     
@@ -54,6 +54,9 @@ struct VoidTraderView: View {
                         .resizable()
                         .scaledToFill()
                         .shadow(radius: 5)
+                        .overlay {
+                            Color.black.opacity(0.3)
+                        }
                     
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -64,9 +67,12 @@ struct VoidTraderView: View {
                             Image("Baro Ki'Teer")
                                 .resizable()
                                 .scaledToFill()
+                               
                                 .shadow(radius: 5)
                                 .frame(height: 137)
+                            
                                 .ignoresSafeArea(.all)
+                            
                             HStack {
                                 VStack{
                                     Text(voidTrader.character)
@@ -87,7 +93,7 @@ struct VoidTraderView: View {
                                 Text("Inventory")
                                     .font(.system(size: 18, weight: .semibold))
                                 ScrollView(.vertical) {
-                                    ForEach(dummyArray, id: \.uniqueName) { item in
+                                    ForEach(voidTrader.inventory, id: \.uniqueName) { item in
                                         VStack(alignment: .leading)
                                         {
                                             Text(item.item)
@@ -152,24 +158,12 @@ struct VoidTraderView: View {
             }
             
         }
-        .task {
-            do {
-                try await nm.fetchWorldState()
-            } catch APIError.invalidURL {
-                print("invalid URL")
-            } catch APIError.invaildResponse {
-                print("invaild Response")
-            } catch APIError.invalidData {
-                print("invaild Data")
-            } catch {
-                print("Unexcepted Error has appeared \(error)")
-            }
-        }
+        
     }
 }
 
 #Preview(body: {
-    VoidTraderView()
+    VoidTraderView(nm: NetworkCall())
 })
 
 struct VoidTraderInventory: View {

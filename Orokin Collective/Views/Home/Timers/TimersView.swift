@@ -25,20 +25,25 @@ struct TimerScrollView: View {
     
     var body: some View {
         ScrollView() {
-            VoidTraderView()
+            VoidTraderView(nm: networkModel)
             EventsView(networkModel: networkModel)
-            LazyVGrid(columns: [GridItem(.fixed(180)), GridItem(.fixed(180))]) {
+            ArbitrationView(networkModel: networkModel)
+                .opacity(networkModel.showError ? 0:1)
+            
+            LazyVGrid(columns: [GridItem(.flexible(minimum: 180)), GridItem(.flexible(minimum: 180))]) {
                 CircuitChoicesView(networkModel: networkModel)
-
                 SteelPathView(networkModel: networkModel)
             }
+            DailyDealsView(networkModel: networkModel)
             CyclesView(networkModel:networkModel)
             ArchonHuntView(networkModel: networkModel)
+            SortieView(nm: networkModel)
             Spacer()
         }
         .padding(.top, 60)
         .padding(.horizontal, 10)
-            
+        .scrollIndicators(.hidden)
+        
     }
 }
 

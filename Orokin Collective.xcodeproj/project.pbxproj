@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA2E3FAA2BD1657C00CA5129 /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FA92BD1657C00CA5129 /* CustomProgressBar.swift */; };
+		FA2E3FAF2BD1D4F600CA5129 /* NightwaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FAE2BD1D4F600CA5129 /* NightwaveView.swift */; };
+		FA2E3FB32BD1D51F00CA5129 /* SyndicateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FB22BD1D51F00CA5129 /* SyndicateCardView.swift */; };
+		FA2E3FB92BD1D59000CA5129 /* SyndicateBountyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FB82BD1D59000CA5129 /* SyndicateBountyView.swift */; };
+		FA2E3FBC2BD1DC7F00CA5129 /* CustomAccordian.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FBB2BD1DC7F00CA5129 /* CustomAccordian.swift */; };
+		FA2E3FBF2BD32D5900CA5129 /* NightwaveMissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FBE2BD32D5900CA5129 /* NightwaveMissionView.swift */; };
+		FA2E3FC12BD4335500CA5129 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FC02BD4335500CA5129 /* SearchBar.swift */; };
+		FA2E3FC52BD8005100CA5129 /* SimarisTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FC42BD8005100CA5129 /* SimarisTargetView.swift */; };
+		FA2E3FC82BD8167600CA5129 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FC72BD8167600CA5129 /* CustomSearchBar.swift */; };
 		FA3CDABF2B976887007DECF5 /* FavoritesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDABE2B976887007DECF5 /* FavoritesModel.swift */; };
 		FA3CDAC22B9BDD09007DECF5 /* TestingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAC12B9BDD09007DECF5 /* TestingFile.swift */; };
 		FA3CDAC62B9E2F01007DECF5 /* WarframeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAC52B9E2F01007DECF5 /* WarframeListView.swift */; };
@@ -59,11 +68,21 @@
 		FA996F1B2BB32C68002918EC /* InvasionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F1A2BB32C68002918EC /* InvasionsView.swift */; };
 		FA996F1E2BB32DE2002918EC /* TimersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA996F1D2BB32DE2002918EC /* TimersView.swift */; };
 		FA99AA3F2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */; };
+		FAB09B922BCECCF6000156B2 /* DailyDealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB09B912BCECCF6000156B2 /* DailyDealsView.swift */; };
 		FAB76CA92BC190E900DB2CAB /* SortieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76CA82BC190E900DB2CAB /* SortieView.swift */; };
 		FAFDD5E22BC5B6E000CA5E16 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD5E12BC5B6E000CA5E16 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA2E3FA92BD1657C00CA5129 /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
+		FA2E3FAE2BD1D4F600CA5129 /* NightwaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightwaveView.swift; sourceTree = "<group>"; };
+		FA2E3FB22BD1D51F00CA5129 /* SyndicateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyndicateCardView.swift; sourceTree = "<group>"; };
+		FA2E3FB82BD1D59000CA5129 /* SyndicateBountyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyndicateBountyView.swift; sourceTree = "<group>"; };
+		FA2E3FBB2BD1DC7F00CA5129 /* CustomAccordian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAccordian.swift; sourceTree = "<group>"; };
+		FA2E3FBE2BD32D5900CA5129 /* NightwaveMissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightwaveMissionView.swift; sourceTree = "<group>"; };
+		FA2E3FC02BD4335500CA5129 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		FA2E3FC42BD8005100CA5129 /* SimarisTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimarisTargetView.swift; sourceTree = "<group>"; };
+		FA2E3FC72BD8167600CA5129 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		FA3CDABE2B976887007DECF5 /* FavoritesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModel.swift; sourceTree = "<group>"; };
 		FA3CDAC12B9BDD09007DECF5 /* TestingFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingFile.swift; sourceTree = "<group>"; };
 		FA3CDAC52B9E2F01007DECF5 /* WarframeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarframeListView.swift; sourceTree = "<group>"; };
@@ -118,6 +137,7 @@
 		FA996F1A2BB32C68002918EC /* InvasionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvasionsView.swift; sourceTree = "<group>"; };
 		FA996F1D2BB32DE2002918EC /* TimersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimersView.swift; sourceTree = "<group>"; };
 		FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeRemainingTimer(Days)View.swift"; sourceTree = "<group>"; };
+		FAB09B912BCECCF6000156B2 /* DailyDealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDealsView.swift; sourceTree = "<group>"; };
 		FAB76CA82BC190E900DB2CAB /* SortieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortieView.swift; sourceTree = "<group>"; };
 		FAFDD5E12BC5B6E000CA5E16 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +153,105 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA2E3FAB2BD17FD100CA5129 /* Timers */ = {
+			isa = PBXGroup;
+			children = (
+				FA894EEF2BB88ECE0050A840 /* CountDownView.swift */,
+				FA894EF42BB9F5850050A840 /* VoidTraderCountDownTimer.swift */,
+				FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */,
+			);
+			path = Timers;
+			sourceTree = "<group>";
+		};
+		FA2E3FAC2BD17FE600CA5129 /* ProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FA92BD1657C00CA5129 /* CustomProgressBar.swift */,
+			);
+			path = ProgressBar;
+			sourceTree = "<group>";
+		};
+		FA2E3FAD2BD17FF600CA5129 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				FA894EF22BB9E9870050A840 /* CustomTabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		FA2E3FB42BD1D52500CA5129 /* Nightwave */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FC32BD7DFEC00CA5129 /* isElite */,
+				FA2E3FC22BD7DFE100CA5129 /* isDaily */,
+				FA2E3FAE2BD1D4F600CA5129 /* NightwaveView.swift */,
+			);
+			path = Nightwave;
+			sourceTree = "<group>";
+		};
+		FA2E3FB52BD1D52F00CA5129 /* Simaris */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FC42BD8005100CA5129 /* SimarisTargetView.swift */,
+			);
+			path = Simaris;
+			sourceTree = "<group>";
+		};
+		FA2E3FB62BD1D53C00CA5129 /* SyndicateCard */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FBD2BD32D4000CA5129 /* Nightwave */,
+				FA2E3FB22BD1D51F00CA5129 /* SyndicateCardView.swift */,
+			);
+			path = SyndicateCard;
+			sourceTree = "<group>";
+		};
+		FA2E3FB72BD1D57600CA5129 /* SyndicateBountyView */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FB82BD1D59000CA5129 /* SyndicateBountyView.swift */,
+			);
+			path = SyndicateBountyView;
+			sourceTree = "<group>";
+		};
+		FA2E3FBA2BD1DC6200CA5129 /* Accordian */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FBB2BD1DC7F00CA5129 /* CustomAccordian.swift */,
+			);
+			path = Accordian;
+			sourceTree = "<group>";
+		};
+		FA2E3FBD2BD32D4000CA5129 /* Nightwave */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FBE2BD32D5900CA5129 /* NightwaveMissionView.swift */,
+			);
+			path = Nightwave;
+			sourceTree = "<group>";
+		};
+		FA2E3FC22BD7DFE100CA5129 /* isDaily */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = isDaily;
+			sourceTree = "<group>";
+		};
+		FA2E3FC32BD7DFEC00CA5129 /* isElite */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = isElite;
+			sourceTree = "<group>";
+		};
+		FA2E3FC62BD8166C00CA5129 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FC72BD8167600CA5129 /* CustomSearchBar.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
 		FA3CDAC02B9BDCF9007DECF5 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3CDADE2BA0C974007DECF5 /* URLExtenstion.swift */,
+				FA2E3FC02BD4335500CA5129 /* SearchBar.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -179,6 +299,7 @@
 		FA3CDAE62BA22DAD007DECF5 /* WorldState */ = {
 			isa = PBXGroup;
 			children = (
+				FAB09B902BCECCEB000156B2 /* Deals */,
 				FA6D2EF42BCD60F80001C45F /* Cycles */,
 				FA894F0D2BBC7ACE0050A840 /* ArchonHunt */,
 				FA894F022BBB63C80050A840 /* Alerts */,
@@ -403,10 +524,11 @@
 		FA894EF12BB9E96F0050A840 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FA894EEF2BB88ECE0050A840 /* CountDownView.swift */,
-				FA894EF22BB9E9870050A840 /* CustomTabBar.swift */,
-				FA894EF42BB9F5850050A840 /* VoidTraderCountDownTimer.swift */,
-				FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */,
+				FA2E3FC62BD8166C00CA5129 /* SearchBar */,
+				FA2E3FBA2BD1DC6200CA5129 /* Accordian */,
+				FA2E3FAD2BD17FF600CA5129 /* TabBar */,
+				FA2E3FAC2BD17FE600CA5129 /* ProgressBar */,
+				FA2E3FAB2BD17FD100CA5129 /* Timers */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -597,6 +719,10 @@
 		FA996F172BB32C43002918EC /* Syndicates */ = {
 			isa = PBXGroup;
 			children = (
+				FA2E3FB72BD1D57600CA5129 /* SyndicateBountyView */,
+				FA2E3FB62BD1D53C00CA5129 /* SyndicateCard */,
+				FA2E3FB52BD1D52F00CA5129 /* Simaris */,
+				FA2E3FB42BD1D52500CA5129 /* Nightwave */,
 				FA996F182BB32C57002918EC /* SyndicatesView.swift */,
 			);
 			path = Syndicates;
@@ -609,6 +735,14 @@
 				FA996F1D2BB32DE2002918EC /* TimersView.swift */,
 			);
 			path = Timers;
+			sourceTree = "<group>";
+		};
+		FAB09B902BCECCEB000156B2 /* Deals */ = {
+			isa = PBXGroup;
+			children = (
+				FAB09B912BCECCF6000156B2 /* DailyDealsView.swift */,
+			);
+			path = Deals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -686,6 +820,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2E3FB92BD1D59000CA5129 /* SyndicateBountyView.swift in Sources */,
 				FA3CDAC22B9BDD09007DECF5 /* TestingFile.swift in Sources */,
 				FA894EC82BB5CD330050A840 /* NewsView.swift in Sources */,
 				FA894EFB2BBA113A0050A840 /* SteelPathView.swift in Sources */,
@@ -703,8 +838,12 @@
 				FA3CDAF02BA256A4007DECF5 /* CetusCycleView.swift in Sources */,
 				FA3CDAF42BA26448007DECF5 /* CambionCycleView.swift in Sources */,
 				FA3CDACD2BA0984D007DECF5 /* DashBoardView.swift in Sources */,
+				FA2E3FC52BD8005100CA5129 /* SimarisTargetView.swift in Sources */,
+				FA2E3FC12BD4335500CA5129 /* SearchBar.swift in Sources */,
 				FA894EE52BB60BB60050A840 /* JSONAnyService.swift in Sources */,
+				FA2E3FB32BD1D51F00CA5129 /* SyndicateCardView.swift in Sources */,
 				FA9147BE2B8AA36C00244D88 /* Warframes.swift in Sources */,
+				FA2E3FBC2BD1DC7F00CA5129 /* CustomAccordian.swift in Sources */,
 				FA6D2EF82BCD9EBD0001C45F /* CircuitChoicesView.swift in Sources */,
 				FA894EF32BB9E9870050A840 /* CustomTabBar.swift in Sources */,
 				FAFDD5E22BC5B6E000CA5E16 /* SplashScreen.swift in Sources */,
@@ -723,12 +862,16 @@
 				FA3CDAEE2BA24843007DECF5 /* Fissures.swift in Sources */,
 				FA3CDADB2BA0C319007DECF5 /* ArbitrationView.swift in Sources */,
 				FA3CDAF22BA25FBD007DECF5 /* OrbVallisCycleView.swift in Sources */,
+				FA2E3FC82BD8167600CA5129 /* CustomSearchBar.swift in Sources */,
+				FA2E3FAA2BD1657C00CA5129 /* CustomProgressBar.swift in Sources */,
 				FA9147B22B8941B600244D88 /* Weapons.swift in Sources */,
+				FA2E3FBF2BD32D5900CA5129 /* NightwaveMissionView.swift in Sources */,
 				FA3CDACB2B9E3C8F007DECF5 /* AlertsView.swift in Sources */,
 				FA3CDABF2B976887007DECF5 /* FavoritesModel.swift in Sources */,
 				FA99AA3F2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift in Sources */,
 				FA894EF52BB9F5850050A840 /* VoidTraderCountDownTimer.swift in Sources */,
 				FA894EDD2BB609F60050A840 /* Void Trader.swift in Sources */,
+				FA2E3FAF2BD1D4F600CA5129 /* NightwaveView.swift in Sources */,
 				FA9147BC2B89697900244D88 /* WeaponsListView.swift in Sources */,
 				FA894ECA2BB5CD3A0050A840 /* CodexView.swift in Sources */,
 				FA894EE82BB60E260050A840 /* EarthCycle.swift in Sources */,
@@ -737,6 +880,7 @@
 				FA3CDAC82B9E2F10007DECF5 /* WarframeView.swift in Sources */,
 				FA3CDAC62B9E2F01007DECF5 /* WarframeListView.swift in Sources */,
 				FA9147B02B893A5F00244D88 /* NetworkCall.swift in Sources */,
+				FAB09B922BCECCF6000156B2 /* DailyDealsView.swift in Sources */,
 				FA894F0F2BBC7ADD0050A840 /* ArchonHuntView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
