@@ -11,7 +11,9 @@ import SwiftUI
 struct Orokin_CollectiveApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView {
+                ContentView()
+            }
         }
     }
 }

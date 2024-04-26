@@ -10,13 +10,7 @@ import SwiftUI
 struct DailyDealsView: View {
     var networkModel: NetworkCall
     
-    private func calculatePercentage(oldValue: Double, newValue: Double) -> Double {
-        guard oldValue != 0 else {
-            return 0
-        }
-        
-        return ((newValue - oldValue) / oldValue) * 100
-    }
+    
     var body: some View {
         VStack {
             
@@ -55,17 +49,24 @@ struct DailyDealsView: View {
                                 .foregroundStyle(.silverChalice)
                                 .font(.system(size: 14))
                         }
+                        
+                        
  
                     }
-                    HStack {
-                        Text("Only")
-                        Text("\(item.total - item.sold)")
+                    if (item.total - item.sold) == 0 {
+                        Text("Sold Out")
                             .foregroundStyle(.silverChalice)
-                        Text("Remaining")
-                           
+                    } else{
+                        HStack {
+                            Text("Only")
+                            Text("\(item.total - item.sold)")
+                                .foregroundStyle(.silverChalice)
+                            Text("Remaining")
+                            
+                        }
+                        .fontWeight(.semibold)
+                        .font(.system(size: 14))
                     }
-                    .fontWeight(.semibold)
-                    .font(.system(size: 14))
                 }
             }
         }
@@ -79,5 +80,7 @@ struct DailyDealsView: View {
 }
 
 #Preview {
-    DailyDealsView(networkModel: NetworkCall())
+    RootView{
+        ContentView()
+    }
 }

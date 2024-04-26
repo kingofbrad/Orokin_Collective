@@ -16,6 +16,8 @@
 		FA2E3FC12BD4335500CA5129 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FC02BD4335500CA5129 /* SearchBar.swift */; };
 		FA2E3FC52BD8005100CA5129 /* SimarisTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FC42BD8005100CA5129 /* SimarisTargetView.swift */; };
 		FA2E3FC82BD8167600CA5129 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FC72BD8167600CA5129 /* CustomSearchBar.swift */; };
+		FA2E3FCB2BD881F900CA5129 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FCA2BD881F900CA5129 /* Item.swift */; };
+		FA2E3FCE2BDC033C00CA5129 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E3FCD2BDC033C00CA5129 /* Toast.swift */; };
 		FA3CDABF2B976887007DECF5 /* FavoritesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDABE2B976887007DECF5 /* FavoritesModel.swift */; };
 		FA3CDAC22B9BDD09007DECF5 /* TestingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAC12B9BDD09007DECF5 /* TestingFile.swift */; };
 		FA3CDAC62B9E2F01007DECF5 /* WarframeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CDAC52B9E2F01007DECF5 /* WarframeListView.swift */; };
@@ -83,6 +85,8 @@
 		FA2E3FC02BD4335500CA5129 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FA2E3FC42BD8005100CA5129 /* SimarisTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimarisTargetView.swift; sourceTree = "<group>"; };
 		FA2E3FC72BD8167600CA5129 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		FA2E3FCA2BD881F900CA5129 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FA2E3FCD2BDC033C00CA5129 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		FA3CDABE2B976887007DECF5 /* FavoritesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModel.swift; sourceTree = "<group>"; };
 		FA3CDAC12B9BDD09007DECF5 /* TestingFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingFile.swift; sourceTree = "<group>"; };
 		FA3CDAC52B9E2F01007DECF5 /* WarframeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarframeListView.swift; sourceTree = "<group>"; };
@@ -252,6 +256,22 @@
 			path = SearchBar;
 			sourceTree = "<group>";
 		};
+		FA2E3FC92BD881F100CA5129 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FCA2BD881F900CA5129 /* Item.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		FA2E3FCC2BDC032F00CA5129 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA2E3FCD2BDC033C00CA5129 /* Toast.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FA3CDAC02B9BDCF9007DECF5 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +389,7 @@
 		FA894ECD2BB608590050A840 /* Codex */ = {
 			isa = PBXGroup;
 			children = (
+				FA2E3FC92BD881F100CA5129 /* Items */,
 				FA894ED12BB608970050A840 /* Weapons */,
 				FA894ED02BB6088C0050A840 /* Warframes */,
 			);
@@ -633,6 +654,7 @@
 		FA91479A2B7E7BF000244D88 /* Orokin Collective */ = {
 			isa = PBXGroup;
 			children = (
+				FA2E3FCC2BDC032F00CA5129 /* Helpers */,
 				FA894EF12BB9E96F0050A840 /* Components */,
 				FA3CDADD2BA0C954007DECF5 /* Services */,
 				FA3CDADC2BA0C947007DECF5 /* Extenstions */,
@@ -866,8 +888,10 @@
 				FA2E3FAA2BD1657C00CA5129 /* CustomProgressBar.swift in Sources */,
 				FA9147B22B8941B600244D88 /* Weapons.swift in Sources */,
 				FA2E3FBF2BD32D5900CA5129 /* NightwaveMissionView.swift in Sources */,
+				FA2E3FCB2BD881F900CA5129 /* Item.swift in Sources */,
 				FA3CDACB2B9E3C8F007DECF5 /* AlertsView.swift in Sources */,
 				FA3CDABF2B976887007DECF5 /* FavoritesModel.swift in Sources */,
+				FA2E3FCE2BDC033C00CA5129 /* Toast.swift in Sources */,
 				FA99AA3F2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift in Sources */,
 				FA894EF52BB9F5850050A840 /* VoidTraderCountDownTimer.swift in Sources */,
 				FA894EDD2BB609F60050A840 /* Void Trader.swift in Sources */,

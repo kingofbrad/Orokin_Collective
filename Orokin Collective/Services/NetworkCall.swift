@@ -11,6 +11,11 @@ class NetworkCall: ObservableObject {
     @Published var showError = false
     @Published var weapon: Weapon = []
     @Published var warframe: Warframe = []
+    @Published var items: Item = []
+    @Published var itemSearch: String = ""
+    
+    @Published var showToast: Bool = false
+
     
     
     //MARK: - API Endpoint
@@ -30,6 +35,38 @@ class NetworkCall: ObservableObject {
         }
         let worldStateResponse = try JSONDecoder().decode(WorldState.self, from: data)
         worldState = worldStateResponse
+    }
+    
+    func fetchItem(searchTerm: String) async throws {
+        guard !searchTerm.isEmpty else {
+            return
+        }
+        
+        
+        do{
+            guard let requestURL = URL(string: "\(endPoint)/\(APIPathEndPoint.items)/\(searchTerm)") else {
+                throw APIError.invalidURL
+            }
+            
+            let (data, response) = try await URLSession.shared.data(from: requestURL)
+            guard let response = response as? HTTPURLResponse else {
+                throw APIError.invaildServerResponse
+            }
+            
+            switch response.statusCode{
+            case 400..<500: throw APIError.invaildClientResponse
+            case 500..<600: throw APIError.invaildServerResponse
+            default: break
+            }
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let itemResponse = try decoder.decode(Item.self, from: data)
+            items = itemResponse
+        } catch let DecodingError.typeMismatch(type, context) {
+            throw APIError.typeMismatch(expected: type, context: context)
+        } catch {
+            throw error
+        }
     }
     
     //MARK: - synthTargets API Call
@@ -86,6 +123,7 @@ enum APIError: Error {
     case invaildClientResponse
     case invalidData
     case invaildServerResponse
+    case typeMismatch(expected: Any.Type, context: DecodingError.Context)
 }
 
 enum APIPlayformPathEndPoint {
@@ -114,6 +152,7 @@ enum APIPathEndPoint {
     case warframes
     case events
     case synthTargets
+    case items
     
     var path: String {
         switch self {
@@ -125,6 +164,9 @@ enum APIPathEndPoint {
             return "weapons"
         case .warframes:
             return "warframes"
+        case .items:
+            return "items"
         }
+    
     }
 }

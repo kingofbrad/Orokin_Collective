@@ -235,7 +235,7 @@ struct ConclaveChallenge: Codable {
     let activation: String
     let amount: Int
     let mode: String
-    let category: Category
+    let category: CycleCategory
     let eta: String
     let expired: Bool
     let daily: Bool
@@ -267,7 +267,7 @@ struct ConclaveChallenge: Codable {
 
 
 
-enum Category: String, Codable {
+enum CycleCategory: String, Codable {
     case day = "day"
     case week = "week"
     case weekRoot = "week_root"
@@ -915,7 +915,7 @@ struct Job: Codable {
     let standingStages: [Int]
     let minMr: Int
     let expiry: String
-    let timeBound: Category?
+    let timeBound: CycleCategory?
     let isVault: Bool?
     let locationTag: String?
     let timeBoound: String?

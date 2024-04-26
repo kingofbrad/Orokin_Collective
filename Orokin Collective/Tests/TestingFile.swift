@@ -18,16 +18,14 @@ import SwiftUI
 
 struct TestingFile: View {
     @StateObject var networkModel = NetworkCall()
-    @State private var isSearching: String = ""
-    @State private var filteredTargets: [Synthtarget] = []
-    
- 
-    
-    
     var body: some View {
         VStack {
-            
+            Button("Show Toast") {
+                //
+            }
         }
+       
+
     }
 }
 

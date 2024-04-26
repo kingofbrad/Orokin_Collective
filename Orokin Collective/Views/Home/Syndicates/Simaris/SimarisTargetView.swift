@@ -72,7 +72,7 @@ struct SimarisTargetView: View {
                 .padding(.horizontal, 15)
                 .foregroundStyle(textColor)
                 .fontWeight(.semibold)
-            CustomSearchBar(searchText: $searchText, backgroundColor: textColor, textColor: factionColor)
+            CustomSearchBar(searchText: $searchText, backgroundColor: textColor, textColor: factionColor, cancelButtonColor: textColor, placeHolderText: "for targets")
             ScrollView {
                 ForEach(targets, id: \.name) { target in
                     TargetView(name: target.name, factionColor: factionColor, textColor: textColor) {

@@ -39,8 +39,13 @@ struct ContentView: View {
                                 .tag(Tab.book)
                         }
                         
-                        
+                        Button {
+                            Toast.shared.present(title: "Unexpected Error", symbol: "exclamationmark.triangle",tint: .red, isUserInteractionEnabled: true ,timing: .long)
+                        } label: {
+                            Text("Present Toast")
+                        }
                         CustomTabBar(selectedTab: $selectedTab)
+                       
                     }
                     
                     .background(
@@ -79,6 +84,7 @@ struct ContentView: View {
             } catch APIError.invaildServerResponse {
                 print("invaild Server Response")
             } catch {
+                Toast.shared.present(title: "Unexpected Error", symbol: "exclamationmark.triangle", tint: .primary)
                 print("Unexcepted Error has appeared \(error)")
 
             }
@@ -93,13 +99,17 @@ struct ContentView: View {
             } catch APIError.invalidURL {
                 print("invalid URL")
             } catch APIError.invaildClientResponse {
-                print("invaild Client Response")
+                
+                Toast.shared.present(title: "Client Error", symbol: "exclamationmark.triangle", tint: .primary)
                 networkModel.showError = true
             } catch APIError.invalidData {
-                print("invaild Data")
+                Toast.shared.present(title: "Invalid Data", symbol: "exclamationmark.triangle", tint: .primary)
+                
             } catch APIError.invaildServerResponse {
+                Toast.shared.present(title: "Server Error", symbol: "exclamationmark.triangle", tint: .primary)
                 print("invaild Server Response")
             } catch {
+                Toast.shared.present(title: "Unexpected Error", symbol: "exclamationmark.triangle", tint: .primary)
                 print("Unexcepted Error has appeared \(error)")
 
             }
@@ -114,8 +124,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    
-    NavigationStack {
+    RootView {
         ContentView()
     }
 }
