@@ -7,7 +7,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-# Product Name
+# Orokin Collective
 <br />
 <p align="center">
   <a href="https://github.com/alexanderritik/Best-README-Template">
