@@ -16,21 +16,23 @@ import SwiftUI
 
 
 
+
 struct TestingFile: View {
     @StateObject var networkModel = NetworkCall()
     var body: some View {
+        // Portfolio
         VStack {
-            Button("Show Toast") {
-                //
-            }
+            Text("Bradlee King")
+                .foregroundStyle(.marigold)
+                .bold()
+                .font(.system(size: 40))
+            Text("IOS Developer")
+                .foregroundStyle(.silverChalice)
+                .fontWeight(.semibold)
+                .font(.system(size: 30))
         }
-       
-
+        // Digial Media Development
     }
-}
-
-#Preview {
-    TestingFile()
 }
 
 

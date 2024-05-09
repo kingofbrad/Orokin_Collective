@@ -7,35 +7,27 @@
 
 import SwiftUI
 
-struct TextView: View {
-    @State private var searchText: String = ""
-    var body: some View {
-        VStack {
-            CustomSearchBarTest(searchText: $searchText)
-            CustomSearchBar(searchText: $searchText, backgroundColor: .blueCharcoal, textColor: .silverChalice, cancelButtonColor: .silverChalice, placeHolderText: "the codex")
-            Text(searchText)
-        }
-    }
-}
 
-#Preview {
-    TextView()
-}
 
 struct CustomSearchBar: View {
     @Binding var searchText: String
     var backgroundColor: Color
     var textColor: Color
     var cancelButtonColor: Color
-    @State private var isEditing: Bool = false
-    let placeHolderText: String
     
+    @State private var isEditing: Bool = false
+    @State var isCategory: Bool
+    @State private var isMenuOpen: Bool = false
+    
+    let placeHolderText: String
+    var onCommit: () -> Void
+    var content: () -> AnyView
     var body: some View {
         HStack {
             
             HStack{
                 Image(systemName: "magnifyingglass")
-                TextField("", text: $searchText)
+                TextField("", text: $searchText, onCommit: onCommit)
                     .placeholder(when: searchText.isEmpty) {
                         Text("Search \(placeHolderText)")
                     }
@@ -44,22 +36,25 @@ struct CustomSearchBar: View {
                     }
                 Spacer()
                 
+                
+                
                 if isEditing {
                     Button {
                         searchText = ""
                     } label: {
                         Image(systemName: "xmark")
-                            
                     }
-                    
-                    
+                } else {
+                    if isCategory {
+                        content()
+                    }
                 }
             }
             .padding(10)
             .foregroundStyle(textColor)
             .background(backgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: 15))
-            .padding(.horizontal,10)
+           
             .animation(.easeInOut, value: isEditing)
             
             if isEditing {
@@ -83,7 +78,7 @@ struct CustomSearchBar: View {
 }
 
 #Preview {
-    CustomSearchBar(searchText: .constant("Search"), backgroundColor: .chalky, textColor: .cafeRoyale, cancelButtonColor: .chalky, placeHolderText: "for targets")
+    CustomSearchBar(searchText: .constant("Search"), backgroundColor: .blueCharcoal, textColor: .silverChalice, cancelButtonColor: .silverChalice, isCategory: true, placeHolderText: "for targets", onCommit: {}, content: {AnyView(EmptyView())})
 }
 
 extension View {

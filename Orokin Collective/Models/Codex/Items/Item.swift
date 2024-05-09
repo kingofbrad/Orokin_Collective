@@ -46,7 +46,7 @@ struct ItemElement: Codable, Identifiable {
     let wikiaThumbnail: String?
     let wikiaUrl: String?
     let accuracy: Double?
-    let attacks: [ItemAttack]?
+    let attacks: [Attack]?
     let buildPrice: Int?
     let buildQuantity: Int?
     let buildTime: Int?
@@ -285,12 +285,12 @@ struct Ability: Codable {
 }
 
 // MARK: - ItemAttack
-struct ItemAttack: Codable {
+struct Attack: Codable {
     let name: String
     let speed: Double?
-    let critChance: Double
-    let critMult: Double
-    let statusChance: Double
+    let critChance: Double?
+    let critMult: Double?
+    let statusChance: Double?
     let shotType: ShotType?
     let shotSpeed: Int?
     let flight: Int?
@@ -474,7 +474,8 @@ enum FullName: String, Codable {
     case lotusTypesChallengesComplicationsUndetected = "/Lotus/Types/Challenges/Complications/Undetected"
 }
 
-enum Category: String, Codable {
+enum Category: String, CaseIterable {
+    case all = "All"
     case arcanes = "Arcanes"
     case archGun = "Arch-Gun"
     case archMelee = "Arch-Melee"

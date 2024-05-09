@@ -9,11 +9,9 @@ class NetworkCall: ObservableObject {
     @Published var synthTargets: Synthtargets = []
     @Published var events: Event = []
     @Published var showError = false
-    @Published var weapon: Weapon = []
-    @Published var warframe: Warframe = []
     @Published var items: Item = []
     @Published var itemSearch: String = ""
-    
+    @Published var query: String = ""
     @Published var showToast: Bool = false
 
     
@@ -36,15 +34,14 @@ class NetworkCall: ObservableObject {
         let worldStateResponse = try JSONDecoder().decode(WorldState.self, from: data)
         worldState = worldStateResponse
     }
-    
+    // MARK: - Items Search API Call
     func fetchItem(searchTerm: String) async throws {
         guard !searchTerm.isEmpty else {
             return
         }
         
-        
         do{
-            guard let requestURL = URL(string: "\(endPoint)/\(APIPathEndPoint.items)/\(searchTerm)") else {
+            guard let requestURL = URL(string: "\(endPoint)/\(APIPathEndPoint.items)/search/\(searchTerm)") else {
                 throw APIError.invalidURL
             }
             
@@ -69,6 +66,37 @@ class NetworkCall: ObservableObject {
         }
     }
     
+    //MARK: -
+    func searchItem(searchTerm: String) async throws {
+        guard !searchTerm.isEmpty else { return }
+        
+        do {
+            guard let requestURL = URL(string: "\(endPoint)/\(APIPathEndPoint.items)/\(searchTerm)") else {
+                throw APIError.invalidURL
+            }
+            
+            let (data, response) = try await URLSession.shared.data(from: requestURL)
+            guard let response = response as? HTTPURLResponse else {
+                throw APIError.invaildServerResponse
+            }
+            
+            switch response.statusCode{
+            case 400..<500: throw APIError.invaildClientResponse
+            case 500..<600: throw APIError.invaildServerResponse
+            default: break
+            }
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let itemReponse = try decoder.decode(Item.self, from: data)
+            items = itemReponse
+        } catch let DecodingError.typeMismatch(type, context) {
+            throw APIError.typeMismatch(expected: type, context: context)
+        } catch {
+            throw error
+        }
+    }
+    
     //MARK: - synthTargets API Call
     func fetchSynthTargets() async throws {
         let request = URL(string: "\(endPoint)/\(APIPathEndPoint.synthTargets)")
@@ -85,36 +113,9 @@ class NetworkCall: ObservableObject {
         synthTargets = synthTargetsResponse
         
     }
-    // MARK: - Weapons API Call
-    func fetchWeaponsData() async throws {
-        let request =  URL(string: "\(endPoint)/\(APIPathEndPoint.weapons)")
-        let (data, response) = try await URLSession.shared.data(from: request!)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw APIError.invaildServerResponse
-        }
-        let weaponResponse = try JSONDecoder().decode(Weapon.self, from: data)
-        weapon = weaponResponse
-    }
+  
     
-    //     MARK: - Warframe API Call
-    func fetchWarframesData() async throws {
-        let request = URL(string: "\(endPoint)/\(APIPathEndPoint.warframes)")
-        let (data, response) = try await URLSession.shared.data(from: request!)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw APIError.invaildServerResponse
-        }
-        let warframeResponse = try JSONDecoder().decode(Warframe.self, from: data)
-        warframe = warframeResponse
-    }
-    func fetchEventsData() async throws {
-        let request = URL(string: "\(endPoint)/\(APIPlayformPathEndPoint.pc)/\(APIPathEndPoint.events)")
-        let (data, response) = try await URLSession.shared.data(from: request!)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw APIError.invaildServerResponse
-        }
-        let eventsResponse = try JSONDecoder().decode(Event.self, from: data)
-        events = eventsResponse
-    }
+   
     
 }
 

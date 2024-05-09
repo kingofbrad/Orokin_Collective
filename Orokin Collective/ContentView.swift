@@ -40,7 +40,7 @@ struct ContentView: View {
                         }
                         
                         Button {
-                            Toast.shared.present(title: "Unexpected Error", symbol: "exclamationmark.triangle",tint: .red, isUserInteractionEnabled: true ,timing: .long)
+                            Toast.shared.present(title: "Invalid Data", symbol: "icloud.slash",tint: .red, isUserInteractionEnabled: true ,timing: .long)
                         } label: {
                             Text("Present Toast")
                         }
@@ -98,15 +98,15 @@ struct ContentView: View {
                 isFetchingData = false
             } catch APIError.invalidURL {
                 print("invalid URL")
+                Toast.shared.present(title: "Invalid URL", symbol: "network.slash", tint: .primary)
             } catch APIError.invaildClientResponse {
-                
-                Toast.shared.present(title: "Client Error", symbol: "exclamationmark.triangle", tint: .primary)
+                Toast.shared.present(title: "Client Error", symbol: "wifi.slash", tint: .primary)
                 networkModel.showError = true
             } catch APIError.invalidData {
-                Toast.shared.present(title: "Invalid Data", symbol: "exclamationmark.triangle", tint: .primary)
+                Toast.shared.present(title: "Invalid Data", symbol: "icloud.slash", tint: .primary)
                 
             } catch APIError.invaildServerResponse {
-                Toast.shared.present(title: "Server Error", symbol: "exclamationmark.triangle", tint: .primary)
+                Toast.shared.present(title: "Server Error", symbol: "xmark.icloud.fill", tint: .primary)
                 print("invaild Server Response")
             } catch {
                 Toast.shared.present(title: "Unexpected Error", symbol: "exclamationmark.triangle", tint: .primary)
