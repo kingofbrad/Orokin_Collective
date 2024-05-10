@@ -288,8 +288,8 @@ struct Ability: Codable {
 struct Attack: Codable {
     let name: String
     let speed: Double?
-    let critChance: Double?
-    let critMult: Double?
+    let critChance: Int?
+    let critMult: Int?
     let statusChance: Double?
     let shotType: ShotType?
     let shotSpeed: Int?
@@ -623,9 +623,9 @@ struct Component: Codable {
 struct ComponentAttack: Codable {
     let name: Name
     let speed: Double
-    let critChance: Double
-    let critMult: Double
-    let statusChance: Double
+    let critChance: Int?
+    let critMult: Int?
+    let statusChance: Double?
     let shotType: ShotType?
     let damage: Damage
     let falloff: Falloff?

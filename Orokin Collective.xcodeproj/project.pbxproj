@@ -67,6 +67,9 @@
 		FAB09B922BCECCF6000156B2 /* DailyDealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB09B912BCECCF6000156B2 /* DailyDealsView.swift */; };
 		FAB76CA92BC190E900DB2CAB /* SortieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76CA82BC190E900DB2CAB /* SortieView.swift */; };
 		FAFDD5E22BC5B6E000CA5E16 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD5E12BC5B6E000CA5E16 /* SplashScreen.swift */; };
+		FAFEECC12BECFABD00CA5EBC /* CodexCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFEECC02BECFABD00CA5EBC /* CodexCard.swift */; };
+		FAFEECC32BECFADB00CA5EBC /* CodexDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFEECC22BECFADB00CA5EBC /* CodexDetailView.swift */; };
+		FAFEECC62BEEB58200CA5EBC /* ArcaneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFEECC52BEEB58200CA5EBC /* ArcaneDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +135,9 @@
 		FAB09B912BCECCF6000156B2 /* DailyDealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDealsView.swift; sourceTree = "<group>"; };
 		FAB76CA82BC190E900DB2CAB /* SortieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortieView.swift; sourceTree = "<group>"; };
 		FAFDD5E12BC5B6E000CA5E16 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		FAFEECC02BECFABD00CA5EBC /* CodexCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexCard.swift; sourceTree = "<group>"; };
+		FAFEECC22BECFADB00CA5EBC /* CodexDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexDetailView.swift; sourceTree = "<group>"; };
+		FAFEECC52BEEB58200CA5EBC /* ArcaneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcaneDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +357,8 @@
 		FA894EC62BB5C60F0050A840 /* Codex */ = {
 			isa = PBXGroup;
 			children = (
+				FAFEECBF2BECFAA200CA5EBC /* Codex Card */,
+				FAFEECBE2BECFA9600CA5EBC /* Codex Detail View */,
 				FA894EC92BB5CD3A0050A840 /* CodexView.swift */,
 			);
 			path = Codex;
@@ -717,6 +725,31 @@
 			path = Deals;
 			sourceTree = "<group>";
 		};
+		FAFEECBE2BECFA9600CA5EBC /* Codex Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				FAFEECC42BEEB57700CA5EBC /* Arcanes */,
+				FAFEECC22BECFADB00CA5EBC /* CodexDetailView.swift */,
+			);
+			path = "Codex Detail View";
+			sourceTree = "<group>";
+		};
+		FAFEECBF2BECFAA200CA5EBC /* Codex Card */ = {
+			isa = PBXGroup;
+			children = (
+				FAFEECC02BECFABD00CA5EBC /* CodexCard.swift */,
+			);
+			path = "Codex Card";
+			sourceTree = "<group>";
+		};
+		FAFEECC42BEEB57700CA5EBC /* Arcanes */ = {
+			isa = PBXGroup;
+			children = (
+				FAFEECC52BEEB58200CA5EBC /* ArcaneDetailView.swift */,
+			);
+			path = Arcanes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -795,6 +828,7 @@
 				FA2E3FB92BD1D59000CA5129 /* SyndicateBountyView.swift in Sources */,
 				FA3CDAC22B9BDD09007DECF5 /* TestingFile.swift in Sources */,
 				FA894EC82BB5CD330050A840 /* NewsView.swift in Sources */,
+				FAFEECC12BECFABD00CA5EBC /* CodexCard.swift in Sources */,
 				FA894EFB2BBA113A0050A840 /* SteelPathView.swift in Sources */,
 				FA3CDAE32BA2232E007DECF5 /* CetusCycle.swift in Sources */,
 				FA996F142BB32BF9002918EC /* FissuresView.swift in Sources */,
@@ -830,8 +864,10 @@
 				FA3CDADF2BA0C974007DECF5 /* URLExtenstion.swift in Sources */,
 				FA894EF02BB88ECE0050A840 /* CountDownView.swift in Sources */,
 				FA3CDAEE2BA24843007DECF5 /* Fissures.swift in Sources */,
+				FAFEECC62BEEB58200CA5EBC /* ArcaneDetailView.swift in Sources */,
 				FA3CDADB2BA0C319007DECF5 /* ArbitrationView.swift in Sources */,
 				FA3CDAF22BA25FBD007DECF5 /* OrbVallisCycleView.swift in Sources */,
+				FAFEECC32BECFADB00CA5EBC /* CodexDetailView.swift in Sources */,
 				FA2E3FC82BD8167600CA5129 /* CustomSearchBar.swift in Sources */,
 				FA2E3FAA2BD1657C00CA5129 /* CustomProgressBar.swift in Sources */,
 				FA2E3FBF2BD32D5900CA5129 /* NightwaveMissionView.swift in Sources */,

@@ -16,7 +16,7 @@ struct ContentView: View {
     
     
     init() {
-        UITabBar.appearance().isHidden = true
+        UITabBar.appearance().backgroundColor = .woodsmoke
     }
     
     var body: some View {
@@ -33,27 +33,28 @@ struct ContentView: View {
                         TabView(selection: $selectedTab) {
                             DashBoardView(networkModel: networkModel)
                                 .tag(Tab.house)
+                                .tabItem { Label("Home", systemImage: "house")}
                             NewsView(networkModel: networkModel)
                                 .tag(Tab.newspaper)
+                                .tabItem { Label("News", systemImage: "newspaper")}
+
                             CodexView()
                                 .tag(Tab.book)
+                                .tabItem { Label("Codex", systemImage: "book")}
+
                         }
-                        
-                        Button {
-                            Toast.shared.present(title: "Invalid Data", symbol: "icloud.slash",tint: .red, isUserInteractionEnabled: true ,timing: .long)
-                        } label: {
-                            Text("Present Toast")
-                        }
-                        CustomTabBar(selectedTab: $selectedTab)
+//                        CustomTabBar(selectedTab: $selectedTab)
                        
                     }
-                    
                     .background(
-                        Image("VitruvianLn")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .ignoresSafeArea(.all, edges: .all)
+//                        Image("VitruvianLn")
+//                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                            .ignoresSafeArea(.all, edges: .all)
+                        
+                        Color.blackPearl
                     )
                 }
+                
                 .fullScreenCover(isPresented: $openSettings, content: {
                     Button {
                         openSettings.toggle()
@@ -68,8 +69,11 @@ struct ContentView: View {
                 .onDisappear {
                     timer?.invalidate()
                 }
+                .ignoresSafeArea(.keyboard)
             }
         }
+        
+        
         .refreshable {
             do {
                 try await networkModel.fetchWorldState()

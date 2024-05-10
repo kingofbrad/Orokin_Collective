@@ -74,6 +74,7 @@ struct CustomSearchBar: View {
                 
             }
         }
+        
     }
 }
 

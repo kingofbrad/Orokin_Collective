@@ -63,7 +63,7 @@ struct CustomTabBar: View {
                 }
             }
             .frame(height: 80)
-            .background(Color.blueCharcoal)
+            .background(Color.woodsmoke)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(.horizontal, 10)
             

@@ -104,26 +104,37 @@ struct CodexView: View {
                 }
                 
                 ScrollView {
-                    ForEach(filteredItems, id:\.uniqueName) { item in
-                        NavigationLink {
-                            
-                        } label: {
-                            CodexCard(name: item.name, desc: item.description ?? "", imageURL: item.imageName ?? "")
+                    VStack{
+                        ForEach(filteredItems, id:\.uniqueName) { item in
+                            NavigationLink {
+                                CodexDetailView(name:item.name, desc: item.description ?? "" ,imageURL: item.imageName ?? "", componentsArray: item.components ?? [], tradable: item.tradable,levelStats: item.levelStats ?? [],drops: item.drops ?? [], category: Category(rawValue: item.category) ?? Category.all)
+                            } label: {
+                                CodexCard(name: item.name, desc: item.description ?? "", imageURL: item.imageName ?? "")
+                                    .scrollTransition(.interactive, axis: .vertical) { view, phase in
+                                        view.opacity(phase.value > 0 ? 0 : 1.0)
+                                            .offset(x: phase.value < 0 ? 500 : 0)
+                                            
+                                    }
+                                    
+                                    
+                            }
                         }
                     }
+                    .scrollTargetLayout()
+                    
                 }
+                .scrollIndicators(.hidden)
+                .scrollTargetBehavior(.viewAligned)
+                
                 
                 Spacer()
             }
             .padding(.horizontal)
             .foregroundStyle(Color.white)
-            .background(
-                Image("VitruvianLn")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .ignoresSafeArea()
-            )
-           
+            .background(Color.blackPearl)
+            .ignoresSafeArea(.keyboard)
         }
+        
         
         
     }
@@ -133,38 +144,6 @@ struct CodexView: View {
     CodexView()
 }
 
-struct CodexCard: View {
-    let name: String
-    let desc: String
-    let imageURL: String
-    
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(name)
-                    .fontWeight(.bold)
-                    .font(.system(size: 25))
-                Spacer()
-                Text(desc)
-                    .fontWeight(.semibold)
-                    .font(.system(size: 15))
-            }
-            Spacer()
-            
-            AsyncImage(url: URL(string: "https://raw.githubusercontent.com/wfcd/warframe-items/master/data/img/\(imageURL)") ) { image in image.resizable() } placeholder: { Color.gray } .frame(width: 50, height: 50)
-                .clipShape(Circle())
-                .aspectRatio(contentMode: .fit)
-        }
-        .frame(height: 50)
-        .padding()
-        .background(Color.blueCharcoal)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        
-        
-    }
-}
 
-#Preview {
-    CodexCard(name: "Dante", desc: "Seeker of knowledge. Keeper of history. Daring researcher of Leverian lore. Dante composes arcane tales to support allies and devastate enemies.", imageURL: "dante.png")
-}
+
+

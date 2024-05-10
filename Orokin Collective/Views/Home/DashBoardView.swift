@@ -39,12 +39,13 @@ struct DashBoardView: View {
       
         
         .foregroundStyle(Color.white)
-        .background(
-            Image("VitruvianLn")
-            //                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-        )
+//        .background(
+//            Image("VitruvianLn")
+//            //                .resizable()
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .ignoresSafeArea()
+//        )
+        .background(Color.blackPearl)
         
         
     }
