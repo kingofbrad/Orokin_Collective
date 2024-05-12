@@ -14,6 +14,7 @@ Orokin Collective is an IOS app inspired by [Warframe Hub](https://hub.warframes
 - Open World Syndicates Bounites
 - Nightwave Missions
 - Notifications (Currently in Progress)
+- Favorite your items in the Codex
 
 ## Requirements
 
