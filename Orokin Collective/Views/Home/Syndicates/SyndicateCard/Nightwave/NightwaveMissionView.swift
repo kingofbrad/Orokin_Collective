@@ -95,9 +95,7 @@ struct NightwaveMissionView: View {
     }
 }
 
-#Preview {
-    NightwaveMissionView(isPresented: .constant(false ), faction: "Nightwave", factionColor:.crownOfThorns, imageSize: CGSize(width: 50, height: 50), textColor: .cornflowerLilac, activeChallenge: [], expiry: "")
-}
+
 
 
 struct NightwaveMissionElement: View {
@@ -155,3 +153,6 @@ enum NightwaveSigils: String, CaseIterable {
 }
 
 
+#Preview {
+    NightwaveMissionView(isPresented: .constant(false ), faction: "Nightwave", factionColor:.crownOfThorns, imageSize: CGSize(width: 50, height: 50), textColor: .cornflowerLilac, activeChallenge: [], expiry: "")
+}

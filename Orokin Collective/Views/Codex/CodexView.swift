@@ -9,70 +9,111 @@
 
 import SwiftUI
 
-struct SearchResult: Decodable {
-    let items: [ItemElement]  // Assuming ItemElement is your model type
-}
+
 
 struct CodexView: View {
     @State private var searchText: String = ""
     @ObservedObject var networkModel = NetworkCall()
     
-    @State private var isSearching: Bool = false
-    @State private var openSearch: Bool = false
     @State private var showToast: Bool = false
-    @State private var isMenuOpen: Bool = false
     
     @State private var selectedCategory: Category = .all
     let categories: [Category] = Category.allCases
     
+    @State private var favoriteItems: [ItemElement] = []
+    @State private var showFavoritesOnly: Bool = false
+    
+//    @State private var selectedItem: ItemElement
     
     private var filteredItems: [ItemElement] {
-        if selectedCategory.rawValue == Category.all.rawValue {
-            return networkModel.items
-        } else {
-            return networkModel.items.filter { $0.category.contains(selectedCategory.rawValue) }
-        }
-    }
-    
-    
-    
-    
-    private func performSearch() async  {
-        do {
-            guard !searchText.isEmpty else{
-                return
-            }
-            
-            try await networkModel.fetchItem(searchTerm: searchText )
-        } catch {
-            showToast = true
-            print("Error fetching item:", error)
-        }
+        let itemsToShow = showFavoritesOnly ? favoriteItems : networkModel.items
         
+        if selectedCategory.rawValue == Category.all.rawValue {
+            return itemsToShow
+        } else {
+            return itemsToShow.filter { $0.category.contains(selectedCategory.rawValue) }
+        }
     }
     
-    private func performItemSearch() async {
-        do {
-            guard !searchText.isEmpty else {return}
-            
-             try await networkModel.searchItem(searchTerm: searchText)
-            
-        } catch {
-            showToast = true
-            print("Error fetching item:", error)
+    private func performSearch()  {
+        Task {
+            do {
+                guard !searchText.isEmpty else {
+                    return
+                }
+                
+                try await networkModel.fetchItem(searchTerm: searchText)
+            } catch {
+                showToast = true
+                print("Error fetching item:", error)
+            }
         }
     }
     
     var body: some View {
         NavigationStack {
             VStack {
-                CustomSearchBar(searchText: $searchText, backgroundColor: .blueCharcoal, textColor: .silverChalice, cancelButtonColor: .silverChalice, isCategory: true, placeHolderText: "the codex", onCommit: {
-                    Task {
-                        await performSearch()
+                CustomSearchBar(searchText: $searchText, backgroundColor: .blueCharcoal, textColor: .silverChalice, cancelButtonColor: .silverChalice, isCategory: true, placeHolderText: "the codex", onCommit: { performSearch()})
+                
+                List(filteredItems, id:\.uniqueName) { item in
+                    ZStack{
+                        NavigationLink(destination:  CodexDetailView(name: item.name,
+                                                                     desc: item.description ?? "",
+                                                                     tradable: item.tradable,
+                                                                     imageName: item.imageName ?? "",
+                                                                     items: networkModel.items,
+                                                                     category: Category(rawValue: item.category) ?? Category.all,
+                                                                     selectedItem: item)) {EmptyView()}
+                            
+                            .listRowBackground(Color.clear)
+                            .scrollIndicators(.hidden)
+                            .listRowSeparator(.hidden)
+
+                        CodexCard(name: item.name, desc: item.description ?? "", imageURL: item.imageName ?? "")
+                            .contextMenu {
+                                Button(action: {
+                                    // Toggle favorite status
+                                    if let index = favoriteItems.firstIndex(where: { $0.uniqueName == item.uniqueName }) {
+                                        favoriteItems.remove(at: index)
+                                    } else {
+                                        favoriteItems.append(item)
+                                    }
+                                }) {
+                                    // Display appropriate text based on favorite status
+                                    Text(favoriteItems.contains(where: { $0.uniqueName == item.uniqueName }) ? "Remove from Favorites" : "Add to Favorites")
+                                    Image(systemName: favoriteItems.contains(where: { $0.uniqueName == item.uniqueName }) ? "star.fill" : "star")
+                                }
+                            }
+                            
                     }
-                }) {
-                    AnyView(
-                        Menu() {
+                    
+                }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .always) ,prompt: "Search for Weapons" )
+                
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+            .foregroundStyle(Color.white)
+            .background(Color.blackPearl)
+            .ignoresSafeArea(.keyboard)
+            .onAppear {
+                favoriteItems = UserDefaults.standard.loadFavoriteItems()
+            }
+            .onDisappear {
+                UserDefaults.standard.saveFavoriteItems(favoriteItems)
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Menu {
+                        Section("Favorites") {
+                            Button(action: { showFavoritesOnly.toggle() }) {
+                                Label("Toogle Favorites", systemImage: showFavoritesOnly ? "heart.fill" : "heart")
+                            }
+                        }
+                        
+                        Section(header: Text("Filter")) {
                             ForEach(categories, id: \.self) { category in
                                 Button {
                                     selectedCategory = category
@@ -84,64 +125,24 @@ struct CodexView: View {
                                         Text(category.rawValue)
                                     }
                                 }
-                                
-                            }
-                        } label : {
-                            if selectedCategory == .all {
-                                Image(systemName:"line.3.horizontal.decrease.circle.fill")
-                                    .foregroundColor(.silverChalice)
-                            } else {
-                                Image(systemName:"line.3.horizontal.decrease.circle.fill")
-                                    .renderingMode(.original)
-                                    .foregroundColor(.red)
-                            }
-                            
-                            
-                            
-                            
-                        }
-                    )
-                }
-                
-                ScrollView {
-                    VStack{
-                        ForEach(filteredItems, id:\.uniqueName) { item in
-                            NavigationLink {
-                                CodexDetailView(name:item.name, desc: item.description ?? "" ,imageURL: item.imageName ?? "", componentsArray: item.components ?? [], tradable: item.tradable,levelStats: item.levelStats ?? [],drops: item.drops ?? [], category: Category(rawValue: item.category) ?? Category.all)
-                            } label: {
-                                CodexCard(name: item.name, desc: item.description ?? "", imageURL: item.imageName ?? "")
-                                    .scrollTransition(.interactive, axis: .vertical) { view, phase in
-                                        view.opacity(phase.value > 0 ? 0 : 1.0)
-                                            .offset(x: phase.value < 0 ? 500 : 0)
-                                            
-                                    }
-                                    
-                                    
                             }
                         }
                     }
-                    .scrollTargetLayout()
-                    
+                label: {
+                    Label("Add", systemImage: "line.3.horizontal.decrease.circle")
                 }
-                .scrollIndicators(.hidden)
-                .scrollTargetBehavior(.viewAligned)
-                
-                
-                Spacer()
+                }
             }
-            .padding(.horizontal)
-            .foregroundStyle(Color.white)
-            .background(Color.blackPearl)
-            .ignoresSafeArea(.keyboard)
+            
         }
-        
-        
-        
     }
 }
 
+
 #Preview {
-    CodexView()
+    NavigationStack {
+        ContentView()
+    }
 }
 
 

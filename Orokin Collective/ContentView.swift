@@ -10,118 +10,61 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedTab: Tab = .house
     @ObservedObject var networkModel = NetworkCall()
-    @State private var isFetchingData: Bool = true
     @State private var openSettings: Bool = false
     @State private var timer: Timer?
     
-    
     init() {
-        UITabBar.appearance().backgroundColor = .woodsmoke
+        UITabBar.appearance().isTranslucent = true
+        UITabBar.appearance().barTintColor = UIColor.woodsmoke
+        UITabBar.appearance().backgroundColor = UIColor.woodsmoke
     }
     
     var body: some View {
-        
-        Group{
-            if isFetchingData {
-                SplashScreen()
-                    .onAppear {
-                        fetchData()
-                    }
-            } else {
-                NavigationStack {
-                    VStack {
-                        TabView(selection: $selectedTab) {
-                            DashBoardView(networkModel: networkModel)
-                                .tag(Tab.house)
-                                .tabItem { Label("Home", systemImage: "house")}
-                            NewsView(networkModel: networkModel)
-                                .tag(Tab.newspaper)
-                                .tabItem { Label("News", systemImage: "newspaper")}
-
-                            CodexView()
-                                .tag(Tab.book)
-                                .tabItem { Label("Codex", systemImage: "book")}
-
-                        }
-//                        CustomTabBar(selectedTab: $selectedTab)
+      NavigationStack {
+               if !networkModel.isFetchingData  {
+                   VStack{
+                       TabView(selection: $selectedTab) {
+                           DashBoardView(networkModel: networkModel)
+                               .tabItem { Label("Home", systemImage: "house")}
+                               .tag(Tab.house)
+                           NewsView(networkModel: networkModel)
+                               .tabItem { Label("News", systemImage: "newspaper")}
+                               .tag(Tab.newspaper)
+                           CodexView()
+                               .tabItem {
+                                   Label("Codex", systemImage: selectedTab == .book ? "book" : "book.closed")
+                                       .contentTransition(.symbolEffect)
+                               }
+                               .tag(Tab.book)
+                       }
                        
-                    }
-                    .background(
-//                        Image("VitruvianLn")
-//                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                            .ignoresSafeArea(.all, edges: .all)
-                        
-                        Color.blackPearl
-                    )
-                }
-                
-                .fullScreenCover(isPresented: $openSettings, content: {
-                    Button {
-                        openSettings.toggle()
-                    } label: {
-                        Text("Close Settings")
-                    }
-                })
-               
-                .onAppear {
-                    startTimer()
-                }
-                .onDisappear {
-                    timer?.invalidate()
-                }
-                .ignoresSafeArea(.keyboard)
-            }
+                   }
+                   .background(Color.blackPearl)
+               } else {
+                   SplashScreen()
+                       .onAppear {
+                           networkModel.fetchData()
+                       }
+               }
         }
-        
-        
-        .refreshable {
-            do {
-                try await networkModel.fetchWorldState()
-                isFetchingData = false
-            } catch APIError.invalidURL {
-                print("invalid URL")
-            } catch APIError.invaildClientResponse {
-                print("invaild Client Response")
-                networkModel.showError = true
-            } catch APIError.invalidData {
-                print("invaild Data")
-            } catch APIError.invaildServerResponse {
-                print("invaild Server Response")
-            } catch {
-                Toast.shared.present(title: "Unexpected Error", symbol: "exclamationmark.triangle", tint: .primary)
-                print("Unexcepted Error has appeared \(error)")
-
-            }
+      
+        .background(
+            Color.blackPearl
+        )
+//        .refreshable {
+//            networkModel.fetchData()
+//        }
+        .onAppear {
+            startTimer()
         }
-        
-    }
-    private func fetchData() {
-        Task {
-            do {
-                try await networkModel.fetchWorldState()
-                isFetchingData = false
-            } catch APIError.invalidURL {
-                print("invalid URL")
-                Toast.shared.present(title: "Invalid URL", symbol: "network.slash", tint: .primary)
-            } catch APIError.invaildClientResponse {
-                Toast.shared.present(title: "Client Error", symbol: "wifi.slash", tint: .primary)
-                networkModel.showError = true
-            } catch APIError.invalidData {
-                Toast.shared.present(title: "Invalid Data", symbol: "icloud.slash", tint: .primary)
-                
-            } catch APIError.invaildServerResponse {
-                Toast.shared.present(title: "Server Error", symbol: "xmark.icloud.fill", tint: .primary)
-                print("invaild Server Response")
-            } catch {
-                Toast.shared.present(title: "Unexpected Error", symbol: "exclamationmark.triangle", tint: .primary)
-                print("Unexcepted Error has appeared \(error)")
-
-            }
+        .onDisappear {
+            timer?.invalidate()
         }
     }
+    
     private func startTimer() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 60 , repeats: true) { _ in
-            fetchData()
+            networkModel.fetchData()
         }
     }
     

@@ -18,24 +18,69 @@ import SwiftUI
 
 
 struct TestingFile: View {
-    @StateObject var networkModel = NetworkCall()
+    
     var body: some View {
-        // Portfolio
-        VStack {
-            Text("Bradlee King")
-                .foregroundStyle(.marigold)
-                .bold()
-                .font(.system(size: 40))
-            Text("IOS Developer")
-                .foregroundStyle(.silverChalice)
-                .fontWeight(.semibold)
-                .font(.system(size: 30))
+      VStack {
+            TabView {
+                Test1()
+                    .tabItem { Label("Home", systemImage: "house") }
+                Test2()
+                    .tabItem { Label("Home", systemImage: "house") }
+                Test3()
+                    .tabItem { Label("Home", systemImage: "house") }
+            }
         }
-        // Digial Media Development
     }
 }
 
+#Preview {
+    TestingFile()
+}
 
+struct Test1: View {
+    @State private var search: String = ""
+    var body: some View {
+        VStack {
+            ForEach(0...6, id: \.self ) { item in
+                Text(item.description)
+            }
+           
+        }
+        .foregroundStyle(.glacier)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.blackPearl)
+    }
+}
+struct Test2: View {
+    @State private var search: String = ""
+    var body: some View {
+        VStack {
+            ForEach(0...10, id: \.self ) { item in
+                Text(item.description)
+            }
+            
+        }
+        .foregroundStyle(.glacier)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.blackPearl)
+    }
+}
+struct Test3: View {
+    @State private var search: String = ""
+    var body: some View {
+        VStack {
+            ScrollView{
+                ForEach(0...20, id: \.self ) { item in
+                    Text(item.description)
+                }
+            }
+        }
+        .foregroundStyle(.glacier)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.blackPearl)
+        .searchable(text: $search)
+    }
+}
 
 
 

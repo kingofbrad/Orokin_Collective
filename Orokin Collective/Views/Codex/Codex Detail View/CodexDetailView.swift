@@ -9,17 +9,18 @@ import SwiftUI
 
 
 struct CodexDetailView: View {
-    
     var name: String
     var desc: String
-    var imageURL: String
-    var componentsArray: [Component]
     var tradable: Bool
-    var levelStats: [LevelStat]
-    var drops: [Drop]
+    var imageName: String
     
     
+    var items: [ItemElement]
     @State var category: Category
+    var selectedItem: ItemElement
+    
+    
+   
     
     var body: some View {
         VStack(spacing: 0){
@@ -29,16 +30,16 @@ struct CodexDetailView: View {
                 case .all:
                     EmptyView()
                 case .arcanes:
-                    ArcaneDetailView(levelStats: levelStats, drop: drops)
+                    ArcaneDetailView(levelStats: selectedItem.levelStats ?? [] , drop: selectedItem.drops ?? [])
                 case .archGun:
-                    components
+                    
                     weaponsStats
                 case .archMelee:
-                    components
+                    
                     weaponsStats
                 case .archwing:
-                    components
-                    warframeStats
+                    EmptyView()
+                    
                 case .enemy:
                     EmptyView()
                 case .fish:
@@ -58,7 +59,7 @@ struct CodexDetailView: View {
                 case .pets:
                     EmptyView()
                 case .primary:
-                    components
+                    
                     weaponsStats
                 case .quests:
                     EmptyView()
@@ -67,7 +68,7 @@ struct CodexDetailView: View {
                 case .resources:
                     EmptyView()
                 case .secondary:
-                    components
+                    
                     weaponsStats
                 case .sentinels:
                     EmptyView()
@@ -76,10 +77,19 @@ struct CodexDetailView: View {
                 case .skins:
                     EmptyView()
                 case .warframes:
-                    components
-                    warframeStats
+                    
+                    WarframeDetailView(
+                        shield: selectedItem.shield ?? 0,
+                        armor: selectedItem.armor ?? 0,
+                        health: selectedItem.health ?? 0,
+                        power: selectedItem.power ?? 0,
+                        sprintSpeed: selectedItem.sprint ?? 0.0,
+                        components: selectedItem.components ?? [],
+                        aura: selectedItem.polarities ?? [],
+                        ability: selectedItem.abilities ?? [],
+                        passive: selectedItem.passiveDescription ?? ""
+                    )
                 }
-                
                 
             }
             .scrollIndicators(.hidden)
@@ -94,7 +104,7 @@ struct CodexDetailView: View {
     
     var detail: some View {
         VStack {
-            AsyncImage(url: URL(string: "https://raw.githubusercontent.com/wfcd/warframe-items/master/data/img/\(imageURL)") ) { image in image.resizable() } placeholder: { ProgressView() } .frame(width: 100, height: 100)
+            AsyncImage(url: URL(string: "https://raw.githubusercontent.com/wfcd/warframe-items/master/data/img/\(imageName)") ) { image in image.resizable() } placeholder: { ProgressView() } .frame(width: 100, height: 100)
                 .clipShape(Circle())
                 .aspectRatio(contentMode: .fit)
             VStack(alignment: .leading) {
@@ -126,52 +136,7 @@ struct CodexDetailView: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         
     }
-    var components: some View {
-        VStack(alignment: .leading) {
-            Text("Components")
-                .foregroundStyle(.silverChalice)
-                .fontWeight(.semibold)
-                .font(.system(size: 20))
-            
-            HStack(spacing: 25) {
-                ForEach(componentsArray, id: \.name) { component in
-                    VStack{
-                        AsyncImage(url: URL(string: "https://raw.githubusercontent.com/wfcd/warframe-items/master/data/img/\(component.imageName)") ) { image in image.resizable() } placeholder: { ProgressView() } .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .aspectRatio(contentMode: .fit)
-                        
-                    }
-                }
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color.blueCharcoal)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
-    
-    var warframeStats: some View {
-        VStack(alignment: .leading) {
-            Text("Stats")
-            Text("Aura Polarity")
-            HStack {
-               Text("Preinstalled Polarities")
-                Spacer()
-                ForEach(componentsArray, id: \.uniqueName) { component in
-                    if let polarities = component.polarities {
-                        ForEach(polarities, id: \.self){ polarity in
-                            PolarImage(polarity: polarity)
-                        }
-                    }
-                }
-            }
-        }
-//        .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color.blueCharcoal)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
-    
+   
     var weaponsStats: some View {
         VStack {
             Text("Weapons Stats")
@@ -182,25 +147,43 @@ struct CodexDetailView: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .padding()
     }
+    
+    
 }
 
-#Preview {
-    CodexDetailView(name: "Dante",desc: "Seeker of knowledge. Keeper of history. Daring researcher of Leverian lore. Dante composes arcane tales to support allies and devastate enemies." , imageURL: "dante.png", componentsArray: [], tradable: true, levelStats: [], drops: [], category: .warframes )
-}
 
-#Preview {
-    CodexView()
-}
+
+
 
 
 struct PolarImage: View {
-    let polarity: Aura
+    let polarity: String
+    @State private var image: UIImage? = nil
     
     var body: some View {
-        if let url = URL(string: "https://raw.githubusercontent.com/WFCD/genesis-assets/master/img/polarities/\(polarity.rawValue).png") {
-            AsyncImage(url: url) { image in image.resizable() } placeholder: { ProgressView() } .frame(width: 100, height: 100)
+        if let image = image {
+            Image(uiImage: image)
+                .resizable()
+                .frame(width: 30, height: 30)
                 .clipShape(Circle())
                 .aspectRatio(contentMode: .fit)
+        } else {
+            ProgressView()
+                .onAppear {
+                    loadImage()
+                }
         }
+    }
+    
+    private func loadImage() {
+        guard let url = URL(string: "https://raw.githubusercontent.com/WFCD/genesis-assets/master/img/polarities/\(polarity).png") else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let loadedImage = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.image = loadedImage
+                }
+            }
+        }.resume()
     }
 }

@@ -65,11 +65,7 @@ struct NewsView: View {
             .padding(.horizontal, 10)
         }
         .foregroundStyle(Color.white)
-        .background(
-            Image("VitruvianLn")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-        )
+        .background(Color.blackPearl)
         .task {
             do {
                 try await networkModel.fetchWorldState()

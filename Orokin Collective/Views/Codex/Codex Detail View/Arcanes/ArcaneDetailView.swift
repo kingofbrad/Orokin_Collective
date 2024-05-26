@@ -76,22 +76,7 @@ struct ArcaneDetailView: View {
 }
 
 #Preview {
-    CodexDetailView(name: "Molt Effectiency",
-                    desc: "",
-                    imageURL: "molt-efficiency.png",
-                    componentsArray: [], 
-                    tradable: true,
-                    levelStats: [
-                        LevelStat(stats: ["While Shields are Active: Gain 1% Ability Duration per second, up to a maximum of 6%"]),
-                        LevelStat(stats: ["While Shields are Active: Gain 2% Ability Duration per second, up to a maximum of 12%"])
-                    ],
-                    drops: [Drop(chance: 0.0033,
-                                 location: "",
-                                 rarity: .rare, 
-                                 type: "",
-                                 rotation: .none)
-                    ],
-                    category: .arcanes)
+    ArcaneDetailView(levelStats: [], drop: [])
 }
 
 

@@ -10,10 +10,7 @@ class NetworkCall: ObservableObject {
     @Published var events: Event = []
     @Published var showError = false
     @Published var items: Item = []
-    @Published var itemSearch: String = ""
-    @Published var query: String = ""
-    @Published var showToast: Bool = false
-
+    @Published var isFetchingData: Bool = true
     
     
     //MARK: - API Endpoint
@@ -65,37 +62,7 @@ class NetworkCall: ObservableObject {
             throw error
         }
     }
-    
-    //MARK: -
-    func searchItem(searchTerm: String) async throws {
-        guard !searchTerm.isEmpty else { return }
-        
-        do {
-            guard let requestURL = URL(string: "\(endPoint)/\(APIPathEndPoint.items)/\(searchTerm)") else {
-                throw APIError.invalidURL
-            }
-            
-            let (data, response) = try await URLSession.shared.data(from: requestURL)
-            guard let response = response as? HTTPURLResponse else {
-                throw APIError.invaildServerResponse
-            }
-            
-            switch response.statusCode{
-            case 400..<500: throw APIError.invaildClientResponse
-            case 500..<600: throw APIError.invaildServerResponse
-            default: break
-            }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let itemReponse = try decoder.decode(Item.self, from: data)
-            items = itemReponse
-        } catch let DecodingError.typeMismatch(type, context) {
-            throw APIError.typeMismatch(expected: type, context: context)
-        } catch {
-            throw error
-        }
-    }
+
     
     //MARK: - synthTargets API Call
     func fetchSynthTargets() async throws {
@@ -112,6 +79,27 @@ class NetworkCall: ObservableObject {
         let synthTargetsResponse = try JSONDecoder().decode(Synthtargets.self, from: data)
         synthTargets = synthTargetsResponse
         
+    }
+    //MARK: - Fetch Data on Load
+   func fetchData() {
+        Task {
+            do {
+                try await fetchWorldState()
+                self.isFetchingData = false
+            } catch APIError.invalidURL {
+                print("invalid URL")
+                Toast.shared.present(title: "Invalid URL", symbol: "network.slash", tint: .primary)
+            } catch APIError.invaildClientResponse {
+                Toast.shared.present(title: "Client Error", symbol: "wifi.slash", tint: .primary)
+                self.showError = true
+            } catch APIError.invalidData {
+                Toast.shared.present(title: "Invalid Data", symbol: "icloud.slash", tint: .primary)
+            } catch APIError.invaildServerResponse {
+                Toast.shared.present(title: "Server Error", symbol: "xmark.icloud.fill", tint: .primary)
+            } catch {
+                Toast.shared.present(title: "Unexpected Error", symbol: "exclamationmark.triangle", tint: .primary)
+            }
+        }
     }
   
     

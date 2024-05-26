@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct Orokin_CollectiveApp: App {
+    
+    
     var body: some Scene {
         WindowGroup {
-            RootView {
-                
-                
+          
                 ContentView()
-            }
+            
         }
     }
 }

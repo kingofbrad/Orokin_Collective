@@ -17,66 +17,98 @@ struct SplashScreen: View {
     SplashScreen()
 }
 
-struct LoadingView: View {
-    @State private var isLoading = false
+struct AnimatedSplashScreen: View {
+    @State private var isAnimating = false
+    @State private var animationProgress: CGFloat = 0
     
     var body: some View {
-        ZStack {
-            ForEach(0..<12) { index in
-                Capsule()
-                    .fill(Color.blue)
-                    .frame(width: 15, height: 60)
-                    .rotationEffect(.degrees(Double(index) * 30))
-                    .offset(y: 75)
-                    .opacity(isLoading ? 1 : 0)
-                    .animation(Animation.linear(duration: 0.8).repeatForever().delay(Double(index) * 0.1))
+        GeometryReader { geometry in
+            ZStack {
+                Color.blackPearl
+                    .ignoresSafeArea()
+                
+                MyIcon()
+                    .stroke(Color.black, lineWidth: 2)
+                    .frame(width: 200, height: 200)
+                    .animatedShape(sizeFactor: isAnimating ? 2.0 : 1.0, rotationAngle: isAnimating ? 45 : 0)
+                    .onAppear {
+                        withAnimation(Animation.linear(duration: 2).repeatForever()) {
+                            self.isAnimating.toggle()
+                        }
+                    }
             }
         }
-        .onAppear {
-            self.isLoading = true
-        }
+    }
+}
+    
+struct MyIcon: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.size.width
+        let height = rect.size.height
+        path.move(to: CGPoint(x: 0.00105*width, y: 0.5*height))
+        path.addLine(to: CGPoint(x: 0.49951*width, y: 0.00158*height))
+        path.addLine(to: CGPoint(x: 0.99797*width, y: 0.5*height))
+        path.addLine(to: CGPoint(x: 0.49951*width, y: 0.99842*height))
+        path.addLine(to: CGPoint(x: 0.00105*width, y: 0.5*height))
+        path.move(to: CGPoint(x: 0.2234*width, y: 0.5*height))
+        path.addLine(to: CGPoint(x: 0.5*width, y: 0.22368*height))
+        path.addLine(to: CGPoint(x: 0.7766*width, y: 0.5*height))
+        path.addLine(to: CGPoint(x: 0.5*width, y: 0.77632*height))
+        path.addLine(to: CGPoint(x: 0.2234*width, y: 0.5*height))
+        path.move(to: CGPoint(x: 0.2234*width, y: 0.5*height))
+        path.addLine(to: CGPoint(x: 0.5*width, y: 0.22368*height))
+        path.addLine(to: CGPoint(x: 0.7766*width, y: 0.5*height))
+        path.addLine(to: CGPoint(x: 0.5*width, y: 0.77632*height))
+        path.addLine(to: CGPoint(x: 0.2234*width, y: 0.5*height))
+        path.move(to: CGPoint(x: 0.2234*width, y: 0.5*height))
+        path.addLine(to: CGPoint(x: 0.5*width, y: 0.22368*height))
+        path.addLine(to: CGPoint(x: 0.7766*width, y: 0.5*height))
+        path.addLine(to: CGPoint(x: 0.5*width, y: 0.77632*height))
+        path.addLine(to: CGPoint(x: 0.2234*width, y: 0.5*height))
+        path.move(to: CGPoint(x: 0.00099*width, y: 0.5*height))
+        path.addCurve(to: CGPoint(x: 0.31944*width, y: 0.59722*height), control1: CGPoint(x: 0.00099*width, y: 0.5*height), control2: CGPoint(x: 0.04167*width, y: 0.875*height))
+        path.addLine(to: CGPoint(x: 0.59722*width, y: 0.31944*height))
+        path.addCurve(to: CGPoint(x: 0.99804*width, y: 0.5*height), control1: CGPoint(x: 0.875*width, y: 0.04167*height), control2: CGPoint(x: 0.99804*width, y: 0.5*height))
+        path.move(to: CGPoint(x: 0.00099*width, y: 0.5*height))
+        path.addCurve(to: CGPoint(x: 0.34722*width, y: 0.625*height), control1: CGPoint(x: 0.00099*width, y: 0.5*height), control2: CGPoint(x: 0.06944*width, y: 0.90278*height))
+        path.addLine(to: CGPoint(x: 0.625*width, y: 0.34722*height))
+        path.addCurve(to: CGPoint(x: 0.99804*width, y: 0.5*height), control1: CGPoint(x: 0.90278*width, y: 0.06944*height), control2: CGPoint(x: 0.99804*width, y: 0.5*height))
+        path.move(to: CGPoint(x: 0.99804*width, y: 0.5*height))
+        path.addCurve(to: CGPoint(x: 0.65278*width, y: 0.375*height), control1: CGPoint(x: 0.99804*width, y: 0.5*height), control2: CGPoint(x: 0.93056*width, y: 0.09722*height))
+        path.addLine(to: CGPoint(x: 0.375*width, y: 0.65278*height))
+        path.addCurve(to: CGPoint(x: 0.00099*width, y: 0.5*height), control1: CGPoint(x: 0.09722*width, y: 0.93056*height), control2: CGPoint(x: 0.00099*width, y: 0.5*height))
+        path.move(to: CGPoint(x: 0.99804*width, y: 0.5*height))
+        path.addCurve(to: CGPoint(x: 0.68056*width, y: 0.40278*height), control1: CGPoint(x: 0.99804*width, y: 0.5*height), control2: CGPoint(x: 0.95833*width, y: 0.125*height))
+        path.addLine(to: CGPoint(x: 0.40278*width, y: 0.68056*height))
+        path.addCurve(to: CGPoint(x: 0.00099*width, y: 0.5*height), control1: CGPoint(x: 0.125*width, y: 0.95833*height), control2: CGPoint(x: 0.00099*width, y: 0.5*height))
+        return path
     }
 }
 
-struct PulsatingStrokes: View {
-    @State private var isExpanding = false
-    
-    var body: some View {
-        ZStack {
-            ForEach(0..<3) { index in
-                let scale: CGFloat = CGFloat(index + 1) * 0.1
-                Rectangle()
-                    .stroke(Color.blue, lineWidth: 5)
-                    .frame(width: 50 * CGFloat(index + 1), height: 50 * CGFloat(index + 1))
-                    .rotationEffect(.degrees(self.isExpanding ? 0 : 90))
-                    .scaleEffect(self.isExpanding ? 1 : scale)
-                    .offset(x: self.isExpanding ? 0 : CGFloat(index - 1) * 30)
-            }
-        }
-        .onAppear {
-            withAnimation(Animation.easeInOut(duration: 2)) {
-                self.isExpanding.toggle()
-            }
+struct AnimatedShapeModifier: AnimatableModifier {
+    var sizeFactor: CGFloat
+    var rotationAngle: CGFloat
+
+    var animatableData: AnimatablePair<CGFloat, CGFloat> {
+        get { AnimatablePair(sizeFactor, rotationAngle) }
+        set {
+            sizeFactor = newValue.first
+            rotationAngle = newValue.second
         }
     }
-}
-struct AnimatedSplashScreen: View {
-    @State private var animate = false
-    
-    var body: some View {
-        ZStack {
-            Color.blue
-                .ignoresSafeArea()
-            
-            Image(systemName: "person")
-                .resizable()
-                .foregroundColor(.white)
-                .frame(width: animate ? 200 : 100, height: animate ? 200 : 100)
-                .scaleEffect(animate ? 1 : 0.5)
-                .animation(Animation.easeInOut(duration: 1))
-                .onAppear {
-                    self.animate.toggle()
-                }
-        }
+
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(sizeFactor)
+            .rotationEffect(Angle(degrees: Double(rotationAngle)))
     }
 }
+
+extension View {
+    func animatedShape(sizeFactor: CGFloat, rotationAngle: CGFloat) -> some View {
+        self.modifier(AnimatedShapeModifier(sizeFactor: sizeFactor, rotationAngle: rotationAngle))
+    }
+}
+
+

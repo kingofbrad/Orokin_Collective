@@ -17,7 +17,7 @@ struct DashBoardView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .top) {
+            VStack {
                 TabView(selection: self.$currentTab) {
                     WorldStateView(networkModel: networkModel).tag(0)
                     FissureView(networkModel: networkModel).tag(1)
@@ -25,28 +25,14 @@ struct DashBoardView: View {
                     SyndicatesView(networkModel: networkModel).tag(3)
                     
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
+                .tabViewStyle(.page(indexDisplayMode: .always))
                 .ignoresSafeArea(.all)
                 .animation(.easeInOut(duration: 0.3), value: currentTab)
                 
-                
-                tabBarView(currentTab: self.$currentTab)
-                
             }
-            
-            
         }
-      
-        
         .foregroundStyle(Color.white)
-//        .background(
-//            Image("VitruvianLn")
-//            //                .resizable()
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .ignoresSafeArea()
-//        )
         .background(Color.blackPearl)
-        
         
     }
 }
@@ -105,8 +91,6 @@ struct TabBarItem: View {
         }
     }
 }
-
-
 
 #Preview(body: {
     NavigationStack {

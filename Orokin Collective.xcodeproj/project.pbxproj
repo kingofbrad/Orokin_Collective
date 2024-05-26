@@ -66,10 +66,13 @@
 		FA99AA3F2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */; };
 		FAB09B922BCECCF6000156B2 /* DailyDealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB09B912BCECCF6000156B2 /* DailyDealsView.swift */; };
 		FAB76CA92BC190E900DB2CAB /* SortieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB76CA82BC190E900DB2CAB /* SortieView.swift */; };
+		FACCEEF32BEFD9BA00D63BBE /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEEF22BEFD9BA00D63BBE /* UserDefaults.swift */; };
+		FACCEEF52BF8EED700D63BBE /* XcodePilotfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEEF42BF8EED700D63BBE /* XcodePilotfile.swift */; };
 		FAFDD5E22BC5B6E000CA5E16 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDD5E12BC5B6E000CA5E16 /* SplashScreen.swift */; };
 		FAFEECC12BECFABD00CA5EBC /* CodexCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFEECC02BECFABD00CA5EBC /* CodexCard.swift */; };
 		FAFEECC32BECFADB00CA5EBC /* CodexDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFEECC22BECFADB00CA5EBC /* CodexDetailView.swift */; };
 		FAFEECC62BEEB58200CA5EBC /* ArcaneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFEECC52BEEB58200CA5EBC /* ArcaneDetailView.swift */; };
+		FAFEECC92BEF653000CA5EBC /* WarframeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFEECC82BEF653000CA5EBC /* WarframeDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,10 +137,13 @@
 		FA99AA3E2BC0A9CE000C46F3 /* TimeRemainingTimer(Days)View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeRemainingTimer(Days)View.swift"; sourceTree = "<group>"; };
 		FAB09B912BCECCF6000156B2 /* DailyDealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDealsView.swift; sourceTree = "<group>"; };
 		FAB76CA82BC190E900DB2CAB /* SortieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortieView.swift; sourceTree = "<group>"; };
+		FACCEEF22BEFD9BA00D63BBE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		FACCEEF42BF8EED700D63BBE /* XcodePilotfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodePilotfile.swift; sourceTree = "<group>"; };
 		FAFDD5E12BC5B6E000CA5E16 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		FAFEECC02BECFABD00CA5EBC /* CodexCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexCard.swift; sourceTree = "<group>"; };
 		FAFEECC22BECFADB00CA5EBC /* CodexDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexDetailView.swift; sourceTree = "<group>"; };
 		FAFEECC52BEEB58200CA5EBC /* ArcaneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcaneDetailView.swift; sourceTree = "<group>"; };
+		FAFEECC82BEF653000CA5EBC /* WarframeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarframeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3CDAC12B9BDD09007DECF5 /* TestingFile.swift */,
+				FACCEEF42BF8EED700D63BBE /* XcodePilotfile.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -279,6 +286,7 @@
 			children = (
 				FA3CDADE2BA0C974007DECF5 /* URLExtenstion.swift */,
 				FA2E3FC02BD4335500CA5129 /* SearchBar.swift */,
+				FACCEEF22BEFD9BA00D63BBE /* UserDefaults.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -728,6 +736,7 @@
 		FAFEECBE2BECFA9600CA5EBC /* Codex Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				FAFEECC72BEF652600CA5EBC /* Warframe */,
 				FAFEECC42BEEB57700CA5EBC /* Arcanes */,
 				FAFEECC22BECFADB00CA5EBC /* CodexDetailView.swift */,
 			);
@@ -748,6 +757,14 @@
 				FAFEECC52BEEB58200CA5EBC /* ArcaneDetailView.swift */,
 			);
 			path = Arcanes;
+			sourceTree = "<group>";
+		};
+		FAFEECC72BEF652600CA5EBC /* Warframe */ = {
+			isa = PBXGroup;
+			children = (
+				FAFEECC82BEF653000CA5EBC /* WarframeDetailView.swift */,
+			);
+			path = Warframe;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -830,10 +847,12 @@
 				FA894EC82BB5CD330050A840 /* NewsView.swift in Sources */,
 				FAFEECC12BECFABD00CA5EBC /* CodexCard.swift in Sources */,
 				FA894EFB2BBA113A0050A840 /* SteelPathView.swift in Sources */,
+				FACCEEF32BEFD9BA00D63BBE /* UserDefaults.swift in Sources */,
 				FA3CDAE32BA2232E007DECF5 /* CetusCycle.swift in Sources */,
 				FA996F142BB32BF9002918EC /* FissuresView.swift in Sources */,
 				FA996F192BB32C57002918EC /* SyndicatesView.swift in Sources */,
 				FA894F0C2BBC79C70050A840 /* EarthCycleView.swift in Sources */,
+				FACCEEF52BF8EED700D63BBE /* XcodePilotfile.swift in Sources */,
 				FA3CDAD32BA0B125007DECF5 /* Alerts.swift in Sources */,
 				FA894F072BBC6DBD0050A840 /* ZarimanView.swift in Sources */,
 				FA3CDAD92BA0B1C9007DECF5 /* Arbitration.swift in Sources */,
@@ -879,6 +898,7 @@
 				FA894EF52BB9F5850050A840 /* VoidTraderCountDownTimer.swift in Sources */,
 				FA894EDD2BB609F60050A840 /* Void Trader.swift in Sources */,
 				FA2E3FAF2BD1D4F600CA5129 /* NightwaveView.swift in Sources */,
+				FAFEECC92BEF653000CA5EBC /* WarframeDetailView.swift in Sources */,
 				FA894ECA2BB5CD3A0050A840 /* CodexView.swift in Sources */,
 				FA894EE82BB60E260050A840 /* EarthCycle.swift in Sources */,
 				FA91479C2B7E7BF000244D88 /* Orokin_CollectiveApp.swift in Sources */,

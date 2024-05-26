@@ -7,6 +7,7 @@ import Foundation
 
 // MARK: - ItemElement
 struct ItemElement: Codable, Identifiable {
+    var isFavorite: Bool = false
     let id: UUID = UUID()
     let category: String
     let description: String?
@@ -63,7 +64,7 @@ struct ItemElement: Codable, Identifiable {
     let multishot: Int?
     let noise: Noise?
     let omegaAttenuation: Double?
-    let polarities: [Aura]?
+    let polarities: [String]?
     let procChance: Double?
     let productCategory: ProductCategory?
     let reloadTime: Double?
@@ -380,7 +381,7 @@ enum Element: String, Codable {
     case viral = "Viral"
 }
 
-enum Aura: String, Codable {
+enum Aura: String, Codable, CaseIterable {
     case aura = "aura"
     case madurai = "madurai"
     case naramon = "naramon"

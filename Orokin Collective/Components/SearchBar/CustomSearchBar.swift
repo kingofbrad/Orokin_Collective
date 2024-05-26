@@ -21,7 +21,6 @@ struct CustomSearchBar: View {
     
     let placeHolderText: String
     var onCommit: () -> Void
-    var content: () -> AnyView
     var body: some View {
         HStack {
             
@@ -43,10 +42,6 @@ struct CustomSearchBar: View {
                         searchText = ""
                     } label: {
                         Image(systemName: "xmark")
-                    }
-                } else {
-                    if isCategory {
-                        content()
                     }
                 }
             }
@@ -78,9 +73,7 @@ struct CustomSearchBar: View {
     }
 }
 
-#Preview {
-    CustomSearchBar(searchText: .constant("Search"), backgroundColor: .blueCharcoal, textColor: .silverChalice, cancelButtonColor: .silverChalice, isCategory: true, placeHolderText: "for targets", onCommit: {}, content: {AnyView(EmptyView())})
-}
+
 
 extension View {
     func placeholder<Content: View>(
@@ -148,4 +141,8 @@ struct CustomSearchBarTest: View {
 
 #Preview {
     CustomSearchBarTest(searchText: .constant(""))
+}
+
+#Preview {
+    CustomSearchBar(searchText: .constant("Search"), backgroundColor: .blueCharcoal, textColor: .silverChalice, cancelButtonColor: .silverChalice, isCategory: true, placeHolderText: "for targets", onCommit: {})
 }
