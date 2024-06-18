@@ -18,6 +18,7 @@ struct DashBoardView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                tabBarView(currentTab: $currentTab)
                 TabView(selection: self.$currentTab) {
                     WorldStateView(networkModel: networkModel).tag(0)
                     FissureView(networkModel: networkModel).tag(1)
@@ -26,8 +27,11 @@ struct DashBoardView: View {
                     
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
-                .ignoresSafeArea(.all)
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
+                
                 .animation(.easeInOut(duration: 0.3), value: currentTab)
+                
+                
                 
             }
         }
@@ -76,7 +80,7 @@ struct TabBarItem: View {
                     .font(.system(size: 14))
                     .font(.footnote).fontWeight(.semibold)
                     .foregroundStyle(currentTab == tab ? Color.white : Color.gray)
-                    
+                
                 if currentTab == tab {
                     Color.white
                         .frame(height: 2)

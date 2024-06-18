@@ -99,19 +99,44 @@ struct CircuitChoicesView: View {
                                     
                                 }
                             }
+                            Spacer()
+                            VStack {
+                                Text("Above is the available circuit choices ")
+                                Text("Normal is for the warframes")
+                                Text("Hard is the steel path route for the incarnnon weapons")
+                            }
+                            .frame(maxWidth: .infinity)
                         }
                         .padding(20)
                         Spacer()
+                        
+                        
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .foregroundStyle(Color.white)
                     .background(Color.blueCharcoal)
-                    .ignoresSafeArea()
                     .presentationDetents([.large])
                     
                 })
             }
+        
             
+        }
+        .task {
+            do {
+                try await networkModel.fetchWorldState()
+            } catch APIError.invalidURL {
+                print("invalid URL")
+            } catch APIError.invaildClientResponse {
+                print("invaild Client Response")
+                networkModel.showError = true
+            } catch APIError.invalidData {
+                print("invaild Data")
+            } catch APIError.invaildServerResponse {
+                print("invaild Server Response")
+            } catch {
+                print("Unexcepted Error has appeared \(error)")
+            }
         }
         
         
@@ -121,3 +146,5 @@ struct CircuitChoicesView: View {
 #Preview {
     CircuitChoicesView(networkModel: NetworkCall())
 }
+
+
